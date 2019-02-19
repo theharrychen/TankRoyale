@@ -24,8 +24,8 @@ public class Tank extends GameEntity {
 		System.out.println("\nTank " + ID + " died!");
 	}
 	
-	public void failedMove() {
-		System.out.println("Tank " + ID + " was blocked from moving in the specified direction!");
+	public void failedMove(String direction) {
+		System.out.println("Tank " + ID + " was blocked from moving " + direction + "!");
 	}
 	
 	public void performCommand(String command, Map map) {
@@ -37,7 +37,7 @@ public class Tank extends GameEntity {
 				setY(getY()-1);
 			}
 			else {
-				failedMove();
+				failedMove("up");
 			}
 			break;
 		case "MOVEDOWN" :
@@ -47,7 +47,7 @@ public class Tank extends GameEntity {
 				setY(getY()+1);
 			}
 			else {
-				failedMove();
+				failedMove("down");
 			}
 			break;
 		case "MOVELEFT" :
@@ -57,7 +57,7 @@ public class Tank extends GameEntity {
 				setX(getX()-1);
 			}
 			else {
-				failedMove();
+				failedMove("left");
 			}
 			break;
 		
@@ -68,7 +68,7 @@ public class Tank extends GameEntity {
 				setX(getX()+1);
 			}
 			else {
-				failedMove();
+				failedMove("right");
 			}
 			break;
 		case "SHOOTUP" :
