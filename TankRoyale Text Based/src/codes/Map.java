@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Map {
-	private char[][] map;
+	private char[][] charMap;
 	private int height = 0, width = 0;
 
 	public Map(String textPath) throws FileNotFoundException {
@@ -21,36 +21,71 @@ public class Map {
 		input.close();
 		
 		width = stringMap.get(0).length();
-		map = new char[height][width];
+		charMap = new char[height][width];
 		
 		for(int y = 0; y < height; y++) {
 			for(int x = 0; x < width; x++) {
 				if (stringMap.get(y).charAt(x) == '0') {
-					map[y][x] = ' ';
+					charMap[y][x] = ' ';
 				}
 				else {
-					map[y][x] = stringMap.get(y).charAt(x);
+					charMap[y][x] = stringMap.get(y).charAt(x);
 				}
 			}
 		}
 	
 	}
 	
+	public char[][] getCharMap() {
+		return charMap;
+	}
+
+	public void setCharMap(char[][] charMap) {
+		this.charMap = charMap;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	
 	public void display() {
 		for(int y = 0; y < height; y++) {
 			for(int x = 0; x < width; x++) {
-				System.out.print(map[y][x]);
+				System.out.print(charMap[y][x]);
 			}
 			System.out.println();
 		}
 	}
 	
 	public void spawn(Tank tank) {
-		while (map[tank.getY()][tank.getX()] != ' ') {
+		while (charMap[tank.getY()][tank.getX()] != ' ') {
 			tank.setY(Game.rng(1, height-1));
 			tank.setX(Game.rng(1, width-1));
 		}
-		map[tank.getY()][tank.getX()] = tank.getID();
+		charMap[tank.getY()][tank.getX()] = tank.getID();
+	}
+	
+	public void randomSpawn(Tank tank) {
+		tank.setY(Game.rng(1, height-1));
+		tank.setX(Game.rng(1, width-1));
+		
+		while (charMap[tank.getY()][tank.getX()] != ' ') {
+			tank.setY(Game.rng(1, height-1));
+			tank.setX(Game.rng(1, width-1));
+		}
+		charMap[tank.getY()][tank.getX()] = tank.getID();
 	}
 
 }
