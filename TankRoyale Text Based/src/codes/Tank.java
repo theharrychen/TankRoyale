@@ -40,36 +40,41 @@ public class Tank extends GameEntity {
 	
 	@SuppressWarnings("resource")
 	public void shoot(int xDir, int yDir, Map map, Tank otherTank){
-	    Bullet bullet = new Bullet(getX(), getY());
+	    Bullet bull = new Bullet(getX(), getY());
 	    Scanner input = new Scanner(System.in);
 	    
-	    if (map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == ' ') {
-	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = Bullet.symbol;
-			bullet.setX(bullet.getX()+ xDir);
-			bullet.setY(bullet.getY()+ yDir);
+	    if (map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] == ' ') {
+	        map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] = Bullet.symbol;
+			bull.setX(bull.getX()+ xDir);
+			bull.setY(bull.getY()+ yDir);
 			map.display();
 	    }
+		System.out.println("Press ENTER to continue...");
+		input.nextLine();
 	    
-	    while (map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == ' ') {
-	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = Bullet.symbol;
-			map.getCharMap()[bullet.getY()][bullet.getX()] = ' ';
-			bullet.setX(bullet.getX()+ xDir);
-			bullet.setY(bullet.getY()+ yDir);
+	    while (map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] == ' ') {
+	        map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] = Bullet.symbol;
+			map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			bull.setX(bull.getX()+ xDir);
+			bull.setY(bull.getY()+ yDir);
 			map.display();
 			
 			System.out.println("Press ENTER to continue...");
 			input.nextLine();
 	    }
 	    
-	    if(map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == '#') { // Bullet hits a wall
-			map.getCharMap()[bullet.getY()][bullet.getX()] = ' ';
+	    if(map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] == '#') { // Bullet hits a wall
+	    	// When the tank is not beside the wall
+	    	if (map.getCharMap()[bull.getY()][bull.getX()] != ID) { 
+		    	map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			}
 	    }
-	    else if (map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == otherTank.getID()) { // Bullet hits other tank
+	    else if (map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] == otherTank.getID()) { // Bullet hits other tank
 	        otherTank.dies();
-	        if(map.getCharMap()[bullet.getY()][bullet.getX()] != ID){
-	            map.getCharMap()[bullet.getY()][bullet.getX()] = ' ';
+	        if(map.getCharMap()[bull.getY()][bull.getX()] != ID){
+	            map.getCharMap()[bull.getY()][bull.getX()] = ' ';
 	        }
-	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = 'X';
+	        map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] = 'X';
 	        map.display();
 	    }
 	    
