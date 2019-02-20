@@ -3,11 +3,14 @@ package codes;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Game {
+public class Main {
+    
 
+    
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
-		Map map = new Map("src/resources/emptymap.txt");
+		//Map map = new Map("src/resources/emptymap.txt");
+		Map map = new Map("emptymap.txt");
 		
 		Tank tank1 = new Tank(5, 3);
 		Tank tank2 = new Tank(5, 5);
@@ -28,16 +31,13 @@ public class Game {
 			
 			System.out.println("\n\n\n\n");
 			if (turn == 1) {
-				tank1.performCommand(userCommand1, map);
-				turn = 2;
+				tank1.performCommand(userCommand1, map, tank2);
+				//turn = 2;
 			}
 			else if (turn == 2) {
-				tank2.performCommand(userCommand1, map);
-				turn = 1;
+				//tank2.performCommand(userCommand1, map, tank1);
+				//turn = 1;
 			}
-			
-
-			
 		}
 		
 		input.close();
