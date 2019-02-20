@@ -71,19 +71,19 @@ public class Map {
 	
 	public void spawn(Tank tank) {
 		while (charMap[tank.getY()][tank.getX()] != ' ') {
-			tank.setY(Game.rng(1, height-1));
-			tank.setX(Game.rng(1, width-1));
+			tank.setY(Main.rng(1, height-1));
+			tank.setX(Main.rng(1, width-1));
 		}
 		charMap[tank.getY()][tank.getX()] = tank.getID();
 	}
 	
 	public void randomSpawn(Tank tank) {
-		tank.setY(Game.rng(1, height-1));
-		tank.setX(Game.rng(1, width-1));
+		tank.setY(Main.rng(1, height-1));
+		tank.setX(Main.rng(1, width-1));
 		
 		while (charMap[tank.getY()][tank.getX()] != ' ') {
-			tank.setY(Game.rng(1, height-1));
-			tank.setX(Game.rng(1, width-1));
+			tank.setY(Main.rng(1, height-1));
+			tank.setX(Main.rng(1, width-1));
 		}
 		charMap[tank.getY()][tank.getX()] = tank.getID();
 	}
