@@ -1,6 +1,6 @@
 package codes;
 /**
- *The base class inherited by all TankRoyale entities. 
+ *The base class inherited by all TankRoyale entities
  *@author Team 7
  *@version 1.0
  *@since Feb. 19th, 2019
