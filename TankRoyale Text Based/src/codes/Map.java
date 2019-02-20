@@ -70,11 +70,12 @@ public class Map {
 	}
 	
 	public void spawn(Tank tank) {
-		while (charMap[tank.getY()][tank.getX()] != ' ') {
-			tank.setY(Main.rng(1, height-1));
-			tank.setX(Main.rng(1, width-1));
+		if (charMap[tank.getY()][tank.getX()] == ' ') {
+			charMap[tank.getY()][tank.getX()] = tank.getID();
 		}
-		charMap[tank.getY()][tank.getX()] = tank.getID();
+		else {
+			randomSpawn(tank);
+		}
 	}
 	
 	public void randomSpawn(Tank tank) {

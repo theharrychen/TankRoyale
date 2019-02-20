@@ -14,7 +14,7 @@ public class Main {
 		Tank tank1 = new Tank(5,5);
 		Tank tank2 = new Tank(0,0);
 		map.spawn(tank1);
-		map.spawn(tank2);
+		map.randomSpawn(tank2);
 		
 		int turn = 1;
 
