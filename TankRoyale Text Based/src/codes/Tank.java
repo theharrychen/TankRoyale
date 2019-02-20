@@ -91,7 +91,6 @@ public class Tank extends GameEntity {
 		case "MOVELEFT" :
 			move(-1, 0, map);
 			break;
-		
 		case "MOVERIGHT" :
 			move(1, 0, map);
 			break;
