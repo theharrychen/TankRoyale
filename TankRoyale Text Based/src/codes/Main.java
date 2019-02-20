@@ -7,12 +7,14 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
-		Map map = new Map("src/resources/maze.txt");
+		//TODO INTRO SCREEN CHOOSE MAP - Andre
 		
-		Tank tank1 = new Tank(5, 3);
-		Tank tank2 = new Tank(5, 5);
-		map.randomSpawn(tank1);
-		map.randomSpawn(tank2);
+		Map map = new Map("src/resources/emptymap.txt");
+		
+		Tank tank1 = new Tank(5,5);
+		Tank tank2 = new Tank(0,0);
+		map.spawn(tank1);
+		map.spawn(tank2);
 		
 		int turn = 1;
 
@@ -45,7 +47,6 @@ public class Main {
 		else if (!tank1.isAlive() &&  tank2.isAlive()) {
 			System.out.println("CONGRATULATIONS TANK 2 WON THE GAME!");
 		}
-		
 		
 		input.close();
 	}
