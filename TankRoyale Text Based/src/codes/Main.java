@@ -7,7 +7,7 @@ public class Main {
 	
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
-		//TODO INTRO SCREEN CHOOSE MAP - Andre
+		//TODO INTRO SCREEN CHOOSE MAP, gameloop - Andre
 		
 		Map map = new Map("src/resources/emptymap.txt");
 		
