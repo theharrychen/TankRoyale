@@ -9,8 +9,8 @@ public class Main {
     
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
-		//Map map = new Map("src/resources/emptymap.txt");
-		Map map = new Map("emptymap.txt");
+		Map map = new Map("src/resources/emptymap.txt");
+		//Map map = new Map("emptymap.txt");
 		
 		Tank tank1 = new Tank(5, 3);
 		Tank tank2 = new Tank(5, 5);
