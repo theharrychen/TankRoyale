@@ -28,7 +28,7 @@ public class Tank extends GameEntity {
 		System.out.println("Tank " + ID + " was blocked from moving " + direction + "!");
 	}
 	
-		public void shoot(int xDir, int yDir, Map map, Tank otherTank){
+	public void shoot(int xDir, int yDir, Map map, Tank otherTank){
 	    Bullet bullet = new Bullet(getX(), getY());
 	    if (map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == ' ') {
 	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = Bullet.symbol;
