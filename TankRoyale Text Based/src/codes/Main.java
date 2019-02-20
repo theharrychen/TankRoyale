@@ -4,9 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-    
-
-    
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
 		Map map = new Map("src/resources/emptymap.txt");
@@ -44,7 +42,7 @@ public class Main {
 	}
 	
     public static int rng(int min, int max){ //Random Number Generator
-        if(min > max){ //Argument Error Trap
+        if (min > max){ //Argument Error Trap
             int temp = min;
             min = max;
             max = temp;
