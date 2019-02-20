@@ -1,3 +1,5 @@
+package codes;
+
 public class Bullet extends GameEntity {
     
     public static final char symbol = '•';

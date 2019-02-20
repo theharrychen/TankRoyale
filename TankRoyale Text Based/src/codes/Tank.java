@@ -1,5 +1,7 @@
 package codes;
 
+import java.util.Scanner;
+
 public class Tank extends GameEntity {
 	public static int tankCount = 0;
 	private char ID;
@@ -21,27 +23,42 @@ public class Tank extends GameEntity {
 	
 	public void dies() {
 		isAlive = false;
-		System.out.println("\nTank " + ID + " died!");
+		System.out.println("Tank " + ID + " died!");
 	}
 	
-	public void failedMove(String direction) {
-		System.out.println("Tank " + ID + " was blocked from moving " + direction + "!");
+	public void move(int xDir, int yDir, Map map) {
+		if(map.getCharMap()[getY()+yDir][getX()+xDir] == ' ') {
+			map.getCharMap()[getY()+yDir][getX()+xDir] = ID;
+			map.getCharMap()[getY()][getX()] = ' ';
+			setX(getX()+xDir);
+			setY(getY()+yDir);
+		}
+		else {
+			System.out.println("Tank " + ID + " was unable to move in the specified direction!");
+		}
 	}
 	
+	@SuppressWarnings("resource")
 	public void shoot(int xDir, int yDir, Map map, Tank otherTank){
 	    Bullet bullet = new Bullet(getX(), getY());
+	    Scanner input = new Scanner(System.in);
+	    
 	    if (map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == ' ') {
 	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = Bullet.symbol;
 			bullet.setX(bullet.getX()+ xDir);
 			bullet.setY(bullet.getY()+ yDir);
 			map.display();
 	    }
+	    
 	    while (map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == ' ') {
 	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = Bullet.symbol;
 			map.getCharMap()[bullet.getY()][bullet.getX()] = ' ';
 			bullet.setX(bullet.getX()+ xDir);
 			bullet.setY(bullet.getY()+ yDir);
 			map.display();
+			
+			System.out.println("Press ENTER to continue...");
+			input.nextLine();
 	    }
 	    
 	    if(map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] == '#') { // Bullet hits a wall
@@ -55,50 +72,23 @@ public class Tank extends GameEntity {
 	        map.getCharMap()[bullet.getY()+yDir][bullet.getX()+xDir] = 'X';
 	        map.display();
 	    }
+	    
 	}
 	
 	public void performCommand(String command, Map map, Tank otherTank) {
 		switch (command) {
 		case "MOVEUP" :
-			if(map.getCharMap()[getY()-1][getX()] == ' ') {
-				map.getCharMap()[getY()-1][getX()] = ID;
-				map.getCharMap()[getY()][getX()] = ' ';
-				setY(getY()-1);
-			}
-			else {
-				failedMove("up");
-			}
+			move(0, -1, map);
 			break;
 		case "MOVEDOWN" :
-			if(map.getCharMap()[getY()+1][getX()] == ' ') {
-				map.getCharMap()[getY()+1][getX()] = ID;
-				map.getCharMap()[getY()][getX()] = ' ';
-				setY(getY()+1);
-			}
-			else {
-				failedMove("down");
-			}
+			move(0, 1, map);
 			break;
 		case "MOVELEFT" :
-			if(map.getCharMap()[getY()][getX()-1] == ' ') {
-				map.getCharMap()[getY()][getX()-1] = ID;
-				map.getCharMap()[getY()][getX()] = ' ';
-				setX(getX()-1);
-			}
-			else {
-				failedMove("left");
-			}
+			move(-1, 0, map);
 			break;
 		
 		case "MOVERIGHT" :
-			if(map.getCharMap()[getY()][getX()+1] == ' ') {
-				map.getCharMap()[getY()][getX()+1] = ID;
-				map.getCharMap()[getY()][getX()] = ' ';
-				setX(getX()+1);
-			}
-			else {
-				failedMove("right");
-			}
+			move(1, 0, map);
 			break;
 		case "SHOOTUP" :
 		    shoot(0, -1, map, otherTank);

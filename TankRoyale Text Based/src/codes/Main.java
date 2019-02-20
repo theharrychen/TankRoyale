@@ -8,7 +8,6 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(System.in);
 		Map map = new Map("src/resources/emptymap.txt");
-		//Map map = new Map("emptymap.txt");
 		
 		Tank tank1 = new Tank(5, 3);
 		Tank tank2 = new Tank(5, 5);
@@ -18,23 +17,25 @@ public class Main {
 		int turn = 1;
 
 		while (tank1.isAlive() && tank2.isAlive()) {
-			//System.out.println("Commands: \"MOVEUP\", \"MOVEDOWN\", \"MOVERIGHT\", \"MOVELEFT\",");
-			//System.out.println("          \"SHOOTUP\", \"SHOOTDOWN\", \"SHOOTRIGHT\", \"SHOOTLEFT\"");
+			System.out.println("Commands: \"MOVEUP\", \"MOVEDOWN\", \"MOVERIGHT\", \"MOVELEFT\",");
+			System.out.println("          \"SHOOTUP\", \"SHOOTDOWN\", \"SHOOTRIGHT\", \"SHOOTLEFT\"");
 			map.display();
 			System.out.println("Player " + turn + "\'s turn: ");
 			
 			//TODO Check for valid input
 			String userCommand1 = input.nextLine().toUpperCase();
-			//String userCommand2 = input.nextLine().toUpperCase();
+			String userCommand2 = input.nextLine().toUpperCase();
 			
-			System.out.println("\n\n\n\n");
+			System.out.println("\n");
 			if (turn == 1) {
 				tank1.performCommand(userCommand1, map, tank2);
-				//turn = 2;
+				tank1.performCommand(userCommand2, map, tank2);
+				turn = 2;
 			}
 			else if (turn == 2) {
-				//tank2.performCommand(userCommand1, map, tank1);
-				//turn = 1;
+				tank2.performCommand(userCommand1, map, tank1);
+				tank2.performCommand(userCommand2, map, tank1);
+				turn = 1;
 			}
 		}
 		
