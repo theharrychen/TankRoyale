@@ -7,10 +7,19 @@ To play Tank Royale you must have a recent version of java development kit(JDK) 
 # Getting Started 
   - here is where we can put installation and compilling stuff 
   - These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+  
+  # Installation 
+    - how to start intalling haha 
 
 # Controls
 The controls for this program are done through user input into the console using a set command list. After each input is given the games map will redraw itself to match the users input and the console will then prompt the user for another input. This repeats until the game ends.
+
+# E
 # Authors
-Team 7: Harry Chen, Mei Hou, Joshua Kim, Anjola Adeboye, Andre Staffa
+Harry Chen, Mei Hou, Joshua Kim, Anjola Adeboye, Andre Staffa
+
 # Acknowledgements
-Inspired by the browser game "Tank Trouble", which can be found at https://tanktrouble.com/
+The game was Inspired by the browser game "Tank Trouble", which can be found at https://tanktrouble.com/
+
+# File List
+  - where we list all the files needed/included for this game/program to run well
