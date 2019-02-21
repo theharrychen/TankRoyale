@@ -37,11 +37,9 @@ To play Tank Royale you must have a recent version of java development kit(JDK) 
   Moveleft      | Shootleft
   
 *Commands are not case-sensitive
- # Current Version
-    - 1.0:Text-based format
+ # Versions
+    - Version 1.0:Text-based format
     
-![image](https://user-images.githubusercontent.com/45050947/53201550-8eba5280-35e1-11e9-87fd-6fc324ed9fb5.png)
-  
 # Authors
 Harry Chen, Mei Hou, Joshua Kim, Anjola Adeboye, Andre Staffa
 
