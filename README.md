@@ -17,11 +17,14 @@ To play Tank Royale you must have a recent version of java development kit(JDK) 
     
   # Compilation
     1. Open the terminal (command prompt) 
-    2. Type: "cd [filepath to unzipped location]\TankRoyale Text Based" in the command prompt to change directory. 
-    (eg. cd  Downloads\TankRoyale Text Based)
+    2. Type: "cd [filepath to unzipped location]\TankRoyale Text Based" in the command prompt to change directory.
+   ![image](https://user-images.githubusercontent.com/45050947/53205726-62580380-35ec-11e9-9def-bc3ff0791233.png)
+   
     3. To compile, type in the command prompt: javac src/codes/*.java
+   ![image](https://user-images.githubusercontent.com/45050947/53205759-7f8cd200-35ec-11e9-9373-d5786f76a78b.png)
+   
     4. To run the game, type in the command prompt: java -cp src codes.Main
-
+   ![image](https://user-images.githubusercontent.com/45050947/53205831-aea34380-35ec-11e9-8639-fda12dbf2fd5.png)
 
 # Controls
   The controls for this program are done through user input into the console using a set command list. After each input is given the games map will redraw itself to match the users input and the console will then prompt the user for another input. This repeats until the game ends.
