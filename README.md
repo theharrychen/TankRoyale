@@ -10,11 +10,11 @@ To play Tank Royale you must have a recent version of java development kit(JDK) 
   
   # Installation 
     - how to start intalling haha 
+    WHERE WE PUT SHORT EXAMPLE CODE 
 
 # Controls
 The controls for this program are done through user input into the console using a set command list. After each input is given the games map will redraw itself to match the users input and the console will then prompt the user for another input. This repeats until the game ends.
 
-# E
 # Authors
 Harry Chen, Mei Hou, Joshua Kim, Anjola Adeboye, Andre Staffa
 
