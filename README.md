@@ -56,13 +56,5 @@ The game was Inspired by the browser game "Tank Trouble", which can be found at:
 
 # File List
   - A zipped file including the following files 
-    - Codes 
-        - GameEntitiy
-        - Bullet 
-        - Map
-        - Main
-        - Tank
-     - Resources 
-        - emptymap
-        - maze
+    ![](images/PicFiles.png)
         
