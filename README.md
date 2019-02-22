@@ -19,7 +19,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
     3. Unzip file to a directory of your choice by right-clicking TankRoyale-Master.zip and choosing extract all. 
    ![image](https://user-images.githubusercontent.com/45050947/53202374-83682680-35e3-11e9-9983-e4843f387164.png)
     
-  ## Compilation and Running the game
+  ## Compilation
     1. Open the terminal (command prompt) 
     2. Type: "cd [filepath to unzipped location]\TankRoyale Text Based" in the command prompt to change directory. 
        Example is below.
@@ -28,7 +28,8 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
     3. To compile, type in the command prompt: javac src/codes/*.java
    ![image](https://user-images.githubusercontent.com/45050947/53205759-7f8cd200-35ec-11e9-9373-d5786f76a78b.png)
    
-    4. To run the game, type in the command prompt: java -cp src codes.Main
+   ## Running the game
+    1. To run the game, type in the command prompt: java -cp src codes.Main. Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/53205831-aea34380-35ec-11e9-8639-fda12dbf2fd5.png)
 
 # Controls
