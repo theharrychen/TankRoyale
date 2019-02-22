@@ -53,29 +53,29 @@ A screenshot of the list of necessary files is included below. Before starting t
 ![](TankRoyale%20Text%20Based/images/PicFiles.png)
     
 # Authors
-Code Reviewer: Andre Staffa
-(Provides feedback on the quality of all code submitted to the code repository.  Some require a code review before the code is added to the code repository.)
+**Code Repository Manager: Harry Chen** 
+*(Sets up code repository, versions code for the various deliverables, helps other team members use repository, ensures code in repository compiles and runs.)*
 
-Team Lead: Anjola Adeboye
-(Decides what the team will work on based on input from all team members.)
+**Code Reviewer: Andre Staffa**
+*(Provides feedback on the quality of all code submitted to the code repository.)*
 
-Meeting Facilitator: Anjola Adeboye 
-(Organizes time/ location of meetings, ensures meetings stay on track, and all team members can and do contribute during meetings.)
+**Team Lead: Anjola Adeboye**
+*(Facilitates division of labour.)*
 
-Code Repository Manager: Harry Chen 
-(Sets up code repository, versions code for the various deliverables, helps other team members use repository, ensures code in repository compiles and runs.)
+**Meeting Facilitator: Anjola Adeboye**
+*(Organizes time/ location of meetings, ensures meetings stay on track, and all team members can and do contribute during meetings.)*
 
-Coordinator: Mei Hou
-(Follows up with individual team members to ensure deadlines will be met or if meetings or deadlines are missed.)
+**Coordinator: Mei Hou**
+*(Follows up with individual team members to ensure deadlines will be met or if meetings or deadlines are missed.)*
 
-Technical Writer: Josh Kim 
-(Creates documentation required for project such as README file and test document.)
+**Technical Writer: Josh Kim**
+*(Creates documentation required for project such as README file and test document.)*
 
-Architect: Andre Staffa 
-(Manages overall design of implementation and classes and maintains class diagram and other UML documentation.)
+**Architect: Andre Staffa**
+*(Manages overall design of implementation and classes and maintains class diagram and other UML documentation.)*
 
-Communications & Snack Managers: Anjola Adeboye, Mei Hou      
-(Provide snacks during especially long meetings, encourages team members. Will be rotated through all the members of the group.)
+**Communications & Snack Managers: Anjola Adeboye, Mei Hou**      
+*(Provide snacks during especially long meetings, encourages team members. Will be rotated through all the members of the group.)*
 
 
 # Acknowledgements
