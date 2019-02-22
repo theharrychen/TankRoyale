@@ -32,7 +32,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
    ![image](https://user-images.githubusercontent.com/45050947/53205831-aea34380-35ec-11e9-8639-fda12dbf2fd5.png)
 
 # Controls
-  The controls for this program are done through user input into the console using a set command list. After each input is given the games map will redraw itself to match the users input and the console will then prompt the user for another input. This repeats until the game ends.
+  The controls for this program are done through user input into the console using a set command list. After each input is given the game's map will redraw itself to match the users input. The console will then prompt the user for another input. This repeats until the game ends.
   ## Command list:
   _Movement_    | _Shooting_
   ------------- | -------------
