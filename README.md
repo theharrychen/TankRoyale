@@ -1,10 +1,9 @@
 # TankRoyale
-  - Here goes an overview (and features?) of the game and what it needs
-  - Tank Royale is a single or multiplayer game in which players control tanks by moving and shooting. The objective of the game is to eliminate all the other tanks being the last tank standing. 
-  - include that the current version is text based and turn-based
-  - also that it features movement and shooting in all four cardinal directions
+  Tank Royale is a multiplayer game in which players control tanks by moving and shooting. Movement and shooting occurs in all four cardinal directions. The objective of the game is to eliminate all the other tanks being the last tank standing. The current version is text-based and lacks the ability for tanks to turn. Future versions will exsist on a GUI and feature turning, as well as animation.
+  
 # Prerequisites
 To play Tank Royale you must have a recent version of java development kit(JDK) installed on your computer. 
+
 If not, follow this link:
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
@@ -36,6 +35,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
 
 # Controls
   The controls for this program are done through user input into the console using a set command list. After each input is given the game's map will redraw itself to match the users input. The console will then prompt the user for another input. This repeats until the game ends.
+  
   ## Command list:
   _Movement_    | _Shooting_
   ------------- | -------------
