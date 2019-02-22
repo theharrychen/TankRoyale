@@ -15,7 +15,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
     1. Download the TankRoyale Master zip file: https://github.com/AnjolaAA/TankRoyale.git
    ![image](https://user-images.githubusercontent.com/45050947/53202462-c0ccb400-35e3-11e9-87d7-69156973d394.png)
     
-    2. Locate TankRoyale-Master.zip folder inside your directory (automatically should be in the downloads folder)
+    2. Locate TankRoyale-Master.zip folder inside your directory (By default, it should be in the downloads folder)
     3. Unzip file to a directory of your choice by right-clicking TankRoyale-Master.zip and choosing extract all. 
    ![image](https://user-images.githubusercontent.com/45050947/53202374-83682680-35e3-11e9-9983-e4843f387164.png)
     
