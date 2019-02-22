@@ -62,3 +62,7 @@ The game was Inspired by the browser game "Tank Trouble", which can be found at:
         - Map
         - Main
         - Tank
+     - Resources 
+        - emptymap
+        - maze
+        
