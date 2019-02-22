@@ -71,7 +71,7 @@ public class Tank extends GameEntity {
 		}
 	}
 
-	/** the @SuppressWarnings supresses the warnings about leaving
+	/** the @SuppressWarnings suppresses the warnings about leaving
 	the shoot scanner open in order to remove the interference with the main scanner.
 	The method shoot, creates a bullet based on player input and
 	while there is an open space in front of it, moves incrementally with each display.
