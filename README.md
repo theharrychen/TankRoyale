@@ -55,4 +55,10 @@ Harry Chen, Mei Hou, Joshua Kim, Anjola Adeboye, Andre Staffa
 The game was Inspired by the browser game "Tank Trouble", which can be found at: https://tanktrouble.com/
 
 # File List
-  - where we list all the files needed/included for this game/program to run well
+  - A zipped file including the following files 
+    - Codes 
+        - GameEntitiy
+        - Bullet 
+        - Map
+        - Main
+        - Tank
