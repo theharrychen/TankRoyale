@@ -2,12 +2,12 @@ package codes;
 
 import java.util.Scanner;
 
-/** Creating an class blueprint of the type TANK
+/** Creating a class blueprint of the type Tank
 that extends from the superclass GameEntity.
 */
 public class Tank extends GameEntity {
 
-	/** Instance variables initilizing the instance of type
+	/** Instance variables initializing the instance of type
 	class as 0, the ID as a character that will be revealed
 	on screen and creating the state of the object as alive.
 	*/
@@ -41,7 +41,7 @@ public class Tank extends GameEntity {
 		return isAlive;
 	}
 
-	/** Changes the state fo the object to dead.
+	/** Changes the state of the object to dead.
 	Prints state to console.
 	*/
 	public void dies() {
@@ -71,8 +71,8 @@ public class Tank extends GameEntity {
 		}
 	}
 
-	/** the @SuppressWarnings upresses the warnings about leaving
-	the shoot scanner open in order to remove the interferance with the main scanner.
+	/** the @SuppressWarnings supresses the warnings about leaving
+	the shoot scanner open in order to remove the interference with the main scanner.
 	The method shoot, creates a bullet based on player input and
 	while there is an open space in front of it, moves incrementally with each display.
 	If a bullet meets a tank, the tank's state is altered to dead.
