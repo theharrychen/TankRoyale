@@ -23,15 +23,15 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
     1. Open the terminal (command prompt) 
     2. Type: "cd [filepath to unzipped location]\TankRoyale Text Based" in the command prompt to change directory. 
        Example is below.
-   ![image](https://user-images.githubusercontent.com/45050947/53213764-6c3b3000-3607-11e9-9c3c-9d0df6a88ce7.png)
+   ![image](https://user-images.githubusercontent.com/45050947/53214493-0f8d4480-360a-11e9-80ed-0b2a82f70e9e.png)
    
     3. To compile, type in the command prompt: javac src/codes/*.java
-   ![image](https://user-images.githubusercontent.com/45050947/53213777-765d2e80-3607-11e9-95bf-c6364db6e56b.png)
+   ![image](https://user-images.githubusercontent.com/45050947/53214514-22077e00-360a-11e9-99b1-160b80c9a178.png)
    
    ## Running the game
     1. To run the game, type in the command prompt: java -cp src codes.Main
     Make sure to have compiled the game first.
-   ![image](https://user-images.githubusercontent.com/45050947/53213815-97be1a80-3607-11e9-9463-1e9fa73afbc2.png)
+   ![image](https://user-images.githubusercontent.com/45050947/53214536-2df34000-360a-11e9-9a38-2c319f40fac6.png)
 
 # Controls
   The controls for this program are done through user input into the console using a set command list. After each input is given the game's map will redraw itself to match the users input. The console will then prompt the user for another input. This repeats until the game ends.
