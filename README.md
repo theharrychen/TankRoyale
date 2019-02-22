@@ -19,7 +19,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
     3. Unzip file to a directory of your choice by right-clicking TankRoyale-Master.zip and choosing extract all. 
    ![image](https://user-images.githubusercontent.com/45050947/53202374-83682680-35e3-11e9-9983-e4843f387164.png)
     
-  ## Compilation
+  ## Compilation and Running the game
     1. Open the terminal (command prompt) 
     2. Type: "cd [filepath to unzipped location]\TankRoyale Text Based" in the command prompt to change directory. 
        Example is below.
