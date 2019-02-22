@@ -55,6 +55,6 @@ Harry Chen, Mei Hou, Joshua Kim, Anjola Adeboye, Andre Staffa
 The game was Inspired by the browser game "Tank Trouble", which can be found at: https://tanktrouble.com/
 
 # File List
-  - A zipped file including the following files 
-    ![](TankRoyale%20Text%20Based/images/PicFiles.png)
+A screenshot of the list of necessary files is included below. Before starting the program, ensure all the files are present.
+![](TankRoyale%20Text%20Based/images/PicFiles.png)
         
