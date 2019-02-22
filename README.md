@@ -47,10 +47,6 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
 *Commands are not case-sensitive
  # Versions
     - Version 1.0:Text-based format
-
-# File List
-A screenshot of the list of necessary files is included below. Before starting the program, ensure all the files are present.
-![](TankRoyale%20Text%20Based/images/PicFiles.png)
     
 # Authors
 **Code Repository Manager: Harry Chen**- Sets up code repository, versions code for the various deliverables, helps other team members use repository, ensures code in repository compiles and runs.
