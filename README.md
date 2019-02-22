@@ -3,8 +3,8 @@
   - Tank Royale is a single or multi-player game in which players control tanks by moving and shooting. The objective of the game is to eliminate all the other tanks being the last tank standing. 
   - include that the current version is text based
 # Prequisites
-To play Tank Royale you must have a recent version of java development kit(JDK) installed onto your computer. 
- If not, follow this link:
+To play Tank Royale you must have a recent version of java development kit(JDK) installed on your computer. 
+If not, follow this link:
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 # Getting Started 
