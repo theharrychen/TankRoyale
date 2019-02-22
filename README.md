@@ -29,7 +29,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
    ![image](https://user-images.githubusercontent.com/45050947/53213777-765d2e80-3607-11e9-95bf-c6364db6e56b.png)
    
    ## Running the game
-    1. To run the game, type in the command prompt: java -cp src codes.Main. 
+    1. To run the game, type in the command prompt: java -cp src codes.Main
     Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/53213815-97be1a80-3607-11e9-9463-1e9fa73afbc2.png)
 
