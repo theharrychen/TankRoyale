@@ -43,7 +43,7 @@ that are not aligned to this Code of Conduct, or to ban temporarily or
 permanently any contributor for other behaviors that they deem inappropriate,
 threatening, offensive, or harmful.
 
-  ## Expectations from team members 
+  ## Expectations from Team Members 
  
 **Unable to Attend Team Meetings**
 Person should make it known 24 hours before the meeting but have points/topics for discussion. 
