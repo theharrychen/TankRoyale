@@ -31,7 +31,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
    
    ## Running the game
     1. To run the game, type in the command prompt: java -cp src codes.Main
-    Make sure to have compiled the game first.
+       Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/53214536-2df34000-360a-11e9-9a38-2c319f40fac6.png)
 
 # Controls
