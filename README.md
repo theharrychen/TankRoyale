@@ -22,7 +22,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
   ## Compilation
     1. Open the terminal (command prompt) 
     2. Type: "cd [filepath to unzipped location]\TankRoyale Text Based" in the command prompt to change directory. 
-    Example is below.
+       Example is below.
    ![image](https://user-images.githubusercontent.com/45050947/53205726-62580380-35ec-11e9-9def-bc3ff0791233.png)
    
     3. To compile, type in the command prompt: javac src/codes/*.java
