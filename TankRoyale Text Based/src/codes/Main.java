@@ -3,12 +3,32 @@ package codes;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * <h1>Tank Royale</h>
+ * The tank royale main class runs at the begining of the program and construct the main objects to be used 
+ * the run the game. This class contains the central while loop which is used to run the game as well as a
+ * random number generator to spawn the tanks in random locations.
+ * 
+ * @author Team 7
+ * @version 0.1
+ * @since 2019-02-19
+ */
 public class Main {
-
 	private static Map map;
 	private static Scanner selection = new Scanner(System.in);
 	private static Scanner input = new Scanner(System.in);
-
+	
+	/**
+	 * When the program runs it prompts the user to select a map, generates that map, tracks user input, 
+	 * randomly spawns/generates two tanks/players, and keeps track of which player's turn it is. 
+	 * The while loop acts as a central while loop that runs until the game ends tracking and changes that happen.
+	 * Within the while loop each player makes a single command using the provided command list and after each command
+	 * the loop will redraw the map to make that command. The game ends when the while 
+	 * loop ends, i.e, when a tank dies. When the game ends the system will output an appropriate message 
+	 * indicating which player won. 
+	 * @param args unused in this version of the game
+	 * @exception FileNotFoundException when designated file fails to open
+	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		boolean quit = false;
 		while (!quit)
@@ -89,6 +109,12 @@ public class Main {
 		input.close();
 	}
 	
+	/**
+	 * This method generates a random integer between a given min and max value
+	 * @param min the minimum value for the random integer
+	 * @param max the maximum value for the random integer
+	 * @return returns the randomly generated number
+	 */
     public static int rng(int min, int max){ //Random Number Generator
         if (min > max){ //Argument Error Trap
             int temp = min;
