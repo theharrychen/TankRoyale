@@ -34,7 +34,7 @@ public class Main {
 		while (!quit)
 		{
 			System.out.println(" ");
-			System.out.println("TANK ROYAL");
+			System.out.println("TANK ROYALE");
 			System.out.println(" ");
 			System.out.println("Maps: ");
 			System.out.println("1 - 'empty map' \n"
