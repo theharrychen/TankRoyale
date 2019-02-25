@@ -48,6 +48,12 @@ public class Tank extends GameEntity {
 		isAlive = false;
 		System.out.println("Tank " + ID + " died!");
 	}
+	
+	/** Changes the state of the object to alive.
+	*/
+	public void revive() {
+		isAlive = true;
+	}
 
 	/** Alters the position of the specified tank.
 	@param xDir: the intended xDirection of the movement
@@ -93,9 +99,9 @@ public class Tank extends GameEntity {
 			bull.setX(bull.getX()+ xDir);
 			bull.setY(bull.getY()+ yDir);
 			map.display();
+			System.out.println("Press ENTER to continue...");
+			input.nextLine();
 	    }
-		System.out.println("Press ENTER to continue...");
-		input.nextLine();
 
 	    while (map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] == ' ') {
 	        map.getCharMap()[bull.getY()+yDir][bull.getX()+xDir] = Bullet.symbol;
