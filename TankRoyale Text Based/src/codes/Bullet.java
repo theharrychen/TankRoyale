@@ -10,16 +10,17 @@ package codes;
  * @since 2019-02-19
  */
 public class Bullet extends GameEntity {
-    
-    public static final char symbol = '*';
-    
-    /**
-     * This constructor generates an object of type Bullet, creating the character '*' 
-     * at the specified x and y coordinates.
-     * @param x the x coordinate of the bullet in the array/grid.
-     * @param y the y coordinate of the bullet in the array/grid.
-     */
-    public Bullet (int x, int y){
-        super(x, y);
-    }
+
+	public static final char symbol = '*';
+
+	/**
+	 * This constructor generates an object of type Bullet, creating the character
+	 * '*' at the specified x and y coordinates.
+	 * 
+	 * @param x the x coordinate of the bullet in the array/grid.
+	 * @param y the y coordinate of the bullet in the array/grid.
+	 */
+	public Bullet(int x, int y) {
+		super(x, y);
+	}
 }

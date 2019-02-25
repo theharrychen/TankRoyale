@@ -35,7 +35,7 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		Tank tank1 = new Tank(5, 5);
 		Tank tank2 = new Tank(0, 0);
-		
+
 		boolean quit = false;
 		while (!quit) {
 			System.out.println(" ");
@@ -44,8 +44,8 @@ public class Main {
 			System.out.println("1 - 'Empty Map' \n" + "2 - 'Maze map' \n" + "3 - 'Cross-Section map'");
 			System.out.println(" ");
 			System.out.print("Enter Selection: ");
-			int mapChoice = errorTrap(1,3);
-			
+			int mapChoice = errorTrap(1, 3);
+
 			switch (mapChoice) {
 			case 1:
 				map = new Map("src/resources/emptymap.txt");
@@ -69,7 +69,7 @@ public class Main {
 				quit = true;
 				break;
 			}
-			
+
 			map.spawn(tank1);
 			map.randomSpawn(tank2);
 
@@ -82,7 +82,7 @@ public class Main {
 				System.out.println("Tank " + turn + "\'s turn: ");
 
 				String userCommand1 = input.nextLine().toUpperCase();
-				//String userCommand2 = input.nextLine().toUpperCase();
+				// String userCommand2 = input.nextLine().toUpperCase();
 
 				System.out.println("\n");
 				if (turn == 1) {
@@ -95,27 +95,27 @@ public class Main {
 					turn = 1;
 				}
 			}
-			
+
 			if (tank1.isAlive() && !tank2.isAlive()) {
 				System.out.println("CONGRATULATIONS TANK 1 WON THE GAME!");
 			} else if (!tank1.isAlive() && tank2.isAlive()) {
 				System.out.println("CONGRATULATIONS TANK 2 WON THE GAME!");
 			}
-			
+
 			System.out.println("\nWould you like to play again? 1. YES 2. NO");
-			int playChoice = errorTrap(1,2);
-			if(playChoice == 1) {
+			int playChoice = errorTrap(1, 2);
+			if (playChoice == 1) {
 				quit = false;
 				tank1.revive();
 				tank2.revive();
-				for(int x = 0; x < 100; x++) System.out.println();
-			}
-			else {
+				for (int x = 0; x < 100; x++)
+					System.out.println();
+			} else {
 				quit = true;
 			}
-			
+
 		}
-		
+
 		System.out.println("Game Terminated.");
 		input.close();
 	}
@@ -136,24 +136,23 @@ public class Main {
 		int number = (int) (Math.random() * (max - min + 1) + min);
 		return number;
 	}
-	
-	public static int errorTrap(int minchoice, int maxchoice){//Integer Error Trap Method
+
+	public static int errorTrap(int minchoice, int maxchoice) {// Integer Error Trap Method
 		boolean success;
 		int choice = 0;
-		do{
+		do {
 			success = true;
-			try{
+			try {
 				choice = selection.nextInt();
-			}
-			catch (Exception e){
+			} catch (Exception e) {
 				selection.nextLine();
 				success = false;
 			}
-			if(choice < minchoice || choice > maxchoice || success == false){
+			if (choice < minchoice || choice > maxchoice || success == false) {
 				System.out.println("Error: Invalid Output!");
 			}
-			
-		} while(choice < minchoice || choice > maxchoice || success == false);
-		return choice;	
+
+		} while (choice < minchoice || choice > maxchoice || success == false);
+		return choice;
 	}
 }
