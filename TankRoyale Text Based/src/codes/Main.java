@@ -27,7 +27,8 @@ public class Main {
 	 * command list and after each command the loop will redraw the map to make that
 	 * command. The game ends when the while loop ends, i.e, when a tank dies. When
 	 * the game ends the system will output an appropriate message indicating which
-	 * player won.
+	 * player won. After the game ends a prompt will appear asking the user if they
+	 * want to play again.
 	 * 
 	 * @param args unused in this version of the game
 	 * @exception FileNotFoundException when designated file fails to open
@@ -136,7 +137,19 @@ public class Main {
 		int number = (int) (Math.random() * (max - min + 1) + min);
 		return number;
 	}
-
+	
+	/**
+	 * This method takes player input to either restart the game or select
+	 * a map, and checks if the input is valid. The method takes a minimum and
+	 * maximum integer and checks if the players input is within the bounds
+	 * of the minimum and maximum. If the players choice is valid the method
+	 * will return that choice, and if it is invalid the system will output
+	 * an appropriate message.
+	 * 
+	 * @param minchoice the minimum value for the players input
+	 * @param maxchoice the maximum value for the players input
+	 * @return returns the players choice as an integer
+	 */
 	public static int errorTrap(int minchoice, int maxchoice) {// Integer Error Trap Method
 		boolean success;
 		int choice = 0;
