@@ -2,31 +2,20 @@ package codes;
 
 import java.util.Scanner;
 
-/**
- * Creating a class blueprint of the type Tank that extends from the superclass
- * GameEntity.
- */
 public class Tank extends GameEntity {
 
-	/**
-	 * Instance variables initializing the instance of type class as 0, the ID as a
-	 * character that will be revealed on screen and creating the state of the
-	 * object as alive.
-	 */
-	public static int tankCount = 0;
-	private char ID;
-	private boolean isAlive = true;
+	public static int tankCount = 0; //The number of tanks on screen 
+	private char ID; //ID character revealed on screen 
+	private boolean isAlive = true; //State of object in game 
 
 	/**
-	 * Created a new tank with the specificed x and y coordinate. The tank is
-	 * reflected in the map by calling on the superclass GameEntity. Everytime a
-	 * tank is created, the tankcount is increased to dictate the number of active
-	 * tanks and the ID is derived from that.
+	 @param x: x-coordinate of the created tank
+	 @param y: y-coordinate of the created tank 
 	 */
 	public Tank(int x, int y) {
-		super(x, y);
-		tankCount++;
-		ID = (char) (tankCount + '0');
+		super(x, y); 
+		tankCount++; //increasing tanks on screen
+		ID = (char) (tankCount + '0'); //ID reflects tankcount 
 	}
 
 	/**
@@ -52,6 +41,7 @@ public class Tank extends GameEntity {
 	 */
 	public void dies() {
 		isAlive = false;
+		tankcount--; //Reducing number of alive tanks 
 		System.out.println("Tank " + ID + " died!");
 	}
 
@@ -68,13 +58,10 @@ public class Tank extends GameEntity {
 	 * @param xDir: the intended xDirection of the movement
 	 * @param yDir: the intended yDirection of the movement
 	 * @param map: the map on which the object movement must take place.
-	 * 
-	 *        Checks if the move is valid, based on inputted map and intended
-	 *        movements. If move valid, the x and y coordinates of the tank are set.
-	 *        Else, an error message is printed to the console.
+	 *
 	 */
 	public void move(int xDir, int yDir, Map map) {
-		if (map.getCharMap()[getY() + yDir][getX() + xDir] == ' ') {
+		if (map.getCharMap()[getY() + yDir][getX() + xDir] == ' ') { //checks if move is valid 
 			map.getCharMap()[getY() + yDir][getX() + xDir] = ID;
 			map.getCharMap()[getY()][getX()] = ' ';
 			setX(getX() + xDir);
@@ -99,21 +86,15 @@ public class Tank extends GameEntity {
 	 */
 	@SuppressWarnings("resource")
 	public void shoot(int xDir, int yDir, Map map, Tank otherTank) {
-		Bullet bull = new Bullet(getX(), getY());
+		Bullet bull = new Bullet(getX(), getY()); //creates a bullet 
 		Scanner input = new Scanner(System.in);
 
-		if (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') {
+		while (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') { //if open space, bullet moves
+			if (map.getCharMap()[bull.getY()][bull.getX()] != ID) {// Removes the previous appearance of the bullet 
+				map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			}
 			map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] = Bullet.symbol;
-			bull.setX(bull.getX() + xDir);
-			bull.setY(bull.getY() + yDir);
-			map.display();
-			System.out.println("Press ENTER to continue...");
-			input.nextLine();
-		}
-
-		while (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') {
-			map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] = Bullet.symbol;
-			map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			
 			bull.setX(bull.getX() + xDir);
 			bull.setY(bull.getY() + yDir);
 			map.display();
