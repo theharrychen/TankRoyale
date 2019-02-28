@@ -1,5 +1,11 @@
 package codes;
 
+/**
+ *@author Team 7
+ *@version 1.0
+ *@since Feb. 19th, 2019
+ */
+
 import java.util.Scanner;
 
 public class Tank extends GameEntity {
