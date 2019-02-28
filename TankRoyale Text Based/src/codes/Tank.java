@@ -89,18 +89,12 @@ public class Tank extends GameEntity {
 		Bullet bull = new Bullet(getX(), getY()); //creates a bullet 
 		Scanner input = new Scanner(System.in);
 
-		if (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') { //if open space, bullet moves 
+		while (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') { //if open space, bullet moves
+			if (map.getCharMap()[bull.getY()][bull.getX()] != ID) {// Removes the previous appearance of the bullet 
+				map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			}
 			map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] = Bullet.symbol;
-			bull.setX(bull.getX() + xDir);
-			bull.setY(bull.getY() + yDir);
-			map.display();
-			System.out.println("Press ENTER to continue...");
-			input.nextLine();
-		}
-
-		while (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') { //
-			map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] = Bullet.symbol;
-			map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			
 			bull.setX(bull.getX() + xDir);
 			bull.setY(bull.getY() + yDir);
 			map.display();
@@ -110,7 +104,6 @@ public class Tank extends GameEntity {
 		}
 
 		if (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == '#') { // Bullet hits a wall
-			
 			// When the tank is not beside the wall
 			if (map.getCharMap()[bull.getY()][bull.getX()] != ID) {
 				map.getCharMap()[bull.getY()][bull.getX()] = ' ';
