@@ -71,7 +71,7 @@ public class Main {
 				break;
 			}
 
-			map.spawn(tank1);
+			map.randomSpawn(tank1);
 			map.randomSpawn(tank2);
 
 			int turn = 1;
@@ -109,7 +109,7 @@ public class Main {
 				quit = false;
 				tank1.revive();
 				tank2.revive();
-				for (int x = 0; x < 100; x++)
+				for (int x = 0; x < 1000; x++)
 					System.out.println();
 			} else {
 				quit = true;

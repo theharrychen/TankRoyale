@@ -47,7 +47,7 @@ public class Tank extends GameEntity {
 	 */
 	public void dies() {
 		isAlive = false;
-		tankcount--; //Reducing number of alive tanks 
+		tankCount--; //Reducing number of alive tanks 
 		System.out.println("Tank " + ID + " died!");
 	}
 
@@ -56,6 +56,7 @@ public class Tank extends GameEntity {
 	 */
 	public void revive() {
 		isAlive = true;
+		tankCount++;
 	}
 
 	/**
