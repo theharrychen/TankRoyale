@@ -19,12 +19,8 @@ public class Game implements EventHandler<ActionEvent>{
     private Bullet bullet1, bullet2;
     private Tank tank1, tank2;
 
-    Game(Pane root){
-        this.root = root;
-    }
-
     public Pane getRoot(){
-        return new Pane(root);
+        return root; //is this a privacy leak?
     }
 
     public void addGameEntity(GameEntity object, double x, double y){
@@ -33,9 +29,9 @@ public class Game implements EventHandler<ActionEvent>{
         root.getChildren().add(object.getView());
     }
 
-    //
     public void gameUpdate(){
         root.getChildren().add(createMap); //Place holder
+        
 
     }
 
@@ -68,7 +64,10 @@ public class Game implements EventHandler<ActionEvent>{
         else if(key.getCode() == KeyCode.D){
             tank1.rotateRight();
         }
-        else if(key.getCode() == KeyCode.UP){
+        else if(key.getCode() == KeyCode.Q){
+            //creating bullet + shooting
+        }
+        if(key.getCode() == KeyCode.UP){
             tank2.moveForward();
         }
         else if(key.getCode() == KeyCode.LEFT){
@@ -79,6 +78,9 @@ public class Game implements EventHandler<ActionEvent>{
         }
         else if(key.getCode() == KeyCode.RIGHT){
             tank2.rotateRight();
+        }
+        else if(key.getCode() == KeyCode.SHIFT){
+            //creating bullet + shooting
         }
     }   
 }
