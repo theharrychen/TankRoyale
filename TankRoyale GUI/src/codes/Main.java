@@ -9,15 +9,22 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static final double WIDTH = 1080.0, HEIGHT = 608; //16:9 Aspect Ratio
+    private Game game = new Game();
 
     @Override
     public void start(Stage stage) throws Exception {
-        //Placeholder is game.getRoot();
-        Pane placeholder = new Pane();
-        Scene gameScene = new Scene(placeholder, WIDTH, HEIGHT);
+        
+        Scene gameScene = new Scene(game.getRoot(), WIDTH, HEIGHT);
         stage.setScene(gameScene);
+        stage.getScene().setOnKeyPressed(game.handle); //does this work?
         stage.setTitle("Tank Royale");
         stage.show();
+        
+        new AnimationTimer(){
+            public void handle(long now){
+                game.gameUpdate();
+            }
+        }.start();
     }
 
     public static void main(String[] args){
