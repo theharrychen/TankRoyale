@@ -1,6 +1,6 @@
 package codes;
 
-
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -18,13 +18,16 @@ public class Main extends Application {
         stage.setScene(gameScene);
         stage.getScene().setOnKeyPressed(game.handle); //does this work?
         stage.setTitle("Tank Royale");
-        stage.show();
+        
+        game.restart();
         
         new AnimationTimer(){
             public void handle(long now){
                 game.gameUpdate();
             }
         }.start();
+        
+        stage.show();
     }
 
     public static void main(String[] args){
