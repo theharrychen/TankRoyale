@@ -14,13 +14,12 @@ import javafx.stage.Stage;
 public class Game implements EventHandler<ActionEvent>{ 
     
     private Pane root = new Pane();
-    private GameEntity tank = new Tank();
+    private ArrayList<GameEntity> tanks = new ArrayList<>();
     private ArrayList<Wall> walls = new ArrayList<Wall>();
-    private Bullet bullet1, bullet2;
-    private Tank tank1, tank2;
+    private ArrayList<GameEntity> bullets = new ArrayList<>();
 
     public Pane getRoot(){
-        return root; //is this a privacy leak?
+        return root; //Privacy leak??
     }
 
     public void addGameEntity(GameEntity object, double x, double y){
@@ -29,58 +28,88 @@ public class Game implements EventHandler<ActionEvent>{
         root.getChildren().add(object.getView());
     }
 
+    public void addBullet(GameEntity bullet, double x, double y){
+        bullets.add(bullet);
+        addGameEntity(bullet, x, y);
+    }
+
+    public void addTank(GameEntity tank, double x, double y){
+        tanks.add(tank);
+        addGameEntity(tank, x, y);
+    }
+
+    public void spawn(){
+
+    }
+    
     public void gameUpdate(){
-        root.getChildren().add(createMap); //Place holder
-        
+        for(GameEntity tank : tanks){
+            if(tank.isAlive()){
+                root.getChildren().add(createMap); //Place holder
+                collisionUpdate();
+            }
+            else{
+                //end game screen
+                //restart button
+            }
+        }
 
     }
 
     public void collisionUpdate(){
-        if(bullet.isColliding(tank1)){
-            bullet.isAlive(false);
-            tank1.isAlive(false);
-        }
-        if(bullet.isColliding(tank2)){
-            bullet.isAlive(false);
-            tank2.isAlive(false);
+        for(GameEntity bullet : bullets){
+            for(GameEntity tank : tanks){
+                if(bullet.isColliding(tank)){
+                    bullet.setAlive(false);
+                    tank.setAlive(false);
+                    root.getChildren().removeAll(bullet.getView(), tank.getView());
+                }
+            }
         }
         for(Wall wall : walls){
-            if(bullet.isColliding(wall))
-                bullet.isAlive(false);            
+            if(bullet.isColliding(wall)){
+                bullet.setAlive(false); 
+                root.getChildren().removeAll(bullet.getView());
+            }           
         }
-        //remove bullet
+    }
+
+    public void shoot(GameEntity tank){
+        Bullet bullet = new Bullet();
+        bullet.setVelocity(tank.getVelocity().normalize().multiply(5));
+        addBullet(bullet, tank.getView().getTranslateX(), tank.getView().getTranslateY());
     }
 
     public void handle(KeyEvent key){
         if(key.getCode() == KeyCode.W){
-            tank1.moveForward();
+            tanks.get(0).moveForward();
         }
         else if(key.getCode() == keyCode.A){
-            tank1.rotateLeft();
+            tanks.get(0).rotateLeft();
         }
         else if(key.getCode() == keyCode.S){
-            tank1.moveBackward();
+            tanks.get(0).moveBackward();
         }
         else if(key.getCode() == KeyCode.D){
-            tank1.rotateRight();
+            tanks.get(0).rotateRight();
         }
         else if(key.getCode() == KeyCode.Q){
-            //creating bullet + shooting
+            shoot(tanks.get(0));
         }
-        if(key.getCode() == KeyCode.UP){
-            tank2.moveForward();
+        else if(key.getCode() == KeyCode.UP){
+            tanks.get(1).moveForward();
         }
         else if(key.getCode() == KeyCode.LEFT){
-            tank2.rotateLeft();
+            tanks.get(1).rotateLeft();
         }
         else if(key.getCode() == KeyCode.DOWN){
-            tank2.moveBackward();
+            tanks.get(1).moveBackward();
         }
         else if(key.getCode() == KeyCode.RIGHT){
-            tank2.rotateRight();
+            tanks.get(1).rotateRight();
         }
         else if(key.getCode() == KeyCode.SHIFT){
-            //creating bullet + shooting
+            shoot(tanks.get(1));
         }
     }   
 }
