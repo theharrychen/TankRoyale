@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -17,9 +19,28 @@ public class Game implements EventHandler<ActionEvent>{
     private ArrayList<GameEntity> tanks = new ArrayList<>();
     private ArrayList<Wall> walls = new ArrayList<Wall>();
     private ArrayList<GameEntity> bullets = new ArrayList<>();
+    private boolean restart = false;
+    private Button restartBtn = new Button("restart");
 
     public Pane getRoot(){
         return root; //Privacy leak??
+    }
+
+    public void start(){
+        //add map
+        for(GameEntity tank : tanks){
+            randomSpawn(tank);
+        }
+    }
+
+    public void restart(){
+        restartBtn.setAlignment(Pos.CENTER);
+        root.getChildren().add(restartBtn);
+        restartBtn.setOnAction(e -> {
+            root.getChildren().clear();
+            start();
+            restart = false;
+        });
     }
 
     public void addGameEntity(GameEntity object, double x, double y){
@@ -38,21 +59,27 @@ public class Game implements EventHandler<ActionEvent>{
         addGameEntity(tank, x, y);
     }
 
-    public void spawn(){
-
+    public void randomSpawn(GameEntity tank){
+        //addTank(tank, randomX, randomY)
     }
-    
+
     public void gameUpdate(){
-        for(GameEntity tank : tanks){
-            if(tank.isAlive()){
-                root.getChildren().add(createMap); //Place holder
-                collisionUpdate();
-            }
-            else{
-                //end game screen
-                //restart button
+        if(!restart){
+            for(GameEntity tank : tanks){
+                if(tank.isAlive()){
+                    collisionUpdate();
+                }
+                else{
+                    restart = true;
+                }
             }
         }
+        else{
+            root.getChildren().clear();
+            tanks.clear();
+            restart();
+            //end game screen  
+        }      
 
     }
 
@@ -72,6 +99,8 @@ public class Game implements EventHandler<ActionEvent>{
                 root.getChildren().removeAll(bullet.getView());
             }           
         }
+
+        bullets.clear();
     }
 
     public void shoot(GameEntity tank){
@@ -79,6 +108,16 @@ public class Game implements EventHandler<ActionEvent>{
         bullet.setVelocity(tank.getVelocity().normalize().multiply(5));
         addBullet(bullet, tank.getView().getTranslateX(), tank.getView().getTranslateY());
     }
+
+    public static int rng(int min, int max) { // Random Number Generator
+		if (min > max) { // Argument Error Trap
+			int temp = min;
+			min = max;
+			max = temp;
+		}
+		int number = (int) (Math.random() * (max - min + 1) + min);
+		return number;
+	}
 
     public void handle(KeyEvent key){
         if(key.getCode() == KeyCode.W){
