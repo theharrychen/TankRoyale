@@ -16,7 +16,7 @@ public class Main extends Application {
         
         Scene gameScene = new Scene(game.getRoot(), WIDTH, HEIGHT);
         stage.setScene(gameScene);
-        stage.getScene().setOnKeyPressed(game.handle); //does this work?
+        stage.getScene().setOnKeyPressed(game); 
         stage.setTitle("Tank Royale");
         
         game.start();
