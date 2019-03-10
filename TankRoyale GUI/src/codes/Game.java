@@ -21,6 +21,7 @@ public class Game implements EventHandler<ActionEvent>{
     private ArrayList<GameEntity> bullets = new ArrayList<>();
     private boolean restart = false;
     private Button restartBtn = new Button("restart");
+    private static playerCount = 2;	
 
     public Pane getRoot(){
         return root; //Privacy leak??
@@ -28,9 +29,8 @@ public class Game implements EventHandler<ActionEvent>{
 
     public void start(){
         //add map
-        for(GameEntity tank : tanks){
-            randomSpawn(tank);
-        }
+       for(int i = 0; i < playerCount; i++)
+           randomSpawn(new Tank());
     }
 
     public void restart(){
