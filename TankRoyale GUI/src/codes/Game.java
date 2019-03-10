@@ -92,12 +92,12 @@ public class Game implements EventHandler<ActionEvent>{
                     root.getChildren().removeAll(bullet.getView(), tank.getView());
                 }
             }
-        }
-        for(Wall wall : walls){
-            if(bullet.isColliding(wall)){
-                bullet.setAlive(false); 
-                root.getChildren().removeAll(bullet.getView());
-            }           
+	    for(Wall wall : walls){
+               if(bullet.isColliding(wall)){
+                  bullet.setAlive(false); 
+                  root.getChildren().removeAll(bullet.getView());
+           	 }           
+       	    }
         }
 
         bullets.clear();
