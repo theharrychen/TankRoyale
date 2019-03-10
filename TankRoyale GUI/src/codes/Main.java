@@ -19,7 +19,7 @@ public class Main extends Application {
         stage.getScene().setOnKeyPressed(game.handle); //does this work?
         stage.setTitle("Tank Royale");
         
-        game.restart();
+        game.start();
         
         new AnimationTimer(){
             public void handle(long now){
