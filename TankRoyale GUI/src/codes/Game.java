@@ -120,7 +120,7 @@ public class Game implements EventHandler<ActionEvent>{
 	}
 
 	
-	/** Based on my code, backward is not needed, neither is move left and right since you can 
+	/** Based on my code, backward is not needed, since you can 
 	just hold the rotateLeft or rotateRight accoridngly then move in the desired position. 
 	*/
     public void handle(KeyEvent key){
@@ -128,13 +128,13 @@ public class Game implements EventHandler<ActionEvent>{
             tanks.get(0).moveForward();
         }
         else if(key.getCode() == keyCode.A){
-            tanks.get(0).rotateLeft();
+            tanks.get(0).rotateLeft(); //DELETE 
         }
         else if(key.getCode() == keyCode.S){
-            tanks.get(0).moveBackward();
+            tanks.get(0).moveBackward(); //DELETE 
         }
         else if(key.getCode() == KeyCode.D){
-            tanks.get(0).rotateRight();
+            tanks.get(0).rotateRight(); //DELETE 
         }
         else if(key.getCode() == KeyCode.Q){
             shoot(tanks.get(0));
@@ -143,13 +143,13 @@ public class Game implements EventHandler<ActionEvent>{
             tanks.get(1).moveForward();
         }
         else if(key.getCode() == KeyCode.LEFT){
-            tanks.get(1).rotateLeft();
+            tanks.get(1).rotateLeft(); //DELETE 
         }
         else if(key.getCode() == KeyCode.DOWN){
-            tanks.get(1).moveBackward();
+            tanks.get(1).moveBackward(); //DELETE 
         }
         else if(key.getCode() == KeyCode.RIGHT){
-            tanks.get(1).rotateRight();
+            tanks.get(1).rotateRight(); //DELETE 
         }
         else if(key.getCode() == KeyCode.SHIFT){
             shoot(tanks.get(1));
