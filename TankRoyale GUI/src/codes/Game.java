@@ -87,14 +87,14 @@ public class Game implements EventHandler<ActionEvent>{
         for(GameEntity bullet : bullets){
             for(GameEntity tank : tanks){
                 if(bullet.isColliding(tank)){
-                    bullet.setAlive(false);
-                    tank.setAlive(false);
+                    bullet.setAlive(false); //Should change to isDead()
+                    tank.isDead(); //Should change to isDead()
                     root.getChildren().removeAll(bullet.getView(), tank.getView());
                 }
             }
 	    for(Wall wall : walls){
                if(bullet.isColliding(wall)){
-                  bullet.setAlive(false); 
+                  bullet.setAlive(false); //Should change to isDead()
                   root.getChildren().removeAll(bullet.getView());
            	 }           
        	    }
@@ -102,8 +102,8 @@ public class Game implements EventHandler<ActionEvent>{
 
         bullets.clear();
     }
-
-    public void shoot(GameEntity tank){
+  
+    public void shoot(GameEntity tank){  //Delete the method, is already contained in the tank class. 
         Bullet bullet = new Bullet();
         bullet.setVelocity(tank.getVelocity().normalize().multiply(5));
         addBullet(bullet, tank.getView().getTranslateX(), tank.getView().getTranslateY());
