@@ -119,6 +119,10 @@ public class Game implements EventHandler<ActionEvent>{
 		return number;
 	}
 
+	
+	/** Based on my code, backward is not needed, neither is move left and right since you can 
+	just hold the rotateLeft or rotateRight accoridngly then move in the desired position. 
+	*/
     public void handle(KeyEvent key){
         if(key.getCode() == KeyCode.W){
             tanks.get(0).moveForward();
