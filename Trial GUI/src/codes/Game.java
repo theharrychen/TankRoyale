@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class Game {
 
+    private boolean shooting = false;
+
     private Pane root = new Pane();
     private AnimationTimer timer;
 
@@ -301,7 +303,10 @@ public class Game {
                     tanks.get(0).setRight(true);
                     break;
                 case ENTER:
-                    shoot(tanks.get(0));
+                    if(shooting == false){
+                        shoot(tanks.get(0));
+                        shooting = true;
+                    }
                     break;
                 case W:
                     tanks.get(1).setUp(true);
@@ -316,7 +321,10 @@ public class Game {
                     tanks.get(1).setRight(true);
                     break;
                 case Q:
-                    shoot(tanks.get(1));
+                    if(shooting == false){
+                        shoot(tanks.get(1));
+                        shooting = true;
+                    }
                     break;
 
             }
@@ -339,6 +347,8 @@ public class Game {
                 case RIGHT:
                     tanks.get(0).setRight(false);
                     break;
+                case ENTER:
+                    shooting = false;
                 case W:
                     tanks.get(1).setUp(false);
                     break;
@@ -351,6 +361,8 @@ public class Game {
                 case D:
                     tanks.get(1).setRight(false);
                     break;
+                case Q:
+                    shooting = false;
             }
         }
     }
