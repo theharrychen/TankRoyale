@@ -7,6 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Tank extends KinematicEntity {
     private Point2D facing = new Point2D(1,0);
+    private int moveDir = 1; //1 means it last moved forward, -1, means it last moved backward
     private boolean isRotateRight = false, isRotateLeft = false;
 
 
@@ -38,32 +39,34 @@ public class Tank extends KinematicEntity {
         return facing;
     }
 
-    public void move(double direction, double magnitude) {
+    private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction*magnitude));
     }
 
     public void moveForward() {
+        moveDir = 1;
         move(1, 2);
     }
 
     public void moveBackward() {
+        moveDir = -1;
         move(-1, 2);
     }
 
     //the angle of rotation measured in degrees.
-    public double getRotate() {
+    private double getRotate() {
         return getView().getRotate();
     }
 
-    public double getRotateToX(){
+    private double getRotateToX(){
         return Math.cos(Math.toRadians(getView().getRotate()));
     }
 
-    public double getRotateToY(){
+    private double getRotateToY(){
         return Math.sin(Math.toRadians(getView().getRotate()));
     }
 
-    public void rotate(double degrees){
+    private void rotate(double degrees){
         //Realization that it rotates independent of the animation timer, which can cause problems, then fixed it
         getView().setRotate(getView().getRotate() + degrees);
         setFacing(new Point2D(getRotateToX(), getRotateToY()));
@@ -85,5 +88,9 @@ public class Tank extends KinematicEntity {
     public void rotateLeft() {
         //rotate(-5.0);
         isRotateLeft = true; // Makes rotation dependent on timer
+    }
+
+    public int getMoveDir() {
+        return moveDir;
     }
 }

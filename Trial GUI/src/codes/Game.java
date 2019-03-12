@@ -161,12 +161,13 @@ public class Game {
             for(Tank tank : tanks){
                 if (tank.isColliding(wall)) {
                     //Work in progress, doesn't work well against rotations
-                    tank.getView().setTranslateX(tank.getView().getTranslateX() -tank.getVelocity().multiply(2).getX() - Math.cos(Math.toRadians(tank.getView().getRotate())));
-                    tank.getView().setTranslateY(tank.getView().getTranslateY() -tank.getVelocity().multiply(2).getY() - Math.sin(Math.toRadians(tank.getView().getRotate())));
+
+                    //tank.getView().setTranslateX(tank.getView().getTranslateX() -tank.getVelocity().multiply(3).getX() - Math.cos(Math.toRadians(tank.getView().getRotate())));
+                    //tank.getView().setTranslateY(tank.getView().getTranslateY() -tank.getVelocity().multiply(3).getY() - Math.sin(Math.toRadians(tank.getView().getRotate())));
 
                     tank.setVelocity(new Point2D(0,0));
-                   //tank.getView().setTranslateX(tank.getView().getTranslateX() - tank.getFacing().getX()*movingFacing );//direction facing* direction of movement
-                    // tank.getView().setTranslateY(tank.getView().getTranslateY() - tank.getFacing().getY()*movingFacing);
+                    tank.getView().setTranslateX(tank.getView().getTranslateX() - tank.getFacing().getX()*tank.getMoveDir() );
+                    tank.getView().setTranslateY(tank.getView().getTranslateY() - tank.getFacing().getY()*tank.getMoveDir());
 
                 }
             }
