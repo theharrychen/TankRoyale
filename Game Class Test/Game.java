@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 public class Game implements EventHandler<KeyEvent>{ 
@@ -21,6 +22,7 @@ public class Game implements EventHandler<KeyEvent>{
     private ArrayList<GameEntity> bullets = new ArrayList<>();
     private boolean restart = false;
     private boolean load = true;
+    private boolean is;
     private Button restartBtn = new Button("restart");
     private static int playerCount = 2;
 
@@ -108,8 +110,6 @@ public class Game implements EventHandler<KeyEvent>{
             }
         }
         bullets.removeIf(GameEntity :: isDead);
-        //tanks.removeIf(GameEntity :: isDead);
-
         bullets.forEach(GameEntity :: moveForward);
        /* for(Wall wall : walls){
             if(bullet.isColliding(wall)){
@@ -121,8 +121,11 @@ public class Game implements EventHandler<KeyEvent>{
 
     public void shoot(GameEntity tank){
         Bullet bullet = new Bullet();
-        bullet.setVelocity(tank.getVelocity().normalize().multiply(5));
-        addBullet(bullet, tank.getView().getTranslateX(), tank.getView().getTranslateY());
+        double angle = Math.toRadians(tank.getView().getRotate());
+        double x = (tank.getView().getTranslateX() + 20) + (30) * Math.cos(angle);
+        double y = (tank.getView().getTranslateY() + 10) + (30) * Math.sin(angle);
+        bullet.setVelocity(tank.getVelocity().normalize().multiply(3));
+        addBullet(bullet, x, y);
     }
 
     public static int rng(int min, int max) { // Random Number Generator
@@ -143,6 +146,8 @@ public class Game implements EventHandler<KeyEvent>{
             }
             else if(key.getCode() == KeyCode.A){
                 tanks.get(0).setLeft(true);
+                for(GameEntity bullet : bullets)
+                    bullet.setLeft(true);
             }
             else if(key.getCode() == KeyCode.S){
                 tanks.get(0).setDown(true);
@@ -164,6 +169,8 @@ public class Game implements EventHandler<KeyEvent>{
             }
             else if(key.getCode() == KeyCode.RIGHT){
                 tanks.get(1).setRight(true);
+                for(GameEntity bullet : bullets)
+                    bullet.setRight(true);
             }
             else if(key.getCode() == KeyCode.SHIFT){
                 shoot(tanks.get(1));
