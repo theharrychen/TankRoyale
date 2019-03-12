@@ -262,7 +262,6 @@ public class Game {
     private void shoot(Tank tank){
         Bullet bullet = new Bullet();
         bullet.setVelocity(tank.getFacing().normalize().multiply(5));
-
         //hardcoded adjustment to center bullet on tank
         //addBullet(bullet, tank.getView().getTranslateX() + 15, tank.getView().getTranslateY()  + 10);
         //the above but the bullet is always in front of the tank, so it doesn't self-destruct
@@ -270,6 +269,7 @@ public class Game {
                         + tank.getFacing().normalize().multiply(40).getX() + 15,
                         tank.getView().getTranslateY()
                         + tank.getFacing().normalize().multiply(40).getY() + 10);
+                
     }
 
     public static int rng(int min, int max) { // Random Number Generator
@@ -289,31 +289,31 @@ public class Game {
 
             switch (key.getCode()) {
                 case UP:
-                    tanks.get(0).moveForward();
+                    tanks.get(0).setUp(true);
                     break;
                 case DOWN:
-                    tanks.get(0).moveBackward();
+                    tanks.get(0).setDown(true);
                     break;
                 case LEFT:
-                    tanks.get(0).rotateLeft();
+                    tanks.get(0).setLeft(true);
                     break;
                 case RIGHT:
-                    tanks.get(0).rotateRight();
+                    tanks.get(0).setRight(true);
                     break;
                 case ENTER:
                     shoot(tanks.get(0));
                     break;
                 case W:
-                    tanks.get(1).moveForward();
+                    tanks.get(1).setUp(true);
                     break;
                 case S:
-                    tanks.get(1).moveBackward();
+                    tanks.get(1).setDown(true);
                     break;
                 case A:
-                    tanks.get(1).rotateLeft();
+                    tanks.get(1).setLeft(true);
                     break;
                 case D:
-                    tanks.get(1).rotateRight();
+                    tanks.get(1).setRight(true);
                     break;
                 case Q:
                     shoot(tanks.get(1));
@@ -328,28 +328,28 @@ public class Game {
         public void handle(KeyEvent e) {
             switch (e.getCode()) {
                 case UP:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setUp(false);
                     break;
                 case DOWN:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setDown(false);
                     break;
                 case LEFT:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setLeft(false);
                     break;
                 case RIGHT:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setRight(false);
                     break;
                 case W:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setUp(false);
                     break;
                 case S:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setDown(false);
                     break;
                 case A:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setLeft(false);
                     break;
                 case D:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setRight(false);
                     break;
             }
         }
