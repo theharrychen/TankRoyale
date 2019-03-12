@@ -44,8 +44,7 @@ public class Tank extends KinematicEntity {
 
     private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction*magnitude));
-        getView().setTranslateX(getView().getTranslateX() + getVelocity().getX());
-        getView().setTranslateY(getView().getTranslateY() + getVelocity().getY());
+        super.update();
     }
 
     public void moveForward() {

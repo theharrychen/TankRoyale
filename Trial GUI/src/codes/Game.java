@@ -133,6 +133,7 @@ public class Game {
 
             // A type of lambda expression: parameter -> expression
             bullets.forEach(bullet -> bullet.update());
+            bullets.forEach(bullet -> bullet.reduceLifeTime());
             tanks.forEach(tank -> tank.update());
         }
         else {
@@ -149,6 +150,10 @@ public class Game {
                     tank.setAlive(false);
                     //Removes collided entities from the layout
                     root.getChildren().removeAll(bullet.getView(), tank.getView());
+                }
+                else if(bullet.getLifeTime() == 0){
+                    bullet.setAlive(false);
+                    root.getChildren().removeAll(bullet.getView());
                 }
             }
 
@@ -168,7 +173,7 @@ public class Game {
                     //tank.getView().setTranslateY(tank.getView().getTranslateY() -tank.getVelocity().multiply(3).getY() - Math.sin(Math.toRadians(tank.getView().getRotate())));
 
                     tank.setVelocity(new Point2D(0,0));
-                    tank.getView().setTranslateX(tank.getView().getTranslateX() - tank.getFacing().getX()*tank.getMoveDir() );
+                    tank.getView().setTranslateX(tank.getView().getTranslateX() - tank.getFacing().getX()*tank.getMoveDir());
                     tank.getView().setTranslateY(tank.getView().getTranslateY() - tank.getFacing().getY()*tank.getMoveDir());
 
                 }
