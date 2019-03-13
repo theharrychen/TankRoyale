@@ -26,11 +26,13 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
     
   ## Compilation
     1. Open the terminal (command prompt) 
-    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Trial GUI" in the command prompt to change     
-    directory. Example is below.   
-   ![image](https://user-images.githubusercontent.com/45050947/54306612-575f1600-458f-11e9-9fdc-70a9b3cbd05c.png)
+    
+    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Trial GUI" in the command 
+    prompt to change directory. Example is below.   
+   ![image](https://user-images.githubusercontent.com/45050947/54311408-1ddfd800-459a-11e9-9a43-d90ba7e4a0b9.png)
    
     3. To compile, type in the command prompt: javac src/codes/*.java
+   ![image](https://user-images.githubusercontent.com/45050947/54306612-575f1600-458f-11e9-9fdc-70a9b3cbd05c.png)
    
    ## Running the game
     1. To run the game, type in the command prompt: java -cp src codes.Main
@@ -41,16 +43,39 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
   The controls for this program are done through user input into the console using a set command list. After each input is given the game's map will redraw itself to match the users input. The console will then prompt the user for another input. This repeats until the game ends.
   
   ## Command list:
-  _Movement_    | _Shooting_
-  ------------- | -------------
-  Moveup        | Shootup
-  Movedown      | Shootdown
-  Moveright     | Shootright
-  Moveleft      | Shootleft
+  _Player One_
   
-*Commands are not case-sensitive
+  _Control/Command_     | _Action_         
+  --------------------- | -------------
+  Up arrow              | Moves tank forwards
+  Down arrow            | Moves tank backwards
+  Right arrow           | Rotate tank clockwise
+  Left arrow            | Rotate tank counter clockwise
+  Enter Key             | Shoot bullet
+  
+  _Player Two_
+  
+  _Control/Command_     | _Action_         
+  --------------------- | -------------
+  'W'                   | Moves tank forwards
+  'S'                   | Moves tank backwards
+  'D'                   | Rotate tank clockwise
+  'A'                   | Rotate tank counter clockwise
+  'Q'                   | Shoot bullet
+  
+  
  # Versions
-    - Version 1.0:Text-based format
+    -Current Version 1.5: GUI Beta
+    -Previous Version 1.0: Text-based format
+   ![image](https://user-images.githubusercontent.com/45050947/54311996-6ba91000-459b-11e9-9d59-e9c1c916af54.png)
+        
+        •   Text-based and Turn-based
+        •	Movement and shooting occurred in all four cardinal directions. 
+        •	Commands were implemented by user input into the console using a set command list. 
+        After each input the game's map redrew itself to match the users input and prompt the 
+        user for another input. This repeated until the game ended.       
+            
+
     
 # Authors
 **Code Repository Manager: Harry Chen**- Sets up code repository, versions code for the various deliverables, helps other team members use repository, ensures code in repository compiles and runs.
