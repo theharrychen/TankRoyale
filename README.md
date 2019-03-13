@@ -72,8 +72,8 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
         •   Text-based and Turn-based
         •	Movement and shooting occurred in all four cardinal directions. 
         •	Commands were implemented by user input into the console using a set command list. 
-        After each input the game's map redrew itself to match the users input and prompt the 
-        user for another input. This repeated until the game ended.       
+            After each input the game's map redrew itself to match the users input and prompt the 
+            user for another input. This repeated until the game ended.       
             
 
     
