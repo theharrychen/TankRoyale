@@ -1,11 +1,17 @@
 # TankRoyale
-  Tank Royale is a multiplayer game in which players control tanks by moving and shooting. Movement and shooting occurs in all four cardinal directions. The objective of the game is to eliminate all the other tanks and be the last tank standing. The current version is text-based and turn-based. Future versions will exist on a GUI and implement turning movement, as well as animation.
+    Tank Royale is a multiplayer game in which players control tanks by moving and shooting.The objective of the 
+    game is to eliminate all the other tanks and be the last tank standing. The current version is a GUI beta on 
+    the JavaFX platform. Future versions will fix current bugs and improve graphics.
   
 # Prerequisites
-To play Tank Royale you must have a recent version of java development kit(JDK) installed on your computer. 
+To play Tank Royale you must have a recent version of:
 
-If not, follow this link:
+•	java development kit(JDK) installed on your computer. If not, follow this link: 
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+•	JavaFX installed on your computer. If not, follow this link:  
+https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
+
 
 # Getting Started 
   These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -20,18 +26,16 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
     
   ## Compilation
     1. Open the terminal (command prompt) 
-    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\TankRoyale Text Based" 
-       in the command prompt to change directory. 
-       Example is below.
-   ![image](https://user-images.githubusercontent.com/45050947/53214493-0f8d4480-360a-11e9-80ed-0b2a82f70e9e.png)
+    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Trial GUI" in the command prompt to change     
+    directory. Example is below.   
+   ![image](https://user-images.githubusercontent.com/45050947/54306612-575f1600-458f-11e9-9fdc-70a9b3cbd05c.png)
    
     3. To compile, type in the command prompt: javac src/codes/*.java
-   ![image](https://user-images.githubusercontent.com/45050947/53214514-22077e00-360a-11e9-99b1-160b80c9a178.png)
    
    ## Running the game
     1. To run the game, type in the command prompt: java -cp src codes.Main
        Make sure to have compiled the game first.
-   ![image](https://user-images.githubusercontent.com/45050947/53214536-2df34000-360a-11e9-9a38-2c319f40fac6.png)
+   ![image](https://user-images.githubusercontent.com/45050947/54306625-65149b80-458f-11e9-93a6-92cf57916d3e.png)
 
 # Controls
   The controls for this program are done through user input into the console using a set command list. After each input is given the game's map will redraw itself to match the users input. The console will then prompt the user for another input. This repeats until the game ends.
