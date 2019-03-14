@@ -2,7 +2,8 @@ package codes;
 
 /**
  *The map class creates a 2D visual representation of the game space
- *@author Team 7
+ *@author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
+	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
  *@version 1.0
  *@since Feb. 19th, 2019
  */
