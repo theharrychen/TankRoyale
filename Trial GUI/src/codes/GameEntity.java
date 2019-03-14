@@ -1,5 +1,15 @@
 package codes;
 
+/**
+ * This class is used to generate a bullet or project to be shot by the tank.
+ * The class extends GameEntity which tracks the bullets x and y coordinates in
+ * the generated grid/array.
+ * 
+ * @author Team 7
+ * @version 1.0
+ * @since 2019-02-19
+ */
+
 import javafx.scene.Node;
 
 public class GameEntity { // By default a physically "static" object

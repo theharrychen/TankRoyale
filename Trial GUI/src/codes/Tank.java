@@ -1,5 +1,15 @@
 package codes;
 
+/**
+ * This class is used to generate a bullet or project to be shot by the tank.
+ * The class extends GameEntity which tracks the bullets x and y coordinates in
+ * the generated grid/array.
+ * 
+ * @author Team 7
+ * @version 1.0
+ * @since 2019-02-19
+ */
+ 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
@@ -9,7 +19,6 @@ public class Tank extends KinematicEntity {
     private Point2D facing = new Point2D(1,0);
     private int moveDir = 1; //1 means it last moved forward, -1, means it last moved backward
     private boolean isRotateRight = false, isRotateLeft = false;
-    private boolean up, down, left, right;
 
 
     public Tank(){
@@ -25,12 +34,10 @@ public class Tank extends KinematicEntity {
             rotate(-5);
             isRotateLeft = false;
         }
-        /*else{
+        else{
             getView().setTranslateX(getView().getTranslateX() + getVelocity().getX());
             getView().setTranslateY(getView().getTranslateY() + getVelocity().getY());
-        }*/
-
-        movement();
+        }
     }
 
 
@@ -44,7 +51,6 @@ public class Tank extends KinematicEntity {
 
     private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction*magnitude));
-        super.update();
     }
 
     public void moveForward() {
@@ -77,9 +83,7 @@ public class Tank extends KinematicEntity {
 
 
         //These two ways below did not actually rotate the object at all, personal note for myself - Harry
-
-        //This makes movement smoother
-        setVelocity(new Point2D(Math.cos(Math.toRadians(getView().getRotate())), Math.sin(Math.toRadians(getView().getRotate()))));
+        //setVelocity(new Point2D(Math.cos(Math.toRadians(getView().getRotate())), Math.sin(Math.toRadians(getView().getRotate()))));
 
         //getView().setTranslateX(getView().getTranslateX() + getRotateToX());
         //getView().setTranslateY(getView().getTranslateY() + getRotateToY());
@@ -98,35 +102,6 @@ public class Tank extends KinematicEntity {
     public int getMoveDir() {
         return moveDir;
     }
-
-    //For multiple key presses
-    public void setUp(boolean up){
-        this.up = up;
-    }
-
-    public void setDown(boolean down){
-        this.down = down;
-    }
-
-    public void setRight(boolean right){
-        this.right = right;
-    }
-
-    public void setLeft(boolean left){
-        this.left = left;
-    }
-
-    public void movement(){
-        if(up){
-            moveForward();
-        }
-        if(down){
-            moveBackward();
-        }
-        if(right){
-            rotateRight();
-        }
-        if(left)
-            rotateLeft();
-    }
+	
+	
 }

@@ -1,5 +1,13 @@
 package codes;
 
+/**
+ * This class is used to define the velocities of Tank and Bullet objects in TankRoyale
+ * 
+ * @author Team 7
+ * @version 1.0
+ * @since 2019-02-19
+ */
+ 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 
