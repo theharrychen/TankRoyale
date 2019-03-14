@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
 public class Game {
-
+	
+	private boolean shooting = false;
     private Pane root = new Pane();
     private AnimationTimer timer;
 	private Map gamemap;
@@ -219,6 +220,7 @@ public class Game {
 
             // A type of lambda expression: parameter -> expression
             bullets.forEach(bullet -> bullet.update());
+			bullets.forEach(bullet -> bullet.reduceLifeTime());
             tanks.forEach(tank -> tank.update());
         }
         else {
@@ -242,7 +244,11 @@ public class Game {
                     //Removes collided entities from the layout
                     root.getChildren().removeAll(bullet.getView(), tank.getView());
                 }
+				else if(bullet.getLifeTime() == 0){
+                    bullet.setAlive(false);
+                    root.getChildren().removeAll(bullet.getView());
             }
+			}
 			
 			// Detects collision of bullet with wall
 	        for(Wall wall : walls){
@@ -257,11 +263,6 @@ public class Game {
             for(Tank tank : tanks){
 				//Detects collision with walls and tanks
                 if (tank.isColliding(wall)) {
-                    //Work in progress, doesn't work well against rotations
-
-                    //tank.getView().setTranslateX(tank.getView().getTranslateX() -tank.getVelocity().multiply(3).getX() - Math.cos(Math.toRadians(tank.getView().getRotate())));
-                    //tank.getView().setTranslateY(tank.getView().getTranslateY() -tank.getVelocity().multiply(3).getY() - Math.sin(Math.toRadians(tank.getView().getRotate())));
-
                     tank.setVelocity(new Point2D(0,0));
                     tank.getView().setTranslateX(tank.getView().getTranslateX() - tank.getFacing().getX()*tank.getMoveDir() );
                     tank.getView().setTranslateY(tank.getView().getTranslateY() - tank.getFacing().getY()*tank.getMoveDir());
@@ -269,7 +270,7 @@ public class Game {
                 }
             }
         }
-    }
+		}
 
 	/**
 	 *Richochets bullets off of a wall
@@ -359,34 +360,40 @@ public class Game {
 
             switch (key.getCode()) {
                 case UP:
-                    tanks.get(0).moveForward();
+                    tanks.get(0).setUp(true);
                     break;
                 case DOWN:
-                    tanks.get(0).moveBackward();
+                    tanks.get(0).setDown(true);
                     break;
                 case LEFT:
-                    tanks.get(0).rotateLeft();
+                    tanks.get(0).setLeft(true);
                     break;
                 case RIGHT:
-                    tanks.get(0).rotateRight();
+                    tanks.get(0).setRight(true);
                     break;
                 case ENTER:
-                    shoot(tanks.get(0));
+                    if(shooting == false){
+                        shoot(tanks.get(0));
+                        shooting = true;
+                    }
                     break;
                 case W:
-                    tanks.get(1).moveForward();
+                    tanks.get(1).setUp(true);
                     break;
                 case S:
-                    tanks.get(1).moveBackward();
+                    tanks.get(1).setDown(true);
                     break;
                 case A:
-                    tanks.get(1).rotateLeft();
+                    tanks.get(1).setLeft(true);
                     break;
                 case D:
-                    tanks.get(1).rotateRight();
+                    tanks.get(1).setRight(true);
                     break;
                 case Q:
-                    shoot(tanks.get(1));
+                    if(shooting == false){
+                        shoot(tanks.get(1));
+                        shooting = true;
+                    }
                     break;
 
             }
@@ -396,34 +403,39 @@ public class Game {
 	/**
 	 *Set tank velocity when player command is inputted
      */
+   
     public class ReleaseHandler implements EventHandler<KeyEvent> {
         @Override
         public void handle(KeyEvent e) {
             switch (e.getCode()) {
                 case UP:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setUp(false);
                     break;
                 case DOWN:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setDown(false);
                     break;
                 case LEFT:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setLeft(false);
                     break;
                 case RIGHT:
-                    tanks.get(0).setVelocity(new Point2D(0,0));
+                    tanks.get(0).setRight(false);
                     break;
+                case ENTER:
+                    shooting = false;
                 case W:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setUp(false);
                     break;
                 case S:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setDown(false);
                     break;
                 case A:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setLeft(false);
                     break;
                 case D:
-                    tanks.get(1).setVelocity(new Point2D(0,0));
+                    tanks.get(1).setRight(false);
                     break;
+                case Q:
+                    shooting = false;
             }
         }
     }
