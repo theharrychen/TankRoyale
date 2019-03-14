@@ -27,9 +27,10 @@ public class KinematicEntity extends GameEntity {
         getView().setTranslateY(getView().getTranslateY() + velocity.getY());
     }
 
-    /**Updates the velocity to new object 
-    @param velocity: new velocity of the Point2D object 
-    */
+    /**
+     *Updates the velocity to new object 
+     *@param velocity: new velocity of the Point2D object 
+     */
     public void setVelocity(Point2D velocity) {
         this.velocity = velocity;
     }
