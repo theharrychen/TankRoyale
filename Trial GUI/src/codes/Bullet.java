@@ -1,13 +1,11 @@
 package codes;
 
 /**
- * This class is used to generate a bullet or project to be shot by the tank.
- * The class extends KinematicEntity which tracks the bullets x and y coordinates in
- * the generated grid/array.
+ * This class is used to generate a bullet or projectile to be shot by the tank.
  * 
  * @author Team 7
  * @version 1.0
- * @since 2019-02-19
+ * @since 2019-03-06
  */
 
 import javafx.scene.paint.Color;
@@ -15,21 +13,34 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Bullet extends KinematicEntity {
+	//Makes the bullet temporary
+   private int lifeTime = 300; // in milliseconds
 
-   private int lifeTime = 300;
-
-    public Bullet(){
+	/**
+	 *Constructs a bullet object
+	 */
+   public Bullet(){
         super(new Circle(5, 5, 5, Color.BLACK));
     }
 
+	/**
+	 * @return lifeTime of bullet
+	 */
     public int getLifeTime(){
         return lifeTime;
     }
 
+	/**
+	 *set the lifetime of the bullet
+	 *@param int lifeTime
+	 */
     public void setLifeTime(int lifeTime){
         this.lifeTime = lifeTime;
     }
 
+	/**
+	 * reduces the Lifetime of the bullet
+	 */
     public void reduceLifeTime(){
         lifeTime--;
     }

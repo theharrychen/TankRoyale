@@ -1,13 +1,11 @@
 package codes;
 
 /**
- * This class is used to generate a bullet or project to be shot by the tank.
- * The class extends GameEntity which tracks the bullets x and y coordinates in
- * the generated grid/array.
+ * This tank class is responsible for implementing the behaviour of a tank object
  * 
  * @author Team 7
  * @version 1.0
- * @since 2019-02-19
+ * @since 2019-03-06
  */
  
 import javafx.geometry.Point2D;
@@ -21,11 +19,16 @@ public class Tank extends KinematicEntity {
     private boolean isRotateRight = false, isRotateLeft = false;
 	private boolean up, down, left, right;
 
-
+	/**
+	 *Constructs a Tank object
+	 */
     public Tank(){
         super(new Rectangle(40,30, Color.rgb(Game.rng(0,255),Game.rng(0,255),Game.rng(0,255))));
     }
 
+	/**
+	 * Updates position
+	 */
     public void update() {
         if(isRotateRight){
             rotate(5);
@@ -35,78 +38,106 @@ public class Tank extends KinematicEntity {
             rotate(-5);
             isRotateLeft = false;
         }
-        /*else{
-            getView().setTranslateX(getView().getTranslateX() + getVelocity().getX());
-            getView().setTranslateY(getView().getTranslateY() + getVelocity().getY());
-        }*/
 		movement();
     }
 
-
+	/**
+	 * Sets the direction the front of the tank is facing
+	 *@param Point2D facing
+	 */
     public void setFacing(Point2D facing) {
         this.facing = facing;
     }
 
+	/**
+	 *@return the direction the front of the tank is facing
+	 */
     public Point2D getFacing() {
         return facing;
     }
 
+	/**
+	 * Moves the tank
+	 *@param double direction, double magnitude
+	 */
     private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction*magnitude));
 		super.update();
 	}
 
+	/**
+	 *Moves the tank forward
+	 */
     public void moveForward() {
         moveDir = 1;
         move(1, 2);
     }
-
+	
+	/**
+	 *Moves the tank backwards
+	 */
     public void moveBackward() {
         moveDir = -1;
         move(-1, 2);
     }
 
-    //the angle of rotation measured in degrees.
+    /**
+	 *Angle of rotation is measured in degrees
+	 *@return rotation angle
+	 */
     private double getRotate() {
         return getView().getRotate();
     }
 
+	/**
+	 *Angle of rotation is measured in degrees
+	 *@return horizontal vector for angle of rotation
+	 */
     private double getRotateToX(){
         return Math.cos(Math.toRadians(getView().getRotate()));
     }
 
+	/**
+	 *Angle of rotation is measured in degrees
+	 *@return vertical vector for angle of rotation
+	 */
     private double getRotateToY(){
         return Math.sin(Math.toRadians(getView().getRotate()));
     }
 
+	/**
+	 *Rotates the tank in specified degrees
+	 */
     private void rotate(double degrees){
-        //Realization that it rotates independent of the animation timer, which can cause problems, then fixed it
         getView().setRotate(getView().getRotate() + degrees);
         setFacing(new Point2D(getRotateToX(), getRotateToY()));
-
-
-        //These two ways below did not actually rotate the object at all, personal note for myself - Harry
         setVelocity(new Point2D(Math.cos(Math.toRadians(getView().getRotate())), Math.sin(Math.toRadians(getView().getRotate()))));
-
-        //getView().setTranslateX(getView().getTranslateX() + getRotateToX());
-        //getView().setTranslateY(getView().getTranslateY() + getRotateToY());
     }
 
+	/**
+	 *Rotates the tank clockwise
+	 */
     public void rotateRight() {
-        //rotate(5.0);
         isRotateRight = true; // Makes rotation dependent on timer
     }
 
+	/**
+	 *Rotates the tank counter clockwise
+	 */
     public void rotateLeft() {
-        //rotate(-5.0);
         isRotateLeft = true; // Makes rotation dependent on timer
     }
 
+	/**
+	 *@return direction of tank movement
+	 */
     public int getMoveDir() {
         return moveDir;
     }
 	
-	//For multiple key presses
+	/**
+	 *setUp, setDown, setRight,and setLeft account for multiple keyboard inputs
+	 */
     public void setUp(boolean up){
         this.up = up;
     }
@@ -123,6 +154,9 @@ public class Tank extends KinematicEntity {
         this.left = left;
     }
 
+	/**
+	 *Moves the tank based on player input
+	 */
     public void movement(){
         if(up){
             moveForward();

@@ -6,7 +6,7 @@ package codes;
  * 
  * @author Team 7
  * @version 1.0
- * @since 2019-02-19
+ * @since 2019-03-06
  */
 
 import javafx.animation.AnimationTimer;
@@ -258,10 +258,10 @@ public class Game {
                }
        	    }
         }
-
+		
+		//Detects collision with walls and tanks
         for (GameEntity wall : walls) {
             for(Tank tank : tanks){
-				//Detects collision with walls and tanks
                 if (tank.isColliding(wall)) {
                     tank.setVelocity(new Point2D(0,0));
                     tank.getView().setTranslateX(tank.getView().getTranslateX() - tank.getFacing().getX()*tank.getMoveDir() );
