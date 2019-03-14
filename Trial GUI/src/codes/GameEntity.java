@@ -22,8 +22,9 @@ public class GameEntity { // By default a physically "static" object
         setView(view);
     }
 
-    /**Updates the game Node to the new position
-    @param view: intended new view
+    /*
+     *Updates the game Node to the new position
+     *@param view: intended new view
     */
     public void setView(Node view) {
         this.view = view;
@@ -34,9 +35,10 @@ public class GameEntity { // By default a physically "static" object
         return view;
     }
 
-    /**Updates current state to alive.
-    @param alive: new intended state
-    */
+    /*
+     *Updates current state to alive.
+     *@param alive: new intended state
+     */
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
