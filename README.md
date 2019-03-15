@@ -63,6 +63,9 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
   'A'                   | Rotate tank counter clockwise
   'Q'                   | Shoot bullet
   
+  # Current Bugs
+  - Errors with collision detection between walls and tanks
+  - Errors with collision detection between walls and bullets (Possibly due to how the map is synthesized)
   
  # Versions
     -Current Version 1.5: GUI Beta
