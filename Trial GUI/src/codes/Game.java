@@ -59,9 +59,10 @@ public class Game {
         addTank(new Tank(), (double)rng(40, (int)Main.WIDTH-40), (double)rng(40, (int)Main.HEIGHT-40));
         addTank(new Tank(), (double)rng(40, (int)Main.WIDTH-40), (double)rng(40, (int)Main.HEIGHT-40));
 		try {
-		createMap();
+		    createMap();
 		}
 		catch (Exception e) {
+		    System.out.println("Was unable to load in the map");
 		}
 
         // Game Loop
@@ -177,7 +178,7 @@ public class Game {
 	 * ^ are corners
 	 */
 	public void createMap() throws FileNotFoundException{
-		gamemap = new Map("src/resources/maze.txt");
+		gamemap = new Map("/resources/maze.txt");
 		char[][] map = gamemap.getCharMap();
 		//Adjusting the height or width of the text file to fit the size of the javafx screen
 		double height = Main.HEIGHT/gamemap.getHeight();
@@ -407,8 +408,8 @@ public class Game {
    
     public class ReleaseHandler implements EventHandler<KeyEvent> {
         @Override
-        public void handle(KeyEvent e) {
-            switch (e.getCode()) {
+        public void handle(KeyEvent key) {
+            switch (key.getCode()) {
                 case UP:
                     tanks.get(0).setUp(false);
                     break;

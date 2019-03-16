@@ -10,6 +10,8 @@ package codes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,9 +27,17 @@ public class Map{
 	 * @param String textPath
 	 * @return character double array representing a 2D map
 	 */
-	public Map(String textPath) throws FileNotFoundException {
-		File inFile = new File(textPath);
-		Scanner input = new Scanner(inFile);
+	public Map(String textPath) {
+		InputStream stream = Game.class.getResourceAsStream(textPath);
+		if (stream == null) System.out.println("Map Text file not located");
+
+		Scanner input = null;
+		try {
+			input = new Scanner (stream);
+		} catch (Exception e) {
+			System.out.println("Error in loading map text file");
+		}
+
 		ArrayList<String> stringMap = new ArrayList<String>();
 
 		while (input.hasNextLine()) {
