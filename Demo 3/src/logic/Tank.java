@@ -21,6 +21,12 @@ public class Tank extends KinematicEntity {
 	private boolean up, down, left, right;
 	private boolean shooting = false;
 	
+	//Adding the getter methods for the up, down, left, right
+	public boolean getUp() {return this.up;}
+  	public boolean getDown() {return this.down;}
+  	public boolean getRight() {return this.right;}
+  	public boolean getLeft() {return this.left;}
+	
 	public boolean getShooting(){
 		return this.shooting;
 	}
