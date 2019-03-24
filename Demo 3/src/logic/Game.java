@@ -27,6 +27,8 @@ public class Game {
 	private Map gamemap;
 	private int p1score = 0;
 	private int p2score = 0;
+	private boolean p1Shooting;
+	private boolean p2Shooting;
 
 
     //Arraylist of all Game Entities
@@ -46,6 +48,18 @@ public class Game {
 
 	public int getPlayerCount(){
 		return playerCount;
+	}
+	
+	public void setP1Shooting(boolean isP1Shooting){
+		p1Shooting = isP1Shooting;
+	}
+
+	public void setP2Shooting(boolean isP2Shooting){
+		p2Shooting = isP2Shooting;
+	}
+
+	public boolean getP1Shooting(){
+		return p1Shooting;
 	}
 
 	public void setGameOver(boolean state){
@@ -370,6 +384,17 @@ public class Game {
 		double x = tank.getView().getTranslateX() + tank.getFacing().normalize().multiply(40).getX() + 15;
 		double y = tank.getView().getTranslateY() + tank.getFacing().normalize().multiply(40).getY() + 10;
 		addBullet(bullet,x,y);
+	}
+	
+	public void shooting(){
+		if(p1Shooting == true){
+			p1Shooting = false;
+			shoot(tanks.get(0));
+		}
+		if(p2Shooting == true){
+			p2Shooting = false;
+			shoot(tanks.get(1));
+		}	
 	}
 	
 	public static int rng(int min, int max) {
