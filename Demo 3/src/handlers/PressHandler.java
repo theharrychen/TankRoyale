@@ -1,16 +1,11 @@
 package handlers;
 
 import logic.*;
-import visuals.*;
 
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class PressHandler extends Game implements EventHandler<KeyEvent>{
-
-    private GUI test = new GUI();
-    private Bullet b = new Bullet();
     
     public void onePlayer(KeyEvent key){
         switch (key.getCode()) {

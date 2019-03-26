@@ -10,31 +10,34 @@ package logic;
  * @since 2019-03-06
  */
 import visuals.*;
+import drivers.*;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
-import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
 public class Game {
 	
     // Assumes 2 players
-    private static int playerCount = 2;
-    private boolean gameOver = false;
+	private static int playerCount = 2;
+	private static boolean gameStart = false;
+	private boolean gameOver = false;
+	private boolean roundOver = false;
 	private AnimationTimer timer;
 	private Map gamemap;
 	private int p1score = 0;
 	private int p2score = 0;
-	private boolean p1Shooting;
-	private boolean p2Shooting;
+	private static boolean p1Shooting = false;
+	private static boolean p2Shooting = false;
 
 
     //Arraylist of all Game Entities
     private static ArrayList<Tank> tanks = new ArrayList<>();
-    private ArrayList<Bullet> bullets = new ArrayList<>();
-    private ArrayList<Wall> walls = new ArrayList<>();
+    private static ArrayList<Bullet> bullets = new ArrayList<>();
+	private ArrayList<Wall> walls = new ArrayList<>();
+	
+	//Display variables
 	private GUI visual = new GUI();
 	
 	//Not encapsulated
@@ -42,14 +45,29 @@ public class Game {
 		return visual;
 	}
 
+	public static boolean getGameStart(){
+		return gameStart;
+	}
+
+	public static void setGameStart(boolean start){
+		gameStart = start;
+	}
+
 	public ArrayList<Tank> getTanks(){
-		return tanks;
+		ArrayList<Tank> temp = new ArrayList<>();
+		for(Tank tank : tanks)
+			temp.add(tank);
+		return temp;
 	}
 
 	public int getPlayerCount(){
 		return playerCount;
 	}
-	
+
+	/*public void setPlayerCount(int playerCount){
+		this.playerCount = playerCount;
+	}*/
+
 	public void setP1Shooting(boolean isP1Shooting){
 		p1Shooting = isP1Shooting;
 	}
@@ -71,70 +89,93 @@ public class Game {
 	 */
     public void start(){
 		try {
-		    createMap();
+			createMap();
 		}
 		catch (Exception e) {
-		    System.out.println("Was unable to load in the map");
+			System.out.println("Was unable to load in the map");
 		}
 		visual.displayTally(p1score, p2score);
-        //Adds two player tanks to the map
+		//Adds two player tanks to the map
 		Tank player1 = new Tank();
 		Tank player2 = new Tank();
 		randomSpawn(player1);
 		randomSpawn(player2);
-
-        // Game Loop
-        timer = new AnimationTimer() {
-            @Override
+			
+		// Game Loop
+		timer = new AnimationTimer() {
+			@Override
 			// Runs each frame
-            public void handle(long now) { 
-                onUpdate();
-            }
-        };
-        timer.start();
+			public void handle(long now) { 
+				onUpdate();
+			}
+		};
+		timer.start();
     }
 	
 	/**
 	 *Provide option for restart
 	 */
     public void restart(){
-        timer.stop();
+		if(!gameOver){
+			timer.stop();
+			roundOver = false;
+			int winner = determineWinner();
+			updateScore(winner);
+			visual.clear();
+			tanks.clear();
+			bullets.clear();
+			walls.clear();
+			start();
+		}
+		else{
+			endScreen();
+		}
+	}
+
+	public void endScreen(){
+		timer.stop();
+		gameOver = false;
+		visual.clear();
 		int winner = determineWinner();
 		visual.createRestartButton();
 		visual.announceWinner(winner);
-        visual.getRestartBtn().setOnAction(e -> {
-            visual.clear();
-            tanks.clear();
-            bullets.clear();
-            walls.clear();
-            setGameOver(false);
-			start();
-	}
-
-        );
+		p1score = 0;
+		p2score = 0;
+		visual.getRestartBtn().setOnAction(e -> {
+        tanks.clear();
+        bullets.clear();
+        walls.clear();
+		start();
+		});
 	}
 	
 	public int determineWinner(){
 		int winner = 0;
 		for (int x = 0; x < tanks.size(); x++){
             if (tanks.get(x).isAlive()) {
-                winner = x + 1;
-            
+                winner = x + 1;            
             }
         }
-		switch(winner){
-			case 0:
-			break;
-			case 1:
-			p1score++;
-			break;
-			case 2:
-			p2score++;
-			break;
-			
-		}
 		return winner;
 	}
+
+	public void updateScore(int winner){
+		for(Tank tank : tanks){
+			if(tank.isDead()){
+				switch(winner){
+					case 0:
+					break;
+					case 1:
+					p1score++;
+					break;
+					case 2:
+					p2score++;
+					break;		
+				}
+			}
+		}
+	}
+
 	 /**
 	 *Adds the view of a GameEntity to the Pane
 	 *@param GameEntity entity, double x, double y
@@ -178,7 +219,7 @@ public class Game {
 	 */
 	private void addHorizontalWall(int x, int y, double width, double height){
 		if(y == (gamemap.getWidth() - 1)){
-			addWall(new Wall(width + 1.0,10.0,1), x * width, (Main.HEIGHT-100));
+			addWall(new Wall(width + 1.0,10.0,1), x * width, (MainGUI.HEIGHT-100));
 		}else{
 			addWall(new Wall(width + 1.0,10.0,1),x *width, y *height);
 		}
@@ -191,7 +232,7 @@ public class Game {
 	private void addVerticalWall(int x, int y, double width, double height){
 		
 		if(x == (gamemap.getHeight()-1)){
-			addWall(new Wall(10.0,height + 10.0,0),Main.WIDTH,y * height);
+			addWall(new Wall(10.0,height + 10.0,0),MainGUI.WIDTH,y * height);
 		}else{
 			addWall(new Wall(10.0,height + 2.0 ,0),x * width,y * height);
 			}
@@ -206,11 +247,11 @@ public class Game {
 	 */
 	 
 	public void createMap() throws FileNotFoundException{
-		gamemap = new Map("src/resources/maze.txt");
+		gamemap = new Map("/resources/gui/maze.txt");
 		char[][] map = gamemap.getCharMap();
 		//Adjusting the height or width of the text file to fit the size of the javafx screen
-		double height = (Main.HEIGHT-100)/gamemap.getHeight();
-		double width = Main.WIDTH/gamemap.getWidth();
+		double height = (MainGUI.HEIGHT-100)/gamemap.getHeight();
+		double width = MainGUI.WIDTH/gamemap.getWidth();
 		for (int y = 0; y < gamemap.getHeight(); y++) {
 			for (int x = 0; x < gamemap.getWidth(); x++) {
 				switch(map[y][x]) {
@@ -241,8 +282,8 @@ public class Game {
 	}
 	
 	private void spawn(Tank tank){
-		double x = (double)rng(40, (int)Main.WIDTH-40);
-		double y = (double)rng(40, (int)Main.HEIGHT-140);
+		double x = (double)rng(40, (int)MainGUI.WIDTH-40);
+		double y = (double)rng(40, (int)MainGUI.HEIGHT-140);
 		addTank(tank, x , y );
 	}
 
@@ -262,10 +303,12 @@ public class Game {
 	 *Updates the game state
 	 */
     public void onUpdate(){
-        if(!gameOver){
+        if(!roundOver){
             detectCollisions();
             clearDeadBullets();
-            checkGameOver();
+			checkRoundOver();
+			checkGameOver();
+			shooting();
 
             // A type of lambda expression: parameter -> expression
             bullets.forEach(bullet -> bullet.update());
@@ -367,7 +410,7 @@ public class Game {
 	/**
 	 *Checks if both tanks are still alive
 	 */
-    private void checkGameOver(){
+    private void checkRoundOver(){
         int count = 0;
         for(GameEntity tank : tanks){
             if(tank.isAlive()){
@@ -375,17 +418,22 @@ public class Game {
             }
         }
         if (count <= 1) {
-            gameOver = true;
+            roundOver = true;
         }
-    }
-	
-	public void shoot(Tank tank){
-		Bullet bullet = tank.shoot();
-		double x = tank.getView().getTranslateX() + tank.getFacing().normalize().multiply(40).getX() + 15;
-		double y = tank.getView().getTranslateY() + tank.getFacing().normalize().multiply(40).getY() + 10;
-		addBullet(bullet,x,y);
 	}
 	
+	public void checkGameOver(){
+		if(p1score == 9 || p2score == 9)
+			gameOver = true;
+	}
+
+	public void shoot(Tank tank){
+			Bullet bullet = tank.shoot();
+			double x = tank.getView().getTranslateX() + tank.getFacing().normalize().multiply(40).getX() + 15;
+			double y = tank.getView().getTranslateY() + tank.getFacing().normalize().multiply(40).getY() + 10;
+			addBullet(bullet,x,y);
+	}
+
 	public void shooting(){
 		if(p1Shooting == true){
 			p1Shooting = false;
@@ -394,7 +442,7 @@ public class Game {
 		if(p2Shooting == true){
 			p2Shooting = false;
 			shoot(tanks.get(1));
-		}	
+		}
 	}
 	
 	public static int rng(int min, int max) {

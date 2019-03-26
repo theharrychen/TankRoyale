@@ -16,13 +16,24 @@ import javafx.scene.shape.Rectangle;
 public class Bullet extends KinematicEntity {
 	//Makes the bullet temporary
    private int lifeTime = 300; // in milliseconds
+   public static final char symbol = '*'; //The bullet for text based version
 
 	/**
 	 *Constructs a bullet object
 	 */
    public Bullet(){
         super(new Circle(5, 5, 5, Color.BLACK));
-    }
+	}
+	
+	/**
+	 * Constructs a bullet for the text based version of the game
+	 * 
+	 * @param x the x coordinate in the array
+	 * @param y the y coordinate in the array
+	 */
+	public Bullet(int x, int y){
+		super(x, y);
+	}
 
 	/**
 	 * @return lifeTime of bullet

@@ -9,17 +9,25 @@ package logic;
  * @since 2019-03-06
  */
  
+import visuals.*;
+
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import java.util.Scanner;
 
 public class Tank extends KinematicEntity {
     private Point2D facing = new Point2D(1,0);
     private int moveDir = 1; //1 means it last moved forward, -1, means it last moved backward
     private boolean isRotateRight = false, isRotateLeft = false;
-	private boolean up, down, left, right;
-	private boolean shooting = false;
+	private boolean up, down, left, right; 
+    private boolean shooting = false;
+
+    //Variables for text based version of the game
+    private char ID; //ID revealed on screen for each tank
+    private static int tankCount; //The number of tanks on screen
+    private TextBasedDisplay display = new TextBasedDisplay();
 	
 	//Adding the getter methods for the up, down, left, right
 	public boolean getUp() {return this.up;}
@@ -28,19 +36,54 @@ public class Tank extends KinematicEntity {
   	public boolean getLeft() {return this.left;}
 	
 	public boolean getShooting(){
-		return this.shooting;
+		return shooting;
 	}
 	
 	public void setShooting(boolean shoot){
-		this.shooting = shoot;
+		shooting = shoot;
+    }
+
+    /**
+	 * Retrives the ID of the tank.
+	 * 
+	 * @return ID as a char
+	 */
+	public char getID() {
+		return ID;
 	}
 
 	/**
-	 *Constructs a Tank object
+	 *Constructs a Tank object for the GUI version
 	 */
     public Tank(){
         super(new Rectangle(40,30, Color.rgb(Game.rng(0,255),Game.rng(0,255),Game.rng(0,255))));
     }
+
+    /**
+     * Constructs a Tank object for the text based version
+     */
+    public Tank(int x, int y){
+        super(x, y);
+        tankCount++; //Increases number of tanks on screen
+        ID = (char) (tankCount + '0'); //ID reflects tank count
+    }
+
+    /**
+     * changes state of the object to dead for text based version
+     */
+    public void dies(){
+        setAlive(false);
+        tankCount--; //Reduces number of tanks alive
+        System.out.println("Tank " + ID + " died!");
+    }
+
+	/**
+	 * Changes the state of the object to alive.
+	 */
+	public void revive() {
+		setAlive(true);
+		tankCount++;
+	}
 
 	/**
 	 * Updates position
@@ -54,7 +97,7 @@ public class Tank extends KinematicEntity {
             rotate(-5);
             isRotateLeft = false;
         }
-		movement();
+        movement();
     }
 
 	/**
@@ -73,12 +116,29 @@ public class Tank extends KinematicEntity {
     }
 
 	/**
-	 * Moves the tank
+	 * Moves the tank for GUI version of the game
 	 *@param double direction, double magnitude
 	 */
     private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction*magnitude));
 		super.update();
+    }
+    
+    /**
+     * Moves the tank for text based verion of the game
+     * @param int xDir the x direction
+     * @param int yDir the y direction
+     * @param map the current map
+     */
+    public void move(int xDir, int yDir, Map map) {
+		if (map.getCharMap()[getY() + yDir][getX() + xDir] == ' ') { //checks if move is valid 
+			map.getCharMap()[getY() + yDir][getX() + xDir] = ID;
+			map.getCharMap()[getY()][getX()] = ' ';
+			setX(getX() + xDir);
+			setY(getY() + yDir);
+		} else {
+			System.out.println("Tank " + ID + " was unable to move in the specified direction!");
+		}
 	}
 
 	/**
@@ -186,6 +246,7 @@ public class Tank extends KinematicEntity {
         if(left)
             rotateLeft();
     }
+
 	public void stop(){
 		setUp(false);
 		setDown(false);
@@ -201,8 +262,87 @@ public class Tank extends KinematicEntity {
     public Bullet shoot(){
         Bullet bullet = new Bullet();
         bullet.setVelocity(this.getFacing().normalize().multiply(5));
-		return bullet;
+        return bullet;
     }
-	
-	
+
+    /**
+     * Creates a bullet and shoots it in the indicated direction.
+     * 
+     * @param xDir: the xdirection the bullet is intended to move.
+     * @param yDir: the ydirection the bullet is intended to move.
+     * @param map: the map the bullet and tanks are operating in.
+     * @param otherTank: the location of the other tank, in the event of it's death.
+     */
+     
+    @SuppressWarnings("resource")
+	public void shoot(int xDir, int yDir, Map map, Tank otherTank) {
+		Bullet bull = new Bullet(getX(), getY()); //creates a bullet 
+		Scanner input = new Scanner(System.in);
+
+		while (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == ' ') { //if open space, bullet moves
+			if (map.getCharMap()[bull.getY()][bull.getX()] != ID) {// Removes the previous appearance of the bullet 
+				map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			}
+			map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] = Bullet.symbol;
+			
+			bull.setX(bull.getX() + xDir);
+			bull.setY(bull.getY() + yDir);
+			display.display(map);
+
+			System.out.println("Press ENTER to continue...");
+			input.nextLine();
+		}
+
+		if (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == '#') { // Bullet hits a wall
+			// When the tank is not beside the wall
+			if (map.getCharMap()[bull.getY()][bull.getX()] != ID) {
+				map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			}
+		} else if (map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] == otherTank.getID()) { // Bullet hits other tank																							
+			otherTank.dies();
+			if (map.getCharMap()[bull.getY()][bull.getX()] != ID) {
+				map.getCharMap()[bull.getY()][bull.getX()] = ' ';
+			}
+			map.getCharMap()[bull.getY() + yDir][bull.getX() + xDir] = 'X';
+			display.display(map);
+		}
+    }
+    
+	/**
+	 * The actual gameplay. Based on the inputted command, the tank moves the
+	 * designated spaces and shoots in the intended direction.
+	 * 
+	 * @param command: the user input, as a string in all caps
+	 * @param map: the map the tank is operating on
+	 * @param otherTank: the location of the other tank, in the event that a user
+	 *        shoots
+	 */
+    public void performCommand(String command, Map map, Tank otherTank) {
+		switch (command) {
+		case "MOVEUP":
+			move(0, -1, map);
+			break;
+		case "MOVEDOWN":
+			move(0, 1, map);
+			break;
+		case "MOVELEFT":
+			move(-1, 0, map);
+			break;
+		case "MOVERIGHT":
+			move(1, 0, map);
+			break;
+		case "SHOOTUP":
+			shoot(0, -1, map, otherTank);
+			break;
+		case "SHOOTDOWN":
+			shoot(0, 1, map, otherTank);
+			break;
+		case "SHOOTLEFT":
+			shoot(-1, 0, map, otherTank);
+			break;
+		case "SHOOTRIGHT":
+			shoot(1, 0, map, otherTank);
+			break;
+		}
+	}
 }

@@ -21,6 +21,13 @@ public class KinematicEntity extends GameEntity {
         super(view);
     }
 
+    /**
+     * Constructor for text based version of the game
+     */
+    public KinematicEntity(int x, int y){
+        super(x, y);
+    }
+
     //Continually updates the position of the moving object through the Nodial positions 
     public void update() { // Called once per frame
         getView().setTranslateX(getView().getTranslateX() + velocity.getX());

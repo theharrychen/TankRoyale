@@ -1,16 +1,11 @@
 package visuals;
 
 import logic.*;
+import drivers.*;
 
-import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import java.util.ArrayList;
-import java.io.FileNotFoundException;
 import javafx.scene.text.Font;
 	
 public class GUI{
@@ -26,7 +21,7 @@ public class GUI{
 	 *Sets the prefered size of the Pane layout
 	 */
     public GUI(){
-        root.setPrefSize(Main.WIDTH, Main.HEIGHT);
+		root.setPrefSize(MainGUI.WIDTH, MainGUI.HEIGHT);
     }
 	
 	 /**
@@ -34,7 +29,7 @@ public class GUI{
 	 */
     public Pane getRoot(){
         return root;
-    }
+	}
 	
 	//
 	public void displayTally(int p1score, int p2score){
@@ -42,32 +37,31 @@ public class GUI{
 		Label p2tally = new Label(Integer.toString(p2score));
 		Label p1 = new Label("Player One");
 		Label p2 = new Label("Player Two");
-        p1tally.setTranslateX(Main.WIDTH /2.0 - 150);
-		p2tally.setTranslateX(Main.WIDTH /2.0+ 150);
-		p1.setTranslateX(Main.WIDTH /2.0 - 170);
-		p2.setTranslateX(Main.WIDTH /2.0 + 130);
-        p1tally.setTranslateY(Main.HEIGHT-75);
-		p2tally.setTranslateY(Main.HEIGHT-75);
-		p1.setTranslateY(Main.HEIGHT-35);
-		p2.setTranslateY(Main.HEIGHT-35);
+        p1tally.setTranslateX(MainGUI.WIDTH /2.0 - 150);
+		p2tally.setTranslateX(MainGUI.WIDTH /2.0+ 150);
+		p1.setTranslateX(MainGUI.WIDTH /2.0 - 170);
+		p2.setTranslateX(MainGUI.WIDTH /2.0 + 130);
+        p1tally.setTranslateY(MainGUI.HEIGHT-75);
+		p2tally.setTranslateY(MainGUI.HEIGHT-75);
+		p1.setTranslateY(MainGUI.HEIGHT-35);
+		p2.setTranslateY(MainGUI.HEIGHT-35);
 		p1tally.setFont(new Font(30));
 		p2tally.setFont(new Font(30));
         root.getChildren().addAll(p1tally, p2tally,p1,p2);
 	}
 	
-	//not encapsulated
 	public void clear(){
-		getRoot().getChildren().clear();
+		root.getChildren().clear();
 	}
 	
 	public void addVisualGameEntity(GameEntity entity){
-		getRoot().getChildren().add(entity.getView());
+		root.getChildren().add(entity.getView());
 	}
 	
 	public void createRestartButton(){
 		//Create restart button
-        restartBtn.setTranslateX(Main.WIDTH / 2.0 );
-        restartBtn.setTranslateY((Main.HEIGHT-100) / 2.0);
+        restartBtn.setTranslateX(MainGUI.WIDTH / 2.0 );
+        restartBtn.setTranslateY((MainGUI.HEIGHT-100) / 2.0);
 	}
 		
 	// Announce winner of match
@@ -82,8 +76,8 @@ public class GUI{
 			winText.setText("PLAYER " + winner + " WON!");
 			break;
 		}
-        winText.setTranslateX(Main.WIDTH / 2.0-10);
-        winText.setTranslateY((Main.HEIGHT-100) / 2.0 - 20);
+        winText.setTranslateX(MainGUI.WIDTH / 2.0-10);
+        winText.setTranslateY((MainGUI.HEIGHT-100) / 2.0 - 20);
         root.getChildren().addAll(restartBtn, winText);
 		
 	}
