@@ -1,4 +1,5 @@
-//package sample;
+package codes;
+
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,14 +14,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+
+public class Menu extends Application {
+
+    public static final double WIDTH = 1080.0, HEIGHT = 608.0; //16:9 Window Aspect Ratio
+    private Game game = new Game();
 
     public static void main(String[] args)
     {
         launch(args);
     }
-
-
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -32,7 +35,7 @@ public class Main extends Application {
         root.getChildren().add(mv);
 
         Label titleLbl = new Label("Tank Royale");
-        titleLbl.setFont(Font.loadFont("resources/fonts/ToetheLineless.ttf", 50));
+        titleLbl.setFont(Font.loadFont("file:resources/fonts/ToetheLineless.ttf", 50));
         titleLbl.setPrefWidth(400);
         titleLbl.setLayoutX(400 - titleLbl.getWidth() - 157);
         titleLbl.setLayoutY(100);
@@ -59,13 +62,15 @@ public class Main extends Application {
         credits.setLayoutY(575);
         root.getChildren().add(credits);
 
-
         startBtn.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
             public void handle(ActionEvent actionEvent)
             {
                 System.out.println("Start Button Selected");
+                Scene gameScene = new Scene(game.getRoot(), WIDTH, HEIGHT);
+                startGame(new Stage(), gameScene);
+
             }
         });
 
@@ -84,6 +89,20 @@ public class Main extends Application {
         stage.setTitle("Tank Royale");
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.show();
+    }
+
+    private void startGame(Stage stage, Scene scene)
+    {
+        stage.setTitle("Tank Royale");
+        stage.setResizable(false);
+
+        game.start();
+
+        stage.setScene(scene);
+        scene.setOnKeyPressed(game.new PressHandler());
+        scene.setOnKeyReleased(game.new ReleaseHandler());
+
         stage.show();
     }
 
