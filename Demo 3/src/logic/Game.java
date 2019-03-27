@@ -2,7 +2,7 @@ package logic;
 
 
 /**
- * This game class handles map generation, shoot,and detect collisions. 
+ * This game class handles map generation, shoot, and detect collisions. 
  * 
  * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
 	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
@@ -19,9 +19,8 @@ import java.io.FileNotFoundException;
 
 public class Game {
 	
-    // Assumes 2 players
+    // Variables to create a game for 2 players
 	private static int playerCount = 2;
-	private static boolean gameStart = false;
 	private boolean gameOver = false;
 	private boolean roundOver = false;
 	private AnimationTimer timer;
@@ -37,7 +36,7 @@ public class Game {
     private static ArrayList<Bullet> bullets = new ArrayList<>();
 	private ArrayList<Wall> walls = new ArrayList<>();
 	
-	//Display variables
+	//Display variable
 	private GUI visual = new GUI();
 	
 	//Not encapsulated
@@ -45,14 +44,9 @@ public class Game {
 		return visual;
 	}
 
-	public static boolean getGameStart(){
-		return gameStart;
-	}
-
-	public static void setGameStart(boolean start){
-		gameStart = start;
-	}
-
+	/**
+	 * @return ArrayList<Tank> temp 
+	 */
 	public ArrayList<Tank> getTanks(){
 		ArrayList<Tank> temp = new ArrayList<>();
 		for(Tank tank : tanks)
@@ -60,26 +54,40 @@ public class Game {
 		return temp;
 	}
 
+	/**
+	 * @return int playerCount
+	 */
 	public int getPlayerCount(){
 		return playerCount;
 	}
 
-	/*public void setPlayerCount(int playerCount){
-		this.playerCount = playerCount;
-	}*/
-
+	/**
+	 * Changes whether P1 is shooting
+	 * @param isP1Shooting
+	 */
 	public void setP1Shooting(boolean isP1Shooting){
 		p1Shooting = isP1Shooting;
 	}
 
+	/**
+	 * Changes whether P2 is shooting
+	 * @param isP2Shooting
+	 */
 	public void setP2Shooting(boolean isP2Shooting){
 		p2Shooting = isP2Shooting;
 	}
 
+	/**
+	 * @return p1Shooting
+	 */
 	public boolean getP1Shooting(){
 		return p1Shooting;
 	}
 
+	/**
+	 * Changes game state
+	 * @param state 
+	 */
 	public void setGameOver(boolean state){
 		this.gameOver = state;
 	}
@@ -113,7 +121,7 @@ public class Game {
     }
 	
 	/**
-	 *Provide option for restart
+	 *Restarts the game after each round ends 
 	 */
     public void restart(){
 		if(!gameOver){
@@ -132,6 +140,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * The screen after the game ends
+	 */
 	public void endScreen(){
 		timer.stop();
 		gameOver = false;
@@ -149,6 +160,10 @@ public class Game {
 		});
 	}
 	
+	/**
+	 * Determines the winner of the round
+	 * @return int index number of the winner in the arraylist
+	 */
 	public int determineWinner(){
 		int winner = 0;
 		for (int x = 0; x < tanks.size(); x++){
@@ -159,6 +174,10 @@ public class Game {
 		return winner;
 	}
 
+	/**
+	 * Updates score based off the winner of the round
+	 * @param winner 
+	 */
 	public void updateScore(int winner){
 		for(Tank tank : tanks){
 			if(tank.isDead()){
@@ -244,8 +263,7 @@ public class Game {
 	 * | are vertical walls
 	 * # are horizontal walls
 	 * ^ are corners
-	 */
-	 
+	 */	 
 	public void createMap() throws FileNotFoundException{
 		gamemap = new Map("/resources/gui/maze.txt");
 		char[][] map = gamemap.getCharMap();
@@ -266,13 +284,17 @@ public class Game {
 						break;
 					case '#':
 						addHorizontalWall(x,y,width,height);
-						break;
-					
+						break;		
+				}
 			}
 		}
 	}
-	}
 	
+	/**
+	 * Checks if the tank in the arguement is colliding with any wall in the map
+	 * @param tank 
+	 * @return boolean
+	 */
 	private boolean checkPoint(Tank tank){
 		for(Wall wall: walls){
 			if(tank.isColliding(wall))
@@ -281,6 +303,10 @@ public class Game {
 		return false;
 	}
 	
+	/**
+	 * Spawns the tank onto the map
+	 * @param tank the tank that is spawned
+	 */
 	private void spawn(Tank tank){
 		double x = (double)rng(40, (int)MainGUI.WIDTH-40);
 		double y = (double)rng(40, (int)MainGUI.HEIGHT-140);
@@ -288,11 +314,11 @@ public class Game {
 	}
 
     /**
-	 *Future method to provide valid spawn points
+	 *Spawns tank in a random location on the map
 	 */
     private void randomSpawn(Tank tank){
 		spawn(tank);
-		while(checkPoint(tank)){
+		while(checkPoint(tank)){ //Ensures tank does not spawn in a wall
 			visual.removeTank(tank);
             tanks.clear();
 			spawn(tank);
@@ -314,11 +340,12 @@ public class Game {
             bullets.forEach(bullet -> bullet.update());
 			bullets.forEach(bullet -> bullet.reduceLifeTime());
 			//tanks.forEach(tank -> tank.update());
+			//Checks if a tank is colliding with a wall
 			for(Tank tank: tanks){
-				if(!checkPoint(tank))
+				if(!checkPoint(tank)) 
 					 tank.update();
 				else{
-					tank.stop();
+					tank.stop(); //Stops tanks movement 
 				}
 			}
         }
@@ -330,7 +357,7 @@ public class Game {
 	
 	
 	/**
-	 *Detects Collisions between bullets,tanks, and walls walls.
+	 *Detects Collisions between bullets,ctanks, and walls.
 	 */
     private void detectCollisions(){
 		
@@ -422,18 +449,28 @@ public class Game {
         }
 	}
 	
+	/**
+	 * Checks if any player reached the score limit. If score limit is reached game will end.
+	 */
 	public void checkGameOver(){
-		if(p1score == 9 || p2score == 9)
+		if(p1score == 9 || p2score == 9) //First player to reach 10 points wins
 			gameOver = true;
 	}
 
+	/**
+	 * This method shoots a bullet in the direction the tank is facing.
+	 * @param tank recieves the tank that is shooting.
+	 */
 	public void shoot(Tank tank){
-			Bullet bullet = tank.shoot();
-			double x = tank.getView().getTranslateX() + tank.getFacing().normalize().multiply(40).getX() + 15;
-			double y = tank.getView().getTranslateY() + tank.getFacing().normalize().multiply(40).getY() + 10;
-			addBullet(bullet,x,y);
+		Bullet bullet = tank.shoot();
+		double x = tank.getView().getTranslateX() + tank.getFacing().normalize().multiply(40).getX() + 15;
+		double y = tank.getView().getTranslateY() + tank.getFacing().normalize().multiply(40).getY() + 10;
+		addBullet(bullet,x,y);
 	}
 
+	/**
+	 * This method tracks which tank is shooting.
+	 */
 	public void shooting(){
 		if(p1Shooting == true){
 			p1Shooting = false;
@@ -445,6 +482,12 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Randomly generates a number between the min and max values in the arguement.
+	 * @param min lower boundary value.
+	 * @param max upper boundary value.
+	 * @return random integer
+	 */
 	public static int rng(int min, int max) {
 		if (min > max) { 
 		// Argument Error Trap

@@ -35,17 +35,23 @@ public class Tank extends KinematicEntity {
   	public boolean getRight() {return this.right;}
   	public boolean getLeft() {return this.left;}
 	
+	/**
+	 * @return boolean shooting
+	 */
 	public boolean getShooting(){
 		return shooting;
 	}
 	
+	/**
+	 * Sets whether the tank is shooting
+	 * @param shoot
+	 */
 	public void setShooting(boolean shoot){
 		shooting = shoot;
     }
 
     /**
 	 * Retrives the ID of the tank.
-	 * 
 	 * @return ID as a char
 	 */
 	public char getID() {
@@ -69,7 +75,7 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     * changes state of the object to dead for text based version
+     * Changes state of the object to dead for text based version
      */
     public void dies(){
         setAlive(false);
@@ -78,7 +84,7 @@ public class Tank extends KinematicEntity {
     }
 
 	/**
-	 * Changes the state of the object to alive.
+	 * Changes the state of the object to alive for the text based version
 	 */
 	public void revive() {
 		setAlive(true);
@@ -247,17 +253,20 @@ public class Tank extends KinematicEntity {
             rotateLeft();
     }
 
+	/**
+	 * Stops the movement of the tank.
+	 */
 	public void stop(){
 		setUp(false);
 		setDown(false);
 		setRight(false);
 		setLeft(false);
-		}
+	}
 	
-	  /**
+	/**
 	 * Tank creates and shoots a bullet
 	 * Bullet is currently generated in front of the tank, so it doesn't self-destruct
-	 *@param Tank tank
+	 * @param Tank tank
 	 */
     public Bullet shoot(){
         Bullet bullet = new Bullet();
@@ -266,8 +275,7 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     * Creates a bullet and shoots it in the indicated direction.
-     * 
+     * Creates a bullet and shoots it in the indicated direction. 
      * @param xDir: the xdirection the bullet is intended to move.
      * @param yDir: the ydirection the bullet is intended to move.
      * @param map: the map the bullet and tanks are operating in.
@@ -311,7 +319,6 @@ public class Tank extends KinematicEntity {
 	/**
 	 * The actual gameplay. Based on the inputted command, the tank moves the
 	 * designated spaces and shoots in the intended direction.
-	 * 
 	 * @param command: the user input, as a string in all caps
 	 * @param map: the map the tank is operating on
 	 * @param otherTank: the location of the other tank, in the event that a user
