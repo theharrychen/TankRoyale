@@ -1,5 +1,15 @@
 package handlers;
 
+
+/**
+ * This class handles key pressed events
+ * 
+ * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
+	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
+ * @version 1.0
+ * @since 2019-03-20
+ */
+
 import logic.*;
 
 import javafx.event.EventHandler;
@@ -7,6 +17,10 @@ import javafx.scene.input.KeyEvent;
 
 public class PressHandler extends Game implements EventHandler<KeyEvent>{
     
+    /**
+     * Player controls for one player
+     * @param key KeyEvent key
+     */
     public void onePlayer(KeyEvent key){
         switch (key.getCode()) {
 			case UP:
@@ -30,8 +44,12 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
         }
     }
 
+    /**
+     * Player controls for two players
+     * @param key KeyEvent key
+     */
     public void twoPlayer(KeyEvent key){
-        onePlayer(key);
+        onePlayer(key); //For player 1's controls
 
         switch (key.getCode()) {
             case W:
@@ -55,8 +73,12 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
         }
     }
 
+    /**
+     * Player controls for three players
+     * @param key KeyEvent key
+     */
     public void threePlayer(KeyEvent key){
-        twoPlayer(key);
+        twoPlayer(key); //For player 1 and 2's controls
 
         switch (key.getCode()) {
             case Y:
@@ -72,14 +94,14 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
                 getTanks().get(2).setRight(true);
                 break;
             case SPACE:
-            /*if(getTanks().get(2).getShooting() == false){
-                shoot(getTanks().get(2)); //change to p3Shooting
-                getTanks().get(2).setShooting(true);
-            }*/
+                //Future: getTanks().get(2).setP3Shooting(true);
             break;
         }
     }
 
+    /**
+     * Handles player controls based on number of players
+     */
     public void handle(KeyEvent key){
         int players = getPlayerCount();
         if(players == 1)  

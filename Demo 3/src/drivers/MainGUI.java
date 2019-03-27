@@ -2,7 +2,7 @@ package drivers;
 
 
 /**
- * This class is used to run the game
+ * This class is used to run the GUI version of the game
  * 
  * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
 	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s

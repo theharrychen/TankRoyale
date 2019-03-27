@@ -24,7 +24,7 @@ public class TextBasedDisplay{
     }
 
     /**
-     * The menu/map selection screen (currently only 1 choice)
+     * The menu/map selection screen 
      */
     public void menu(){
         System.out.println(" ");
@@ -34,8 +34,9 @@ public class TextBasedDisplay{
         System.out.println(" ");
         System.out.print("Enter Selection: ");
 
-        mapChoice = game.errorTrap(1, 3);
+        mapChoice = game.errorTrap(1, 3); //Prevents players from providing invalid input
 
+        //Loads map based on player input
         switch (mapChoice){
             case 1:
             game.setMapChoice(1);
@@ -63,6 +64,8 @@ public class TextBasedDisplay{
 
     /**
      * Displays the results of the game
+     * @param p1 true if p1 is alive, false if dead
+     * @param p2 true if p2 is alive, false if dead
      */
     public void results(boolean p1, boolean p2){
         if (p1 && !p2) {
@@ -92,8 +95,8 @@ public class TextBasedDisplay{
     /**
 	 * Updates the 2D character array to contain a tank object's ID at the tank's
 	 * coordinates. If the tank's coordinates are invalid, spawns new coordinates.
-	 * 
 	 * @param Tank tank
+     * @param gameMap the game map
 	 */
 	public void spawn(Tank tank, Map gameMap) {
 		if (gameMap.getCharMap()[tank.getY()][tank.getX()] == ' ') {
@@ -106,8 +109,8 @@ public class TextBasedDisplay{
     /**
 	 * Randomly generates the initial coordinates of a Tank object. Tank can only
 	 * spawn in an empty(' ') space or else new coordinates are generated.
-	 * 
 	 * @param Tank tank
+     * @param gameMap the game map
 	 */
 	public void randomSpawn(Tank tank, Map gameMap) {
 		tank.setY(game.rng(1, gameMap.getHeight() - 1));

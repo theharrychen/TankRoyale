@@ -1,5 +1,14 @@
 package handlers;
 
+
+/**
+ * This class handles key released events
+ * 
+ * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
+	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
+ * @version 1.0
+ * @since 2019-03-20
+ */
 import logic.*;
 
 import javafx.event.EventHandler;
@@ -8,6 +17,10 @@ import javafx.scene.input.KeyEvent;
 
 public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
 
+    /**
+     * Player controls for one player
+     * @param key KeyEvent key
+     */
     public void onePlayer(KeyCode key){
         switch (key) {
 			case UP:
@@ -28,6 +41,10 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
         }
     }
 
+    /**
+     * Player controls for two players
+     * @param key KeyEvent key
+     */
     public void twoPlayer(KeyCode key){
         onePlayer(key);
 
@@ -50,6 +67,10 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
         }
     }
 
+    /**
+     * Player controls for three players
+     * @param key KeyEvent key
+     */
     public void threePlayer(KeyCode key){
         twoPlayer(key);
 
@@ -72,6 +93,9 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
         }
     }
 
+    /**
+     * Handles player controls based on number of players
+     */
     public void handle(KeyEvent key){
         int players = getPlayerCount();
         if(players == 1)  

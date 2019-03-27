@@ -14,7 +14,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Bullet extends KinematicEntity {
-	//Makes the bullet temporary
+   //Makes the bullet temporary
    private int lifeTime = 300; // in milliseconds
    public static final char symbol = '*'; //The bullet for text based version
 
@@ -27,7 +27,6 @@ public class Bullet extends KinematicEntity {
 	
 	/**
 	 * Constructs a bullet for the text based version of the game
-	 * 
 	 * @param x the x coordinate in the array
 	 * @param y the y coordinate in the array
 	 */

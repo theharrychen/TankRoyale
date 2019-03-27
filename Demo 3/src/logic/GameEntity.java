@@ -16,7 +16,7 @@ public class GameEntity { // By default a physically "static" object
 
     private Node view; //An item in the scene graph 
     private boolean alive = true;
-    private int x, y;
+    private int x, y; //Variables for text based version
 
     //Contructor: Creates a GameEntity for GUI version of the game
     public GameEntity(Node view) {
