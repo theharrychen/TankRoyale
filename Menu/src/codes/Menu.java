@@ -19,6 +19,7 @@ public class Menu extends Application {
 
     public static final double WIDTH = 1080.0, HEIGHT = 608.0; //16:9 Window Aspect Ratio
     private Game game = new Game();
+    private static String maps = "/maze.txt";
 
     public static void main(String[] args)
     {
@@ -62,6 +63,29 @@ public class Menu extends Application {
         credits.setLayoutY(575);
         root.getChildren().add(credits);
 
+        Button mazeBtn = new Button("Maze");
+        mazeBtn.setPrefWidth(200);
+        mazeBtn.setLayoutX(400 - mazeBtn.getWidth() - 90);
+        mazeBtn.setLayoutY(195);
+        root.getChildren().add(mazeBtn);
+
+        Button temp1MapBtn = new Button("Temp Map 1");
+        temp1MapBtn.setPrefWidth(200);
+        temp1MapBtn.setLayoutX(400 - temp1MapBtn.getWidth() - 90);
+        temp1MapBtn.setLayoutY(230);
+        root.getChildren().add(temp1MapBtn);
+
+        Button temp2MapBtn = new Button("Temp Map 2");
+        temp2MapBtn.setPrefWidth(200);
+        temp2MapBtn.setLayoutX(400 - temp2MapBtn.getWidth() - 90);
+        temp2MapBtn.setLayoutY(265);
+        root.getChildren().add(temp2MapBtn);
+
+        mazeBtn.setVisible(false);
+        temp1MapBtn.setVisible(false);
+        temp2MapBtn.setVisible(false);
+
+
         startBtn.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
@@ -70,7 +94,6 @@ public class Menu extends Application {
                 System.out.println("Start Button Selected");
                 Scene gameScene = new Scene(game.getRoot(), WIDTH, HEIGHT);
                 startGame(new Stage(), gameScene);
-
             }
         });
 
@@ -80,10 +103,59 @@ public class Menu extends Application {
             @Override
             public void handle(ActionEvent actionEvent)
             {
-                System.out.println("Select Map Button Selected");
+                startBtn.setVisible(false);
+                selectMapBtn.setVisible(false);
+                mazeBtn.setVisible(true);
+                temp1MapBtn.setVisible(true);
+                temp2MapBtn.setVisible(true);
+
             }
         });
 
+        mazeBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent)
+            {
+                mazeBtn.setVisible(false);
+                temp1MapBtn.setVisible(false);
+                temp2MapBtn.setVisible(false);
+                startBtn.setVisible(true);
+                selectMapBtn.setVisible(true);
+
+                maps = "/maze.txt";
+
+            }
+        });
+
+        temp1MapBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent)
+            {
+                mazeBtn.setVisible(false);
+                temp1MapBtn.setVisible(false);
+                temp2MapBtn.setVisible(false);
+                startBtn.setVisible(true);
+                selectMapBtn.setVisible(true);
+
+                // TODO: Change Name
+                maps = "/temp1.txt";
+            }
+        });
+
+        temp2MapBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent)
+            {
+                mazeBtn.setVisible(false);
+                temp1MapBtn.setVisible(false);
+                temp2MapBtn.setVisible(false);
+                startBtn.setVisible(true);
+                selectMapBtn.setVisible(true);
+
+                // TODO: Change Name
+                maps = "/temp2.txt";
+            }
+        });
 
         Scene scene = new Scene(root, 800, 600);
         stage.setTitle("Tank Royale");
@@ -104,6 +176,11 @@ public class Menu extends Application {
         scene.setOnKeyReleased(game.new ReleaseHandler());
 
         stage.show();
+    }
+
+    public static String getMaps()
+    {
+        return maps;
     }
 
 }

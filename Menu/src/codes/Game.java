@@ -36,7 +36,8 @@ public class Game {
     private ArrayList<Tank> tanks = new ArrayList<>();
     private ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Wall> walls = new ArrayList<>();
-	
+
+
 	/**
 	 *Sets the prefered size of the Pane layout
 	 */
@@ -178,7 +179,7 @@ public class Game {
 	 * ^ are corners
 	 */
 	public void createMap() throws FileNotFoundException{
-		gamemap = new Map("/maze.txt");
+		gamemap = new Map(Menu.getMaps());
 		char[][] map = gamemap.getCharMap();
 		//Adjusting the height or width of the text file to fit the size of the javafx screen
 		double height = Main.HEIGHT/gamemap.getHeight();
