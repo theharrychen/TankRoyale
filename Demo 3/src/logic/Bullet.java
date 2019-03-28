@@ -13,18 +13,21 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-public class Bullet extends KinematicEntity{
-   //Makes the bullet temporary
-   private int lifeTime = 300; // in milliseconds
-   public static final char symbol = '*'; //The bullet for text based version
+public class Bullet extends KinematicEntity {
+	//Makes the bullet temporary
+	private int lifeTime = 300; // in milliseconds
+	public static final char symbol = '*'; //The bullet for text based version
+	private static int radius = 3;
 
 	/**
-	 *Constructs a bullet object
+	 * Constructs a bullet for the text based version of the game
+	 * @param x the x coordinate in the array
+	 * @param y the y coordinate in the array
 	 */
-   public Bullet(){
-        super(new Circle(5, 5, 5, Color.BLACK));
+	public Bullet(){
+		super(new Circle(3, 3, radius, Color.BLACK));
 	}
-	
+
 	/**
 	 * Constructs a bullet for the text based version of the game
 	 * @param x the x coordinate in the array
@@ -34,25 +37,26 @@ public class Bullet extends KinematicEntity{
 		super(x, y);
 	}
 
+
 	/**
 	 * @return lifeTime of bullet
 	 */
-    public int getLifeTime(){
-        return lifeTime;
-    }
+	public int getLifeTime(){
+		return lifeTime;
+	}
 
 	/**
 	 *set the lifetime of the bullet
 	 *@param int lifeTime
 	 */
-    public void setLifeTime(int lifeTime){
-        this.lifeTime = lifeTime;
-    }
+	public void setLifeTime(int lifeTime){
+		this.lifeTime = lifeTime;
+	}
 
 	/**
 	 * reduces the Lifetime of the bullet
 	 */
-    public void reduceLifeTime(){
-        lifeTime--;
-    }
-}
+	public void reduceLifeTime(){
+		lifeTime--;
+	}
+	}

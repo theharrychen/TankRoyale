@@ -10,19 +10,15 @@ public class TextBased {
     private static Map gameMap = null;
     private static Tank tank1 = new Tank(5, 5);
     private static Tank tank2 = new Tank(0, 0);
-    private static boolean gameStart = false; //Determines whether to start the game
-    private static boolean endGame = false; //Determines whether to end the end
+    private static boolean gameStart = false;
+    private static boolean endGame = false;
     private static int mapChoice = 1; //Selected map based on menu screen
     private static int turn = 1; //Players turn
     private static Scanner input = new Scanner(System.in);
     private static Scanner selection = new Scanner(System.in);
     private static String userCommand = null; //User input
     
-    /**
-     * Starts the game
-     */
     public static void start() {
-        //Displays main menu
         while(!gameStart)
             display.menu();
         try {
@@ -38,42 +34,23 @@ public class TextBased {
         onUpdate();
     }
 
-    /**
-     * Sets the whether to start the game
-     * @param start
-     */
     public void setGameStart(boolean start){
         gameStart = start;
     }
 
-    /**
-     * Sets the map choice
-     * @param choice
-     */
     public void setMapChoice(int choice){
         mapChoice = choice;
     }
 
-    /**
-     * Sets whether to end the game
-     * @param end
-     */
     public void setEndGame(boolean end){
         endGame = end;
     }
 
-    /**
-     * @return int turn
-     */
     public int getTurn(){
         return turn;
     }
 
-    /**
-     * Updates the state of the game
-     */
     public static void onUpdate() {
-        //Game loop
         while(tank1.isAlive() && tank2.isAlive()){
                 display.display(gameMap);
                 userCommand = input.nextLine().toUpperCase();
@@ -89,9 +66,9 @@ public class TextBased {
             }
         display.results(tank1.isAlive(), tank2.isAlive());
         display.endScreen();
-        
+            
         if(endGame)
-            input.close(); //Ends the program
+            input.close();
     }
     
     /**
@@ -113,6 +90,7 @@ public class TextBased {
 
     /**
      * Makes sure player input is valid. If input is invalid an appropriate message is displayed
+     * 
      * @param minchoice minimum accepted player input
      * @param maxchoice maximum accepted player input
      * @return returns the players choice as an integer
@@ -139,6 +117,7 @@ public class TextBased {
     
     /**
      * Random number generator
+     * 
      * @param min lower boundary value
      * @param max upper boundary value
      * @return random integer value between min and max
@@ -154,9 +133,6 @@ public class TextBased {
 		return number;
     }
     
-    /**
-     * Restarts the game
-     */
     public void restart(){
         tank1.revive();
         tank2.revive();

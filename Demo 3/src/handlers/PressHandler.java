@@ -37,7 +37,7 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
 				break;
             case ENTER:
 				if(getTanks().get(0).getShooting() == false){
-                    setP1Shooting(true);
+					shoot(getTanks().get(0));
                     getTanks().get(0).setShooting(true);
                 }
 				break;
@@ -50,7 +50,7 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
      */
     public void twoPlayer(KeyEvent key){
         onePlayer(key); //For player 1's controls
-        if(getTanks().size() >= 2)
+
         switch (key.getCode()) {
             case W:
                 getTanks().get(1).setUp(true);
@@ -66,7 +66,7 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
                 break;
             case Q:
             if(getTanks().get(1).getShooting() == false){
-                setP2Shooting(true);
+				shoot(getTanks().get(1));
                 getTanks().get(1).setShooting(true);
             }
             break;
@@ -94,7 +94,8 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
                 getTanks().get(2).setRight(true);
                 break;
             case SPACE:
-                //Future: getTanks().get(2).setP3Shooting(true);
+                //Future: shoot(getTanks().get(1));
+                //getTanks().get(1).setShooting(true);
             break;
         }
     }
