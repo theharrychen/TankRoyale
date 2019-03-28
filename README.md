@@ -77,15 +77,16 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
  # Versions
     -Current Version 2.0: GUI Beta
     
-    - Previous Version 1.5: GUI Beta
+    
    ![image](https://user-images.githubusercontent.com/45050947/55134763-541b6c80-50ef-11e9-9b9d-a9a0338e3c0f.png)
    
-        • 	Tanks were visualized as randomly colored Rectangles
+    -Previous Version 1.5: GUI Beta
+        •   Tanks were visualized as randomly colored Rectangles
         •   Known Bugs (mostly fixed): Passing through walls, random self-implosion, and errors with ricochet
-        
-    -Previous Version 1.0: Text-based format
+
    ![image](https://user-images.githubusercontent.com/45050947/55135503-731afe00-50f1-11e9-8bb5-422b64bf5ebe.png)
    
+    -Previous Version 1.0: Text-based format   
         •   Text-based and Turn-based
         •	Movement and shooting occurred in all four cardinal directions. 
         •	Commands were implemented by user input into the console using a set command list. 
