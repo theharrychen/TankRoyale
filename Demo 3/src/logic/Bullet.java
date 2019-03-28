@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-public class Bullet extends KinematicEntity {
+public class Bullet extends KinematicEntity{
    //Makes the bullet temporary
    private int lifeTime = 300; // in milliseconds
    public static final char symbol = '*'; //The bullet for text based version

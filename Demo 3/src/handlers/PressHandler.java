@@ -50,7 +50,7 @@ public class PressHandler extends Game implements EventHandler<KeyEvent>{
      */
     public void twoPlayer(KeyEvent key){
         onePlayer(key); //For player 1's controls
-
+        if(getTanks().size() >= 2)
         switch (key.getCode()) {
             case W:
                 getTanks().get(1).setUp(true);

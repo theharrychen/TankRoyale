@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 	
-public class GameGUI {
+public class GameGUI implements java.io.Serializable {
 	
 	private Pane root = new Pane();
 	private Button restartBtn = new Button("Restart");

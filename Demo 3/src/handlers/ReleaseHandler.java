@@ -47,7 +47,7 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
      */
     public void twoPlayer(KeyCode key){
         onePlayer(key);
-
+        if(getTanks().size() >= 2)
         switch (key) {
             case W:
                 getTanks().get(1).setUp(false);

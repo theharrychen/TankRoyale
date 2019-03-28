@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
 public class Game {
+	private static final long serialVersionUID = 1L;
 	
     // Variables to create a game for 2 players
 	private static int playerCount = 2;
