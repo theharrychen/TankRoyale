@@ -4,8 +4,8 @@
     Text based beta on the JavaFX platform and console respectively. Future versions will fix current known bugs
     in the GUI version with ricochet and possibly implement an AI.
  
-  ![image](https://user-images.githubusercontent.com/45050947/55134592-d22b4380-50ee-11e9-97d2-dfadde3547a2.png)
-  ![image](https://user-images.githubusercontent.com/45050947/55134607-db1c1500-50ee-11e9-9e63-d534234ddce6.png)
+  ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
+  ![image](https://user-images.githubusercontent.com/45050947/55135268-cb9dcb80-50f0-11e9-8d95-7ffec3d7e966.png)
 # Prerequisites
 To play Tank Royale you must have a recent version of:
 
