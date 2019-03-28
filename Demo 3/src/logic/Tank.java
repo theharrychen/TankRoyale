@@ -59,7 +59,7 @@ public class Tank extends KinematicEntity {
 	}
 
 	/**
-	 *Constructs a Tank object for the GUI version
+	 *Constructs a Tank object for the GameGUI version
 	 */
     public Tank(){
         super(new Rectangle(40,30, Color.rgb(Game.rng(0,255),Game.rng(0,255),Game.rng(0,255))));
@@ -122,7 +122,7 @@ public class Tank extends KinematicEntity {
     }
 
 	/**
-	 * Moves the tank for GUI version of the game
+	 * Moves the tank for GameGUI version of the game
 	 *@param double direction, double magnitude
 	 */
     private void move(double direction, double magnitude) {

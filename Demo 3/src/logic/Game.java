@@ -37,10 +37,10 @@ public class Game {
 	private ArrayList<Wall> walls = new ArrayList<>();
 	
 	//Display variable
-	private GUI visual = new GUI();
+	private GameGUI visual = new GameGUI();
 	
 	//Not encapsulated
-	public GUI getVisual(){
+	public GameGUI getVisual(){
 		return visual;
 	}
 

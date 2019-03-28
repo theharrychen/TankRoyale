@@ -18,7 +18,7 @@ public class GameEntity { // By default a physically "static" object
     private boolean alive = true;
     private int x, y; //Variables for text based version
 
-    //Contructor: Creates a GameEntity for GUI version of the game
+    //Contructor: Creates a GameEntity for GameGUI version of the game
     public GameEntity(Node view) {
         setView(view);
     }
