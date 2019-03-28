@@ -41,6 +41,7 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
     1. To run the GUI version of the game, type in the command prompt: Java drivers.MainGUI
        Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/55134699-28988200-50ef-11e9-940e-3151798ecb00.png)
+   
     2. To run the TextBased version of the game, type in the command prompt: Java drivers.MainTB
        Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/55135406-33541680-50f1-11e9-8f74-0264bf613963.png)
