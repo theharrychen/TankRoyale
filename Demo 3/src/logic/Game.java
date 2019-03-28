@@ -23,7 +23,7 @@ import javafx.scene.shape.Circle;
 public class Game {
     // Assumes 2 players
     private static int playerCount = 2;
-    private boolean gameOver = false;
+	private boolean gameOver = false;
 	private boolean roundOver = false;
 	private AnimationTimer timer;
 	private Map gamemap;
@@ -221,6 +221,10 @@ public class Game {
 	public void checkGameOver(){
 		if(p1score == 9 || p2score == 9) //First player to reach 10 points wins
 			gameOver = true;
+	}
+
+	public boolean getGameOver() {
+		return gameOver;
 	}
 	
 	 /**

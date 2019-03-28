@@ -32,13 +32,12 @@ public class MenuGUI {
         createMenu(stage, gameScene);
         Scene menuScene = new Scene(root, MainGUI.WIDTH, MainGUI.HEIGHT);
         stage.setScene(menuScene);
-        game.start();
     }
 
     private void createMenu(Stage stage, Scene gameScene){
         root.getChildren().add(createTitle());
         root.getChildren().add(createStartBtn(stage, gameScene));
-        root.getChildren().add(createMapBtnBox());
+        root.getChildren().add(createMapBtnBox(game));
         root.getChildren().add(createCredits());
         root.setBackground(createBackground());
     }
@@ -65,12 +64,15 @@ public class MenuGUI {
         startBtn.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> startBtn.setEffect(shadow));
         //Removing the shadow when the mouse cursor is off
         startBtn.addEventHandler(MouseEvent.MOUSE_EXITED, e -> startBtn.setEffect(null));
-        startBtn.setOnAction(e -> stage.setScene(gameScene));
+        startBtn.setOnAction(e -> {
+            stage.setScene(gameScene);
+            game.start();
+        });
 
         return startBtn;
     }
 
-    private ToggleButton createMapBtn(String name, String mapFilePath) {
+    public static ToggleButton createMapBtn(String name, String mapFilePath, Game game) {
         ToggleButton selectMapBtn = new ToggleButton(name);
         selectMapBtn.setPrefWidth(100);
 
@@ -80,11 +82,11 @@ public class MenuGUI {
         return selectMapBtn;
     }
 
-    private HBox createMapBtnBox(){
+    public static HBox createMapBtnBox(Game game){
         int mapCount = 3;
-        ToggleButton mapBtn1 = createMapBtn("Map 1", "/resources/GUI/maze.txt");
-        ToggleButton mapBtn2 = createMapBtn("Map 2", "/resources/GUI/maze.txt");
-        ToggleButton mapBtn3 = createMapBtn("Map 3", "/resources/GUI/maze.txt");
+        ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/GUI/maze.txt", game);
+        ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/GUI/empty.txt", game);
+        ToggleButton mapBtn3 = createMapBtn("Test", "/resources/GUI/heart.txt", game);
 
         final ToggleGroup group = new ToggleGroup();
         mapBtn1.setToggleGroup(group);

@@ -28,7 +28,7 @@ public class WallTest{
 			Wall w = new Wall(5,5,0);
 			w.setWallWidth(7.0);
 			assertEquals("Set wall width to 7.0. Unexpected wall width value",7.0, w.getWallWidth(),0.001);
-			w.setWallWidth(MainGUI.WIDTH + 100);
+			w.setWallWidth(1080 + 100);
 			assertEquals("Set invalid width of wall. Wall width should be less than the width of the game window",7.0, w.getWallWidth(),0.001);
 			
 	}
@@ -38,7 +38,7 @@ public class WallTest{
 		Wall w = new Wall(5,5,0);
 			w.setWallHeight(7.0);
 			assertEquals("Set wall height to 7.0. Unexpected wall height value",7.0, w.getWallHeight(),0.001);
-			w.setWallHeight(MainGUI.HEIGHT);
+			w.setWallHeight(1080);
 			assertEquals("Set invalid height of wall. Wall height should be 100 pixels less than the height of the game window",7.0, w.getWallHeight(),0.001);
 	}
 	
@@ -80,13 +80,13 @@ public class WallTest{
 	
 	@Test
 	public void test_invalidwidth(){
-			Wall w = new Wall(MainGUI.WIDTH + 100,5,8);
+			Wall w = new Wall(1080+ 100,5,8);
 			assertEquals("Invalid width of the wall. Width must be less than the game window's width",0, w.getWallWidth(),0.001);
 	}
 	
 	@Test
 	public void test_invalidheight(){
-			Wall w = new Wall(MainGUI.HEIGHT,5,8);
+			Wall w = new Wall(1080,5,8);
 			assertEquals("Invalid height of the wall. Height must be 100 pixles less than the game window's height",0, w.getWallHeight(),0.001);
 	}
 	
