@@ -1,5 +1,13 @@
 package logic;
 
+/**
+ * This class is used to perform logic tests on the Game Class
+ * 
+ * @author Group 7
+ * @version 1.0
+ * @since 2019-02-25
+ */
+
 import static org.junit.Assert.*;
 import java.util.*;
 import org.junit.Test;
