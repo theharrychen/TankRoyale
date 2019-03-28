@@ -2,7 +2,7 @@
     Tank Royale is a multiplayer game in which players control tanks by moving and shooting.The objective of the 
     game is to eliminate all the other tanks and be the last tank standing. The current version is a GUI and
     Text based beta on the JavaFX platform and console respectively. Future versions will fix current known bugs
-    in the GUI version with ricochet and possibly implement an AI.
+    with ricochet  in the GUI version and possibly implement an AI.
  
   ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
   ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
@@ -43,6 +43,8 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
    ![image](https://user-images.githubusercontent.com/45050947/55134699-28988200-50ef-11e9-940e-3151798ecb00.png)
     2. To run the TextBased version of the game, type in the command prompt: Java drivers.MainTB
        Make sure to have compiled the game first.
+   ![image](https://user-images.githubusercontent.com/45050947/55135406-33541680-50f1-11e9-8f74-0264bf613963.png)
+
    
    ## Testing
 
