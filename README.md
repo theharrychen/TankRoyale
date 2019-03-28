@@ -82,7 +82,7 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
         • 	Tanks were visualized as randomly colored Rectangles
         •   Known Bugs (mostly fixed): Passing through walls, random self-implosion, and errors with ricochet
 
-   ![image](https://user-images.githubusercontent.com/45050947/54311996-6ba91000-459b-11e9-9d59-e9c1c916af54.png)
+   ![image](https://user-images.githubusercontent.com/45050947/55135503-731afe00-50f1-11e9-8bb5-422b64bf5ebe.png)
    
         •   Text-based and Turn-based
         •	Movement and shooting occurred in all four cardinal directions. 
