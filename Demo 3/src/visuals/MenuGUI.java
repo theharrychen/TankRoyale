@@ -1,6 +1,7 @@
 package visuals;
 
-import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -9,13 +10,12 @@ import drivers.*;
 import handlers.*;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.sql.SQLOutput;
 
 public class MenuGUI {
 
@@ -24,7 +24,6 @@ public class MenuGUI {
 
     public void start(Stage stage){
         game = new Game();
-        game.start();
 
         Scene gameScene = new Scene(game.getVisual().getRoot(), MainGUI.WIDTH, MainGUI.HEIGHT);
         gameScene.setOnKeyPressed(new PressHandler());
@@ -33,15 +32,15 @@ public class MenuGUI {
         createMenu(stage, gameScene);
         Scene menuScene = new Scene(root, MainGUI.WIDTH, MainGUI.HEIGHT);
         stage.setScene(menuScene);
+        game.start();
     }
 
     private void createMenu(Stage stage, Scene gameScene){
         root.getChildren().add(createTitle());
         root.getChildren().add(createStartBtn(stage, gameScene));
-        root.getChildren().add(createMapBtn());
+        root.getChildren().add(createMapBtnBox());
         root.getChildren().add(createCredits());
         root.setBackground(createBackground());
-
     }
 
     private Label createTitle() {
@@ -59,7 +58,7 @@ public class MenuGUI {
                             " -fx-border-color: #ff0000; -fx-border-width: 2px; ");
         startBtn.setPrefWidth(200);
         startBtn.setPrefHeight(45);
-        startBtn.setLayoutX(545 - startBtn.getWidth() - 90);
+        startBtn.setLayoutX(MainGUI.WIDTH / 2.0 - startBtn.getPrefWidth()/2.0);
         startBtn.setLayoutY(225);
 
         DropShadow shadow = new DropShadow();
@@ -71,17 +70,34 @@ public class MenuGUI {
         return startBtn;
     }
 
-    private Button createMapBtn() {
-        Button selectMapBtn = new Button("Select Map");
-        selectMapBtn.setPrefWidth(200);
-        selectMapBtn.setLayoutX(545 - selectMapBtn.getWidth() - 90);
-        selectMapBtn.setLayoutY(290);
+    private ToggleButton createMapBtn(String name, String mapFilePath) {
+        ToggleButton selectMapBtn = new ToggleButton(name);
+        selectMapBtn.setPrefWidth(100);
 
         selectMapBtn.setOnAction(e -> {
-            System.out.println("Select Map Button Selected");
+            game.setMapFilePath(mapFilePath);
         });
         return selectMapBtn;
     }
+
+    private HBox createMapBtnBox(){
+        int mapCount = 3;
+        ToggleButton mapBtn1 = createMapBtn("Map 1", "/resources/GUI/maze.txt");
+        ToggleButton mapBtn2 = createMapBtn("Map 2", "/resources/GUI/maze.txt");
+        ToggleButton mapBtn3 = createMapBtn("Map 3", "/resources/GUI/maze.txt");
+
+        final ToggleGroup group = new ToggleGroup();
+        mapBtn1.setToggleGroup(group);
+        mapBtn2.setToggleGroup(group);
+        mapBtn3.setToggleGroup(group);
+        mapBtn1.setSelected(true);
+
+        HBox hbox = new HBox(mapBtn1, mapBtn2, mapBtn3);
+        hbox.setLayoutX(MainGUI.WIDTH / 2.0 - mapBtn1.getPrefWidth()*mapCount / 2.0);
+        hbox.setLayoutY(MainGUI.HEIGHT/2.0 + 5);
+        return hbox;
+    }
+
 
     private Label createCredits() {
         Label credits = new Label("Created By: Anjola Adeboye, Harry Chen, Mei Hou, Josh Kim and Andre Staffa");

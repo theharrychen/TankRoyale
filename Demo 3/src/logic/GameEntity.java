@@ -131,8 +131,8 @@ public class GameEntity { // By default a physically "static" object
 		Shape intersect = Shape.intersect(object1, object2);
         if (intersect.getBoundsInLocal().getWidth() != -1) {
           collisionDetected = true;
-			}
-	return collisionDetected;
+        }
+		return collisionDetected;
 	}
 
 	

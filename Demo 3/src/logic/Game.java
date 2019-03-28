@@ -21,14 +21,13 @@ import java.io.FileNotFoundException;
 import javafx.scene.shape.Circle;
 
 public class Game {
-	private static final long serialVersionUID = 1L;
-	
     // Assumes 2 players
     private static int playerCount = 2;
     private boolean gameOver = false;
 	private boolean roundOver = false;
 	private AnimationTimer timer;
 	private Map gamemap;
+	private String mapFilePath = "/resources/GUI/maze.txt";
 	private int p1score = 0;
 	private int p2score = 0;
 
@@ -284,8 +283,16 @@ public class Game {
 			addWall(new Wall(10.0,height + 10.0 ,0),x * width,y * height);
 		}
 	}
-	
-	
+
+
+	/**
+	 * Sets the mapFilePath to be used for map generation
+	 *@param String mapFilePath
+	 */
+	public void setMapFilePath(String mapFilePath) {
+		this.mapFilePath = mapFilePath;
+	}
+
 	/**
 	 * Creates the map of TankRoyale on JavaFX
 	 * | are vertical walls
@@ -293,7 +300,7 @@ public class Game {
 	 * ^ are corners
 	 */
 	public void createMap() throws FileNotFoundException{
-		gamemap = new Map("/resources/GUI/maze.txt");
+		gamemap = new Map(mapFilePath);
 		char[][] map = gamemap.getCharMap();
 		//Adjusting the height or width of the text file to fit the size of the javafx screen
 		double height = (MainGUI.HEIGHT-100)/gamemap.getHeight();

@@ -24,11 +24,11 @@ public class Map{
 	 * FileNotFoundException if textfile is not valid # in textfile represents a
 	 * wall 0 in textfile represents space
 	 * 
-	 * @param String textPath
+	 * @param String mapFilePath
 	 * @return character double array representing a 2D map
 	 */
-	public Map(String textPath) {
-		InputStream stream = Game.class.getResourceAsStream(textPath);
+	public Map(String mapFilePath) {
+		InputStream stream = Game.class.getResourceAsStream(mapFilePath);
 		if (stream == null) System.out.println("Map Text file not located");
 
 		Scanner input = null;
