@@ -48,10 +48,10 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
 
    
    ## Testing
-    1.	To test the code, Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale
+    1.To test the code, Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale
         master\Demo 3\src" in the command prompt to change directory as shown above in the Compile section.
 
-    2.	To compile the code for testing using the following command: javac -cp .;junit
+    2.To compile the code for testing using the following command: javac -cp .;junit
         4.12.jar;hamcrest-core-1.3.jar drivers/*.java handlers/*.java logic/*.java visuals/*.java 
    ![image](https://user-images.githubusercontent.com/45050947/55151447-e7669900-5113-11e9-8f4a-3d2ebc818c79.png)
  
