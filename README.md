@@ -30,8 +30,8 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
   ## Compilation
     1. Open the terminal (command prompt) 
     
-    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Demo 3\src" in the command prompt to change    
-    directory. Example is below.     
+    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Demo 3\src" in the command 
+    prompt to change directory. Example is below.     
    ![image](https://user-images.githubusercontent.com/45050947/55134671-13bbee80-50ef-11e9-8feb-4f72efdd2eb5.png)
    
     3. To compile, type in the command prompt: javac drivers/*.java
