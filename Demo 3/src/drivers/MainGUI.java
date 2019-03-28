@@ -2,7 +2,7 @@ package drivers;
 
 
 /**
- * This class is used to run the game
+ * This class is used to run the GameGUI version of the game
  * 
  * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
 	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
@@ -10,17 +10,14 @@ package drivers;
  * @since 2019-03-06
  */
 
-import logic.*;
-import handlers.*;
+import visuals.*;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainGUI extends Application {
 
     public static final double WIDTH = 1080.0, HEIGHT = 608.0; //16:9 Window Aspect Ratio
-	private Game game = new Game();
 	
 	/**
 	 *Main entry point of JavaFX application
@@ -29,15 +26,13 @@ public class MainGUI extends Application {
         stage.setTitle("Tank Royale");
         stage.setResizable(false);
 
-        game.start();
-        Scene gameScene = new Scene(game.getVisual().getRoot(), WIDTH, HEIGHT);
+        MenuGUI menu = new MenuGUI();
 
-        stage.setScene(gameScene);
-        gameScene.setOnKeyPressed(new PressHandler());
-        gameScene.setOnKeyReleased(new ReleaseHandler());
+        menu.start(stage);
 
         stage.show();
     }
+
 
 	/**
 	 *Launches the game
