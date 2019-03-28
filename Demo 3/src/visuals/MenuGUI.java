@@ -1,5 +1,6 @@
 package visuals;
 
+import javafx.scene.layout.*;
 import logic.*;
 import drivers.*;
 import handlers.*;
@@ -9,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -40,7 +40,8 @@ public class MenuGUI extends MainGUI{
         mv.setImage(tank);
 
         Label titleLbl = new Label("Tank Royale");
-        titleLbl.setFont(Font.loadFont("file:resources/fonts/ToetheLineless.ttf", 50));
+        //titleLbl.setFont(Font.loadFont("file:resources/fonts/ToetheLineless.ttf", 50));
+        titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/fonts/ToetheLineless.ttf"), 50));
         titleLbl.setPrefWidth(400);
         titleLbl.setLayoutX(545 - titleLbl.getWidth() - 157);
         titleLbl.setLayoutY(125);
@@ -60,8 +61,9 @@ public class MenuGUI extends MainGUI{
         selectMapBtn.setLayoutY(290);
         root.getChildren().add(selectMapBtn);
 
-        Label credits = new Label("Written By: Anjola Adeboye, Harry Chen, Mei Hou, Josh Kim and Andre Staffa");
-        credits.setFont(Font.loadFont("file:resources/fonts/RiseofKingdom.ttf", 15));
+        Label credits = new Label("Created By: Anjola Adeboye, Harry Chen, Mei Hou, Josh Kim and Andre Staffa");
+        //credits.setFont(Font.loadFont("file:resources/fonts/RiseofKingdom.ttf", 15));
+        credits.setFont(Font.loadFont(MenuGUI.class.getResourceAsStream("/resources/fonts/RiseofKingdom.ttf"), 15));
         credits.setTextFill(Color.WHITE);
         credits.setLayoutX(12);
         credits.setLayoutY(575);
@@ -74,6 +76,13 @@ public class MenuGUI extends MainGUI{
         selectMapBtn.setOnAction(e -> {
             System.out.println("Select Map Button Selected");
         });
+
+        BackgroundImage backdrop = new BackgroundImage(new Image(
+                MenuGUI.class.getResourceAsStream("/resources/images/tanks.jpg"),
+                1080,680,false,true),
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        root.setBackground(new Background(backdrop));
     }
 
 }
