@@ -28,7 +28,7 @@ public class Map{
 	 * @return character double array representing a 2D map
 	 */
 	public Map(String textPath) {
-		InputStream stream = getClass().getResourceAsStream(textPath);
+		InputStream stream = Map.class.getResourceAsStream(textPath);
 		if (stream == null) System.out.println("Map Text file not located");
 
 		Scanner input = null;

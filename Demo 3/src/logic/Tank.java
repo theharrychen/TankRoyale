@@ -8,23 +8,22 @@ package logic;
  * @version 1.0
  * @since 2019-03-06
  */
- 
 import visuals.*;
 
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import java.util.Scanner;
+import javafx.scene.shape.Circle;
 
 public class Tank extends KinematicEntity {
     private Point2D facing = new Point2D(1,0);
     private int moveDir = 1; //1 means it last moved forward, -1, means it last moved backward
     private boolean isRotateRight = false, isRotateLeft = false;
-	private boolean up, down, left, right; 
-    private boolean shooting = false;
-
-    //Variables for text based version of the game
+	private boolean up, down, left, right;
+	private boolean shooting = false;
+	private static int tankradius = 20;
+	//Variables for text based version of the game
     private char ID; //ID revealed on screen for each tank
     private static int tankCount; //The number of tanks on screen
     private TextBasedDisplay display = new TextBasedDisplay();
@@ -36,10 +35,17 @@ public class Tank extends KinematicEntity {
   	public boolean getLeft() {return this.left;}
 	
 	/**
+	 * @return Radius of the tank
+	 */
+	public int getRadius(){
+		return this.tankradius;
+	}
+	
+	/**
 	 * @return boolean shooting
 	 */
 	public boolean getShooting(){
-		return shooting;
+		return this.shooting;
 	}
 	
 	/**
@@ -47,10 +53,10 @@ public class Tank extends KinematicEntity {
 	 * @param shoot
 	 */
 	public void setShooting(boolean shoot){
-		shooting = shoot;
-    }
-
-    /**
+		this.shooting = shoot;
+	}
+	
+	/**
 	 * Retrives the ID of the tank.
 	 * @return ID as a char
 	 */
@@ -58,14 +64,15 @@ public class Tank extends KinematicEntity {
 		return ID;
 	}
 
+
 	/**
 	 *Constructs a Tank object for the GameGUI version
 	 */
     public Tank(){
-        super(new Rectangle(40,30, Color.rgb(Game.rng(0,255),Game.rng(0,255),Game.rng(0,255))));
+        super(new Circle(tankradius));
     }
-
-    /**
+	
+	 /**
      * Constructs a Tank object for the text based version
      */
     public Tank(int x, int y){
@@ -73,8 +80,8 @@ public class Tank extends KinematicEntity {
         tankCount++; //Increases number of tanks on screen
         ID = (char) (tankCount + '0'); //ID reflects tank count
     }
-
-    /**
+	
+	 /**
      * Changes state of the object to dead for text based version
      */
     public void dies(){
@@ -91,6 +98,7 @@ public class Tank extends KinematicEntity {
 		tankCount++;
 	}
 
+
 	/**
 	 * Updates position
 	 */
@@ -103,7 +111,7 @@ public class Tank extends KinematicEntity {
             rotate(-5);
             isRotateLeft = false;
         }
-        movement();
+		movement();
     }
 
 	/**
@@ -122,14 +130,14 @@ public class Tank extends KinematicEntity {
     }
 
 	/**
-	 * Moves the tank for GameGUI version of the game
+	 * Moves the tank
 	 *@param double direction, double magnitude
 	 */
     private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction*magnitude));
 		super.update();
-    }
-    
+	}
+	
     /**
      * Moves the tank for text based verion of the game
      * @param int xDir the x direction
@@ -146,7 +154,7 @@ public class Tank extends KinematicEntity {
 			System.out.println("Tank " + ID + " was unable to move in the specified direction!");
 		}
 	}
-
+	
 	/**
 	 *Moves the tank forward
 	 */
@@ -167,7 +175,8 @@ public class Tank extends KinematicEntity {
 	 *Angle of rotation is measured in degrees
 	 *@return rotation angle
 	 */
-    private double getRotate() {
+	 // not encapsulated
+    public double getRotate() {
         return getView().getRotate();
     }
 
@@ -252,29 +261,25 @@ public class Tank extends KinematicEntity {
         if(left)
             rotateLeft();
     }
-
-	/**
-	 * Stops the movement of the tank.
-	 */
 	public void stop(){
 		setUp(false);
 		setDown(false);
 		setRight(false);
 		setLeft(false);
-	}
+		}
 	
-	/**
+	  /**
 	 * Tank creates and shoots a bullet
 	 * Bullet is currently generated in front of the tank, so it doesn't self-destruct
-	 * @param Tank tank
+	 *@param Tank tank
 	 */
     public Bullet shoot(){
         Bullet bullet = new Bullet();
         bullet.setVelocity(this.getFacing().normalize().multiply(5));
-        return bullet;
+		return bullet;
     }
-
-    /**
+	
+/**
      * Creates a bullet and shoots it in the indicated direction. 
      * @param xDir: the xdirection the bullet is intended to move.
      * @param yDir: the ydirection the bullet is intended to move.
