@@ -35,16 +35,16 @@ public class MenuGUI {
         stage.setScene(menuScene);
     }
 
-    public void createMenu(Stage stage, Scene gameScene){
+    private void createMenu(Stage stage, Scene gameScene){
         root.getChildren().add(createTitle());
         root.getChildren().add(createStartBtn(stage, gameScene));
-        root.getChildren().add(createMapBtn(stage, gameScene));
+        root.getChildren().add(createMapBtn());
         root.getChildren().add(createCredits());
         root.setBackground(createBackground());
 
     }
 
-    public Label createTitle() {
+    private Label createTitle() {
         Label titleLbl = new Label("Tank Royale");
         titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/fonts/ToetheLineless.ttf"), 50));
         titleLbl.setPrefWidth(400);
@@ -53,37 +53,25 @@ public class MenuGUI {
         return titleLbl;
     }
 
-    public Button createStartBtn(Stage stage, Scene gameScene) {
+    private Button createStartBtn(Stage stage, Scene gameScene) {
         Button startBtn = new Button("Start");
-        startBtn.setStyle("-fx-background-color: #991E1E; -fx-font-size: 2em; -fx-text-fill: #ffffff; -fx-border-color: #ff0000; -fx-border-width: 2px; ");
+        startBtn.setStyle("-fx-background-color: #991E1E; -fx-font-size: 2em; -fx-text-fill: #ffffff;" +
+                            " -fx-border-color: #ff0000; -fx-border-width: 2px; ");
         startBtn.setPrefWidth(200);
         startBtn.setPrefHeight(45);
         startBtn.setLayoutX(545 - startBtn.getWidth() - 90);
         startBtn.setLayoutY(225);
 
         DropShadow shadow = new DropShadow();
-        startBtn.addEventHandler(MouseEvent.MOUSE_ENTERED,
-                new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
-                        startBtn.setEffect(shadow);
-                    }
-                });
+        startBtn.addEventHandler(MouseEvent.MOUSE_ENTERED, e -> startBtn.setEffect(shadow));
         //Removing the shadow when the mouse cursor is off
-        startBtn.addEventHandler(MouseEvent.MOUSE_EXITED,
-                new EventHandler<MouseEvent>() {
-                    @Override public void handle(MouseEvent e) {
-                        startBtn.setEffect(null);
-                    }
-                });
-
-        startBtn.setOnAction(e -> {
-            stage.setScene(gameScene);
-        });
+        startBtn.addEventHandler(MouseEvent.MOUSE_EXITED, e -> startBtn.setEffect(null));
+        startBtn.setOnAction(e -> stage.setScene(gameScene));
 
         return startBtn;
     }
 
-    public Button createMapBtn(Stage stage, Scene gameScene) {
+    private Button createMapBtn() {
         Button selectMapBtn = new Button("Select Map");
         selectMapBtn.setPrefWidth(200);
         selectMapBtn.setLayoutX(545 - selectMapBtn.getWidth() - 90);
@@ -95,7 +83,7 @@ public class MenuGUI {
         return selectMapBtn;
     }
 
-    public Label createCredits() {
+    private Label createCredits() {
         Label credits = new Label("Created By: Anjola Adeboye, Harry Chen, Mei Hou, Josh Kim and Andre Staffa");
         credits.setFont(Font.loadFont(MenuGUI.class.getResourceAsStream("/resources/fonts/RiseofKingdom.ttf"), 15));
         credits.setTextFill(Color.WHITE);
@@ -104,7 +92,7 @@ public class MenuGUI {
         return credits;
     }
 
-    public Background createBackground() {
+    private Background createBackground() {
         BackgroundImage backdrop = new BackgroundImage(new Image(
                 MenuGUI.class.getResourceAsStream("/resources/images/tanks.jpg"),
                 1080,680,false,true),
