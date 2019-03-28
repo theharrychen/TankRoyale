@@ -44,6 +44,13 @@ public class Game {
 	public GameGUI getVisual(){
 		return visual;
 	}
+	
+	/**
+	 * @return boolean gameOver
+	 */
+	public boolean getGameOver(){
+		return this.gameOver;
+	}
 
 	/**
 	 * @return ArrayList<Tank> temp 
@@ -266,9 +273,9 @@ public class Game {
 	 */
 	private void addHorizontalWall(int x, int y, double width, double height){
 		if(y == (gamemap.getWidth() - 1)){
-			addWall(new Wall(width + 10.0,10.0,1), x * width, (MainGUI.HEIGHT-100));
+			addWall(new Wall(width,10.0,1), x * width, (MainGUI.HEIGHT-100));
 		}else{
-			addWall(new Wall(width + 10.0,10.0,1),x *width, y *height);
+			addWall(new Wall(width,10.0,1),x *width, y *height);
 		}
 	}
 	
@@ -278,9 +285,9 @@ public class Game {
 	 */
 	private void addVerticalWall(int x, int y, double width, double height){
 		if(x == (gamemap.getHeight()-1)){
-			addWall(new Wall(10.0,height + 10.0,0),MainGUI.WIDTH - 10,y * height);
+			addWall(new Wall(10.0,height,0),MainGUI.WIDTH - 10,y * height);
 		}else{
-			addWall(new Wall(10.0,height + 10.0 ,0),x * width,y * height);
+			addWall(new Wall(10.0,height,0),x * width,y * height);
 		}
 	}
 	

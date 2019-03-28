@@ -1,8 +1,17 @@
 package logic;
 
+/**
+ * This class is responsible for the some of the logic of the TextBased version 
+ * 
+ * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
+	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
+ * @version 1.0
+ * @since 2019-03-06
+ */
 import visuals.*;
 
 import java.util.Scanner;
+
 
 public class TextBased {
 
@@ -18,6 +27,9 @@ public class TextBased {
     private static Scanner selection = new Scanner(System.in);
     private static String userCommand = null; //User input
     
+	/**
+	 * Starts the text based version game
+	 */
     public static void start() {
         while(!gameStart)
             display.menu();
@@ -34,22 +46,62 @@ public class TextBased {
         onUpdate();
     }
 
+	/**
+	 * Sets the gameStart variable 
+	 *@param boolean start
+	 */
     public void setGameStart(boolean start){
         gameStart = start;
     }
-
+	
+	/**
+	 * @return boolean gameStart
+	 */
+	public boolean getGameStart(){
+        return this.gameStart;
+    }
+	
+	/**
+	 * Sets the MapChoice of the player
+	 *@param int choice
+	 */
     public void setMapChoice(int choice){
         mapChoice = choice;
     }
+	
+	/**
+	 * @return int mapChoice
+	 */
+	 public int getMapChoice(){
+        return this.mapChoice;
+    }
 
+
+	/**
+	 * Sets the endGame variable 
+	 *@param boolean end
+	 */
     public void setEndGame(boolean end){
         endGame = end;
     }
-
+	
+	/**
+	 * @return boolean endGame
+	 */
+	public boolean getEndGame(){
+        return this.endGame;
+    }
+	
+	/**
+	 * @return int turn
+	 */
     public int getTurn(){
         return turn;
     }
 
+	/**
+	 * Updates the text based version after each turn
+	 */
     public static void onUpdate() {
         while(tank1.isAlive() && tank2.isAlive()){
                 display.display(gameMap);
@@ -133,6 +185,9 @@ public class TextBased {
 		return number;
     }
     
+	/**
+	 * restarts the game
+	 */
     public void restart(){
         tank1.revive();
         tank2.revive();
