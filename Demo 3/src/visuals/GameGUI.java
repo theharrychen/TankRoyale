@@ -3,16 +3,31 @@ package visuals;
 import logic.*;
 import drivers.*;
 
+import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import javafx.scene.text.Font;
+import javafx.scene.Node;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 	
-public class GameGUI {
+public class GameGUI{
 	
 	private Pane root = new Pane();
 	private Button restartBtn = new Button("Restart");
+	private static int players = 0;
 	
+	/**
+	 *@return restartBtn
+	 */
 	public Button getRestartBtn(){
 		return this.restartBtn;
 	}
@@ -21,7 +36,7 @@ public class GameGUI {
 	 *Sets the prefered size of the Pane layout
 	 */
     public GameGUI(){
-		root.setPrefSize(MainGUI.WIDTH, MainGUI.HEIGHT);
+        root.setPrefSize(MainGUI.WIDTH, MainGUI.HEIGHT);
     }
 	
 	 /**
@@ -29,9 +44,12 @@ public class GameGUI {
 	 */
     public Pane getRoot(){
         return root;
-	}
+    }
 	
-	//
+	/**
+	 * Creates the display of the player tally
+	 *@param int p1score, int p2score
+	 */
 	public void displayTally(int p1score, int p2score){
 		Label p1tally = new Label(Integer.toString(p1score));
 		Label p2tally = new Label(Integer.toString(p2score));
@@ -50,21 +68,70 @@ public class GameGUI {
         root.getChildren().addAll(p1tally, p2tally,p1,p2);
 	}
 	
+	/**
+	 * Clears the display
+	 *@param int p1score, int p2score
+	 */
 	public void clear(){
-		root.getChildren().clear();
+		getRoot().getChildren().clear();
+		setPlayers(0);
 	}
 	
+	/**
+	 * Sets the number of players
+	 *@param int num
+	 */
+	public void setPlayers(int num){
+		this.players = num;
+	}
+	
+	/**
+	 * Adds a visual Game Entity
+	 * @param GameEntity entity
+	 */
 	public void addVisualGameEntity(GameEntity entity){
-		root.getChildren().add(entity.getView());
+		getRoot().getChildren().add(entity.getView());
 	}
 	
+	/**
+	 * Adds the image of the tank
+	 *player one is black, player two is red.
+	 * @param Tank tank
+	 */
+	public void addPlayerimage(Tank tank){
+		try {
+			Image img = null;
+			switch(this.players){
+				case 0:
+					img = new Image("/resources/images/blacktank.png");
+					players++;
+					break;
+				case 1:
+					img = new Image("/resources/images/redtank.png");
+					players++;
+					break;
+			}
+			Circle temptank = (Circle)tank.getView();
+			temptank.setFill(new ImagePattern(img));
+		}
+		catch (Exception e) {
+		    System.out.println("Was unable to load in tank image");
+		}
+	}
+	
+	/**
+	 * Creates the restart button
+	 */
 	public void createRestartButton(){
 		//Create restart button
         restartBtn.setTranslateX(MainGUI.WIDTH / 2.0 );
         restartBtn.setTranslateY((MainGUI.HEIGHT-100) / 2.0);
 	}
 		
-	// Announce winner of match
+	/**
+	 * Announces winner of the match
+	 * @Param int winner
+	 */
 	public void announceWinner(int winner){
 		Label winText = new Label("");
 		switch(winner){
@@ -82,16 +149,26 @@ public class GameGUI {
 		
 	}
 
-	// privacy leak
+	/**
+	 * Removes the visual representation of a bullet from the screen
+	 *@param Bullet bullet
+	 */
 	public void removeBullet(Bullet bullet){
 		root.getChildren().removeAll(bullet.getView());
 	}
 	
+	/**
+	 * Removes the visual representation of a tank from the screen
+	 *@param Bullet bullet
+	 */
 	public void removeTank(Tank tank){
 		root.getChildren().removeAll(tank.getView());
 	}
 	
-	// privacy leak
+	/**
+	 * Removes the visual representations of tanks and bullets from the screen
+	 *@param Bullet bullet
+	 */
 	public void removeAll(Bullet bullet,Tank tank){
 		root.getChildren().removeAll(bullet.getView(), tank.getView());
 	}	
