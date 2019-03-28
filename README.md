@@ -2,10 +2,10 @@
     Tank Royale is a multiplayer game in which players control tanks by moving and shooting.The objective of the 
     game is to eliminate all the other tanks and be the last tank standing. The current version is a GUI and
     Text based beta on the JavaFX platform and console respectively. Future versions will fix current known bugs
-    in the GUI version with ricochet and possibly implement an AI.
+    with ricochet  in the GUI version and possibly implement an AI.
  
-  ![image](https://user-images.githubusercontent.com/45050947/55134592-d22b4380-50ee-11e9-97d2-dfadde3547a2.png)
-  ![image](https://user-images.githubusercontent.com/45050947/55134607-db1c1500-50ee-11e9-9e63-d534234ddce6.png)
+  ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
+  ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
 # Prerequisites
 To play Tank Royale you must have a recent version of:
 
@@ -30,8 +30,8 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
   ## Compilation
     1. Open the terminal (command prompt) 
     
-    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Demo 3\src" in the command prompt to change    
-    directory. Example is below.     
+    2. Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale-master\Demo 3\src" in the command 
+    prompt to change directory. Example is below.     
    ![image](https://user-images.githubusercontent.com/45050947/55134671-13bbee80-50ef-11e9-8feb-4f72efdd2eb5.png)
    
     3. To compile, type in the command prompt: javac drivers/*.java
@@ -41,8 +41,11 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
     1. To run the GUI version of the game, type in the command prompt: Java drivers.MainGUI
        Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/55134699-28988200-50ef-11e9-940e-3151798ecb00.png)
+   
     2. To run the TextBased version of the game, type in the command prompt: Java drivers.MainTB
        Make sure to have compiled the game first.
+   ![image](https://user-images.githubusercontent.com/45050947/55135406-33541680-50f1-11e9-8f74-0264bf613963.png)
+
    
    ## Testing
 
@@ -73,14 +76,17 @@ https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
 
  # Versions
     -Current Version 2.0: GUI Beta
-    - Previous Version 1.5: GUI Beta
+    
+    
    ![image](https://user-images.githubusercontent.com/45050947/55134763-541b6c80-50ef-11e9-9b9d-a9a0338e3c0f.png)
    
-        • 	Tanks were visualized as randomly colored Rectangles
+    -Previous Version 1.5: GUI Beta
+        •   Tanks were visualized as randomly colored Rectangles
         •   Known Bugs (mostly fixed): Passing through walls, random self-implosion, and errors with ricochet
 
-   ![image](https://user-images.githubusercontent.com/45050947/54311996-6ba91000-459b-11e9-9d59-e9c1c916af54.png)
+   ![image](https://user-images.githubusercontent.com/45050947/55135503-731afe00-50f1-11e9-8bb5-422b64bf5ebe.png)
    
+    -Previous Version 1.0: Text-based format   
         •   Text-based and Turn-based
         •	Movement and shooting occurred in all four cardinal directions. 
         •	Commands were implemented by user input into the console using a set command list. 
