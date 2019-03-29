@@ -27,6 +27,10 @@ public class MenuGUI {
     private Pane root = new Pane();
     private Game game;
 
+    /**
+     * Starts up the Menu and initializes the Game
+     * @param stage
+     */
     public void start(Stage stage){
         game = new Game();
 
@@ -39,6 +43,11 @@ public class MenuGUI {
         stage.setScene(menuScene);
     }
 
+    /**
+     *
+     * @param stage
+     * @param gameScene
+     */
     private void createMenu(Stage stage, Scene gameScene){
         root.getChildren().add(createTitle());
         root.getChildren().add(createStartBtn(stage, gameScene));
@@ -47,6 +56,10 @@ public class MenuGUI {
         root.setBackground(createBackground());
     }
 
+    /**
+     * Creates the Game Logo Title with a font
+     * @return Label
+     */
     private Label createTitle() {
         Label titleLbl = new Label("Tank Royale");
         titleLbl.setFont(Font.loadFont(getClass().getResourceAsStream("/resources/fonts/ToetheLineless.ttf"), 50));
@@ -56,6 +69,12 @@ public class MenuGUI {
         return titleLbl;
     }
 
+    /**
+     * Creates the start game button that changes the scene to the gameScene when clicked
+     * @param stage
+     * @param gameScene
+     * @return Button
+     */
     private Button createStartBtn(Stage stage, Scene gameScene) {
         Button startBtn = new Button("Start");
         startBtn.setStyle("-fx-background-color: #991E1E; -fx-font-size: 2em; -fx-text-fill: #ffffff;" +
@@ -77,6 +96,13 @@ public class MenuGUI {
         return startBtn;
     }
 
+    /**
+     * Creates a toggleable Map button to choose the map for the game
+     * @param name
+     * @param mapFilePath
+     * @param game
+     * @return ToggleButton
+     */
     public static ToggleButton createMapBtn(String name, String mapFilePath, Game game) {
         ToggleButton selectMapBtn = new ToggleButton(name);
         selectMapBtn.setPrefWidth(100);
@@ -87,12 +113,18 @@ public class MenuGUI {
         return selectMapBtn;
     }
 
+    /**
+     * Creates a Horizontal container of map buttons
+     * @param game
+     * @return HBox
+     */
     public static HBox createMapBtnBox(Game game){
         int mapCount = 3;
         ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/gui/maze.txt", game);
         ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/gui/empty.txt", game);
         ToggleButton mapBtn3 = createMapBtn("Test", "/resources/gui/heart.txt", game);
 
+        //Only one map can be selected, hence the use of a toggling system
         final ToggleGroup group = new ToggleGroup();
         mapBtn1.setToggleGroup(group);
         mapBtn2.setToggleGroup(group);
@@ -105,7 +137,10 @@ public class MenuGUI {
         return hbox;
     }
 
-
+    /**
+     *  Creates the credits label
+     * @return Label
+     */
     private Label createCredits() {
         Label credits = new Label("Created By: Anjola Adeboye, Harry Chen, Mei Hou, Josh Kim and Andre Staffa");
         credits.setFont(Font.loadFont(MenuGUI.class.getResourceAsStream("/resources/fonts/RiseofKingdom.ttf"), 15));
@@ -115,6 +150,10 @@ public class MenuGUI {
         return credits;
     }
 
+    /**
+     * Loads in and creates the Main Menu Screen Background
+     * @return Background
+     */
     private Background createBackground() {
         BackgroundImage backdrop = new BackgroundImage(new Image(
                 MenuGUI.class.getResourceAsStream("/resources/images/tanks.jpg"),
