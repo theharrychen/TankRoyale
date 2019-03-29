@@ -1,6 +1,13 @@
 package visuals;
+/**
+ * This class is used to display the Main Menu Screen
+ *
+ * @author Group 7
+ * @version 1.0
+ * @since 2019-03-21
+ */
 
-import javafx.geometry.Pos;
+
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -14,8 +21,6 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import java.sql.SQLOutput;
 
 public class MenuGUI {
 
@@ -84,9 +89,9 @@ public class MenuGUI {
 
     public static HBox createMapBtnBox(Game game){
         int mapCount = 3;
-        ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/GUI/maze.txt", game);
-        ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/GUI/empty.txt", game);
-        ToggleButton mapBtn3 = createMapBtn("Test", "/resources/GUI/heart.txt", game);
+        ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/gui/maze.txt", game);
+        ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/gui/empty.txt", game);
+        ToggleButton mapBtn3 = createMapBtn("Test", "/resources/gui/heart.txt", game);
 
         final ToggleGroup group = new ToggleGroup();
         mapBtn1.setToggleGroup(group);
