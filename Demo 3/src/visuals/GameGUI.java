@@ -1,5 +1,14 @@
 package visuals;
 
+/**
+ * This class is used to display the GUI visual component
+ * 
+ * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
+	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
+ * @version 1.0
+ * @since 2019-02-19
+ */
+
 import logic.*;
 import drivers.*;
 
