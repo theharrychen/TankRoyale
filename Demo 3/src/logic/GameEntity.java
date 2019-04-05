@@ -28,26 +28,6 @@ public class GameEntity { // By default a physically "static" object
     private boolean alive = true; 
 	private int x, y; //Variables for text based version
 	
-	/**
-	private double width;
-	private double height;
-	
-	public void setWidth(double width){
-		this.width = width;
-	}
-	
-	public void setHeight(double height){
-		this.height = height;
-	}
-
-	public double getWidth(){
-		return this.width;
-	}
-	public double getHeight(){
-		return this.height;
-	}
-	*/
-	
     //Contructor: Creates a GameEntity for GameGUI version of the game
     public GameEntity(Node view) {
         setView(view);
