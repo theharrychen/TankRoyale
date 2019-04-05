@@ -27,7 +27,7 @@ public class Game {
 	private boolean roundOver = false;
 	private AnimationTimer timer;
 	private Map gamemap;
-	private String mapFilePath = "/resources/GUI/maze.txt";
+	private String mapFilePath = "/resources/gui/maze.txt";
 	private int p1score = 0;
 	private int p2score = 0;
 
@@ -36,7 +36,7 @@ public class Game {
     private static ArrayList<Tank> tanks = new ArrayList<>();
     private static ArrayList<Bullet> bullets = new ArrayList<>();
     private ArrayList<Wall> walls = new ArrayList<>();
-	
+
 	//Display variable
 	private static GameGUI visual = new GameGUI();
 	
