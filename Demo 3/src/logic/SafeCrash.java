@@ -28,22 +28,22 @@ public class SafeCrash {
 
 		JPanel panel = new JPanel();
 		//panel.setSize(new Dimension(0, 300));
-    //panel.setBackground(new Color(102, 205, 170));
+    		//panel.setBackground(new Color(102, 205, 170));
 		panel.setLayout(null);
 
 		//Prints that TankRoyale is unable to launch
 		JLabel label0 = new JLabel("Unable to launch TankRoyale!");
 		label0.setVerticalAlignment(SwingConstants.BOTTOM);
-    label0.setHorizontalAlignment(SwingConstants.CENTER);
-    label0.setFont(new Font("Palatino", Font.BOLD, 25));
+    		label0.setHorizontalAlignment(SwingConstants.CENTER);
+    		label0.setFont(new Font("Palatino", Font.BOLD, 25));
 		label0.setBounds(0, -32, 400, 96);
 		panel.add(label0);
 
 		//Prints error type to the GUI in red and bold font.
 		JLabel label1 = new JLabel(errorType);
 		label1.setVerticalAlignment(SwingConstants.BOTTOM);
-    label1.setHorizontalAlignment(SwingConstants.CENTER);
-    label1.setFont(new Font("Palatino", Font.BOLD, 25));
+    		label1.setHorizontalAlignment(SwingConstants.CENTER);
+    		label1.setFont(new Font("Palatino", Font.BOLD, 25));
 		label1.setForeground(Color.red);
 		label1.setBounds(0, 32, 400, 96);
 		panel.add(label1);
@@ -65,7 +65,7 @@ public class SafeCrash {
 		panel.add(label3);
 
 		//Prints further instructions for shutdown
-    JLabel label4 = new JLabel("Click 'Ok' to Confirm Quit.");
+    		JLabel label4 = new JLabel("Click 'Ok' to Confirm Quit.");
 		label4.setVerticalAlignment(SwingConstants.BOTTOM);
 		label4.setHorizontalAlignment(SwingConstants.CENTER);
 		label4.setFont(new Font("Palatino", Font.PLAIN, 25));
@@ -76,13 +76,13 @@ public class SafeCrash {
 
 		//Putting it all together and sending to the GUI window
 		JOptionPane pane = new JOptionPane("Error ShutDown Confirmation", 0);
-    int input = JOptionPane.showConfirmDialog(null, panel, "Error ShutDown Confirmation",
+    		int input = JOptionPane.showConfirmDialog(null, panel, "Error ShutDown Confirmation",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
 
 		// 0 = yes, 1 = no, 2 = cancel for the YES_NO_CANCEL OPTION
-    if (input == 0) {
-      System.exit(0);
-    }
+    		if (input == 0) {
+      		System.exit(0);
+    		}
 
 	}
 
