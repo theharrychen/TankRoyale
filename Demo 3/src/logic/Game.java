@@ -218,7 +218,7 @@ public class Game {
      * Checks if any player reached the score limit. If score limit is reached game will end.
      */
     public void checkGameOver() {
-        if (p1score == 9 || p2score == 9) //First player to reach 10 points wins
+        if (p1score == MenuGUI.getEndRound() || p2score == MenuGUI.getEndRound()) //First player to reach the specified points wins
             gameOver = true;
     }
 

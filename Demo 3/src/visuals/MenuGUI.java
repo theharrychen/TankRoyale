@@ -15,7 +15,6 @@ import javafx.scene.layout.*;
 import logic.*;
 import drivers.*;
 import handlers.*;
-
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -26,6 +25,7 @@ public class MenuGUI {
 
     private Pane root = new Pane();
     private Game game;
+    private static int endRound = 0;
 
     /**
      * Starts up the Menu and initializes the Game
@@ -42,6 +42,7 @@ public class MenuGUI {
         createMenu(stage, gameScene);
         Scene menuScene = new Scene(root, MainGUI.WIDTH, MainGUI.HEIGHT);
         stage.setScene(menuScene);
+        
     }
 
     /**
@@ -53,6 +54,9 @@ public class MenuGUI {
         root.getChildren().add(createStartBtn(stage, gameScene));
         root.getChildren().add(createMapBtnBox(game));
         root.getChildren().add(createCredits());
+        root.getChildren().add(createRoundWinBtn("Up to 5", 392, 350, stage, gameScene));
+        root.getChildren().add(createRoundWinBtn("Up to 10", 492, 350, stage, gameScene));
+        root.getChildren().add(createRoundWinBtn("Up to 20", 592, 350, stage, gameScene));
         root.setBackground(createBackground());
     }
 
@@ -140,6 +144,52 @@ public class MenuGUI {
         hbox.setLayoutY(MainGUI.HEIGHT / 2.0 + 5);
         return hbox;
     }
+
+    
+    /**
+     * Creates a button for the user to decide what the score should go up to
+     *
+     * @param title
+     * @param x
+     * @param y
+     * @param stage
+     * @param scene
+     * @return Button
+     */
+    public static Button createRoundWinBtn(String title, int x, int y, Stage stage, Scene scene)
+    {
+        Button selectRoundBtn = new Button(title);
+        selectRoundBtn.setLayoutX(x);
+        selectRoundBtn.setLayoutY(y);
+        selectRoundBtn.setPrefWidth(100);
+        
+        selectRoundBtn.setOnAction(e -> {
+            switch(title)
+            {
+                case "Up to 5":
+                    endRound = 4;
+                    break;
+                case "Up to 10":
+                    endRound = 9;
+                    break;
+                case "Up to 20":
+                    endRound = 19;
+                    break;
+                default:
+                    endRound = 9;
+                    break;
+
+            }
+        });
+        
+        return selectRoundBtn;
+    }
+
+    public static int getEndRound()
+    {
+        return endRound;
+    }
+
 
     /**
      * Creates the credits label
