@@ -7,10 +7,10 @@ package tests;
  * @version 1.0
  * @since 2019-02-28
  */
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-
 
 
 @RunWith(Suite.class)
