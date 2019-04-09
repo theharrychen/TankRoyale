@@ -3,41 +3,41 @@ package handlers;
 
 /**
  * This class handles key released events
- * 
- * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
-	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
+ *
+ * @author Group 7
  * @version 1.0
  * @since 2019-03-20
  */
+
 import logic.*;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
+public class ReleaseHandler extends Game implements EventHandler<KeyEvent> {
 
     /**
      * Player controls for one player
      * @param key KeyEvent key
      */
-    public void onePlayer(KeyCode key){
+    public void onePlayer(KeyCode key) {
         switch (key) {
-			case UP:
-				getTanks().get(0).setUp(false);
-				break;
-			case DOWN:
-				getTanks().get(0).setDown(false);
-				break;
-			case LEFT:
-				getTanks().get(0).setLeft(false);
-				break;
-			case RIGHT:
-				getTanks().get(0).setRight(false);
-				break;
-			case ENTER:
+            case UP:
+                getTanks().get(0).setUp(false);
+                break;
+            case DOWN:
+                getTanks().get(0).setDown(false);
+                break;
+            case LEFT:
+                getTanks().get(0).setLeft(false);
+                break;
+            case RIGHT:
+                getTanks().get(0).setRight(false);
+                break;
+            case ENTER:
                 getTanks().get(0).setShooting(false);
-				break;
+                break;
         }
     }
 
@@ -45,36 +45,36 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
      * Player controls for two players
      * @param key KeyEvent key
      */
-    public void twoPlayer(KeyCode key){
+    public void twoPlayer(KeyCode key) {
         onePlayer(key);
-        if(getTanks().size() >= 2)
-        switch (key) {
-            case W:
-                getTanks().get(1).setUp(false);
-                break;
-            case S:
-                getTanks().get(1).setDown(false);
-                break;
-            case A:
-                getTanks().get(1).setLeft(false);
-                break;
-            case D:
-                getTanks().get(1).setRight(false);
-                break;
-            case Q:
-                getTanks().get(1).setShooting(false);
-                break;
-        }
+        if (getTanks().size() >= 2)
+            switch (key) {
+                case W:
+                    getTanks().get(1).setUp(false);
+                    break;
+                case S:
+                    getTanks().get(1).setDown(false);
+                    break;
+                case A:
+                    getTanks().get(1).setLeft(false);
+                    break;
+                case D:
+                    getTanks().get(1).setRight(false);
+                    break;
+                case Q:
+                    getTanks().get(1).setShooting(false);
+                    break;
+            }
     }
 
     /**
      * Player controls for three players
      * @param key KeyEvent key
      */
-    public void threePlayer(KeyCode key){
+    public void threePlayer(KeyCode key) {
         twoPlayer(key);
 
-        switch (key){
+        switch (key) {
             case Y:
                 getTanks().get(2).setUp(false);
                 break;
@@ -96,13 +96,13 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent>{
     /**
      * Handles player controls based on number of players
      */
-    public void handle(KeyEvent key){
+    public void handle(KeyEvent key) {
         int players = getPlayerCount();
-        if(players == 1)  
+        if (players == 1)
             onePlayer(key.getCode());
-        else if(players == 2)
+        else if (players == 2)
             twoPlayer(key.getCode());
-        else if(players == 3)
-            threePlayer(key.getCode());   
+        else if (players == 3)
+            threePlayer(key.getCode());
     }
 }

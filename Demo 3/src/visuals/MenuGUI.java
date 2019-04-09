@@ -29,9 +29,10 @@ public class MenuGUI {
 
     /**
      * Starts up the Menu and initializes the Game
+     *
      * @param stage
      */
-    public void start(Stage stage){
+    public void start(Stage stage) {
         game = new Game();
 
         Scene gameScene = new Scene(game.getVisual().getRoot(), MainGUI.WIDTH, MainGUI.HEIGHT);
@@ -44,11 +45,10 @@ public class MenuGUI {
     }
 
     /**
-     *
      * @param stage
      * @param gameScene
      */
-    private void createMenu(Stage stage, Scene gameScene){
+    private void createMenu(Stage stage, Scene gameScene) {
         root.getChildren().add(createTitle());
         root.getChildren().add(createStartBtn(stage, gameScene));
         root.getChildren().add(createMapBtnBox(game));
@@ -58,6 +58,7 @@ public class MenuGUI {
 
     /**
      * Creates the Game Logo Title with a font
+     *
      * @return Label
      */
     private Label createTitle() {
@@ -71,6 +72,7 @@ public class MenuGUI {
 
     /**
      * Creates the start game button that changes the scene to the gameScene when clicked
+     *
      * @param stage
      * @param gameScene
      * @return Button
@@ -78,10 +80,10 @@ public class MenuGUI {
     private Button createStartBtn(Stage stage, Scene gameScene) {
         Button startBtn = new Button("Start");
         startBtn.setStyle("-fx-background-color: #991E1E; -fx-font-size: 2em; -fx-text-fill: #ffffff;" +
-                            " -fx-border-color: #ff0000; -fx-border-width: 2px; ");
+                " -fx-border-color: #ff0000; -fx-border-width: 2px; ");
         startBtn.setPrefWidth(200);
         startBtn.setPrefHeight(45);
-        startBtn.setLayoutX(MainGUI.WIDTH / 2.0 - startBtn.getPrefWidth()/2.0);
+        startBtn.setLayoutX(MainGUI.WIDTH / 2.0 - startBtn.getPrefWidth() / 2.0);
         startBtn.setLayoutY(225);
 
         DropShadow shadow = new DropShadow();
@@ -98,6 +100,7 @@ public class MenuGUI {
 
     /**
      * Creates a toggleable Map button to choose the map for the game
+     *
      * @param name
      * @param mapFilePath
      * @param game
@@ -115,10 +118,11 @@ public class MenuGUI {
 
     /**
      * Creates a Horizontal container of map buttons
+     *
      * @param game
      * @return HBox
      */
-    public static HBox createMapBtnBox(Game game){
+    public static HBox createMapBtnBox(Game game) {
         int mapCount = 3;
         ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/gui/maze.txt", game);
         ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/gui/empty.txt", game);
@@ -132,13 +136,14 @@ public class MenuGUI {
         mapBtn1.setSelected(true);
 
         HBox hbox = new HBox(mapBtn1, mapBtn2, mapBtn3);
-        hbox.setLayoutX(MainGUI.WIDTH / 2.0 - mapBtn1.getPrefWidth()*mapCount / 2.0);
-        hbox.setLayoutY(MainGUI.HEIGHT/2.0 + 5);
+        hbox.setLayoutX(MainGUI.WIDTH / 2.0 - mapBtn1.getPrefWidth() * mapCount / 2.0);
+        hbox.setLayoutY(MainGUI.HEIGHT / 2.0 + 5);
         return hbox;
     }
 
     /**
-     *  Creates the credits label
+     * Creates the credits label
+     *
      * @return Label
      */
     private Label createCredits() {
@@ -152,12 +157,13 @@ public class MenuGUI {
 
     /**
      * Loads in and creates the Main Menu Screen Background
+     *
      * @return Background
      */
     private Background createBackground() {
         BackgroundImage backdrop = new BackgroundImage(new Image(
                 MenuGUI.class.getResourceAsStream("/resources/images/tanks.jpg"),
-                1080,680,false,true),
+                1080, 680, false, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         return new Background(backdrop);

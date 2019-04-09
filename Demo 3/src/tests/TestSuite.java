@@ -1,4 +1,4 @@
-package logic;
+package tests;
 
 /**
  * This class is used to perform all the JUnit tests in Tank Royale

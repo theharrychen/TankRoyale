@@ -4,7 +4,7 @@ import logic.*;
 
 public class MainTB {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         TextBased.start();
     }
 }
