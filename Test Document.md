@@ -15,11 +15,16 @@ Simple checks can be done to ensure the game is working as intended.
   ## GUI
   1. When running the game ensure the first screen is the main menu screen.
   2. Check to see if the selection buttons are working and the game only starts once the start button is pressed.
-  3. Check to see if a player is hit with a bullet the point is awarded to the other player.
-  4. Check to see that once the selected point limit is reached the game ends.
-  5. Check to see that once the game ends a end game screen is shown declaring the correct winner and prompts the user to restart or return      to the main menu.
-  6. Check to see if the correct action occurs according to the selection.
+  3. Check all the controls to ensure each one is working as intended.
+  4. Check to see if a player is hit with a bullet the point is awarded to the other player.
+  5. Check to see that once the selected point limit is reached the game ends.
+  6. Check to see that once the game ends a end game screen is shown declaring the correct winner and prompts the user to restart or return      to the main menu.
+  7. Check to see if the correct action occurs according to the selection.
   
-# Manual Tests
+# Manual Testing
 This section will explain how to test how the program handles certain bugs that may appear while running or attempting to run the program.
 When errors occur, such as a corrupted text file, a pop-up window will appear with the appropriate error message and the program will terminate. 
+
+# Automated Testing
+Automated tests are run using JUnit. To run these automated tests,
+  1. Open the correct directory in command prompt (See readme file)
