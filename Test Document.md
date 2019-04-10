@@ -2,7 +2,7 @@
 Before running any JUnit tests please go through these simple in-game tests to ensure the game was downloaded properly and the correct version is running. 
 
 # In-Game Testing
-Simple checks can be done to ensure the game is working as intended.
+Simple tests to check to see if all the game mechanics are working as intended.
 
   ## Text Based
   1. When the game is run ensure that a menu screen is the first to appear.
