@@ -1,6 +1,8 @@
 # Tank Royale Testing Instructions
 Before running any JUnit tests please go through these simple in-game tests to ensure the game was downloaded properly and the correct version is running. 
 
+(Instructions to compile and run the game as well as game controls can be found in the README document)
+
 # In-Game Testing
 Simple tests to check to see if all the game mechanics are working as intended.
 
@@ -18,13 +20,25 @@ Simple tests to check to see if all the game mechanics are working as intended.
   3. Check all the controls to ensure each one is working as intended.
   4. Check to see if a player is hit with a bullet the point is awarded to the other player.
   5. Check to see that once the selected point limit is reached the game ends.
-  6. Check to see that once the game ends a end game screen is shown declaring the correct winner and prompts the user to restart or return      to the main menu.
+  6. Check to see that once the game ends a end game screen is shown declaring the correct winner and prompts the user to restart or return to the main menu.
   7. Check to see if the correct action occurs according to the selection.
   
 # Manual Testing
 This section will explain how to test how the program handles certain bugs that may appear while running or attempting to run the program.
 When errors occur, such as a corrupted text file, a pop-up window will appear with the appropriate error message and the program will terminate. 
 
+  ## Testing Safe Crashes
+  1. Testing invalid text file name: navigate to the src folder within demo 3. Once there navigate to resources then gui. Now, in gui change the names of one of the maps to anything you want. Then recompile and run the game and in the menu screen select the map that you changed the name of. Next, press the start button and check to see if you get a pop-up window appears. When the pop-up window appears press OK and the program should terminate.
+  
+  2. Testing corrupted text file: navigate to the src folder within demo 3. Once there navigate to resources then gui. Now, in gui open any one of the text files and add or change a characters to an invalid character, i.e, any letter in the alphabet. Then recompile and run the game and once in the menu screen select the corrupted map file. Next, press the start button and watch for a pop-up window. When the pop-up window appears press OK and the program should terminate.
+  
+  3. Testing the textbased game: navifate to the src folder within demo 3. Once there navigate to resources then textbased. Now, with textbased open either corrupt or change the name of one of the text files in the folder. Then recompile and run the textbased version of the game by typing java drivers.MainTB into the console in the correct directory. Next, in the menu screen select the map that was changed and a message should be printed and the program should terminate.
+
 # Automated Testing
 Automated tests are run using JUnit. To run these automated tests,
-  1. Open the correct directory in command prompt (See readme file)
+  1. Open the correct directory in command prompt by typing cd [filepath to unzipped location]\TankRoyale-master\TankRoyale
+        master\Demo 3\src.
+  2. Check to ensure the hamcrest core and junit jar files are within the src folder.
+  3. Compile the test java files by typing "javac -cp .;junit-4.12.jar;hamcrest-core-1.3.jar drivers/*.java handlers/*.java logic/*.java visuals/*.java tests/*.java" into the console.
+  4. To run the tests type "java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore tests.TestSuite" into the console.
+  5. After the tests are run a message should be printed onto the console confirming all the tests have passed.
