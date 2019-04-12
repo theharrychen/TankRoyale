@@ -15,6 +15,9 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
 •	JavaFX installed on your computer. If not, follow this link:  
 https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
 
+•	JUnit installed on your computer. If not, follow this link:  
+https://www.vogella.com/tutorials/JUnit/article.html
+
 
 # Getting Started 
   These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
