@@ -1,6 +1,5 @@
 package logic;
 
-
 /**
  * This game class handles map generation, shoot,and detect collisions.
  *
@@ -19,7 +18,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Point2D;
 
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
@@ -74,10 +72,9 @@ public class Game {
      * Starts the game
      */
     public void start() {
-        if (MenuGUI.isColoured()){
+        if (MenuGUI.isColoured()) {
             createColourMap();
-        }
-        else {
+        } else {
             try {
                 createMap();
             } catch (Exception e) {
@@ -85,6 +82,9 @@ public class Game {
                 System.out.println(e.getMessage());
             }
         }
+
+        //Super important for detection collisions
+        walls.forEach(wall -> wall.updateCorners());
 
         visual.displayTally(p1score, p2score);
         //Adds two player tanks to the map
@@ -111,13 +111,13 @@ public class Game {
      */
     public void onUpdate() {
         if (MenuGUI.isSickoMode()) {
-            for (Wall wall : walls ) {
+            for (Wall wall : walls) {
                 Rectangle r = (Rectangle) wall.getView();
-                r.setFill(Color.rgb(rng(0, 255), rng(0,255), rng(0, 255)));
+                r.setFill(Color.rgb(rng(0, 255), rng(0, 255), rng(0, 255)));
             }
             for (Bullet bullet : bullets) {
                 Circle c = (Circle) bullet.getView();
-                c.setFill(Color.rgb(rng(0, 255), rng(0,255), rng(0, 255)));
+                c.setFill(Color.rgb(rng(0, 255), rng(0, 255), rng(0, 255)));
             }
         }
 
@@ -285,7 +285,6 @@ public class Game {
      */
     private void addWall(Wall wall, double x, double y) {
         walls.add(wall);
-        wall.updateCorners(); // Updates stored corner positions of the wall
         addGameEntity(wall, x, y);
     }
 
@@ -347,8 +346,7 @@ public class Game {
             }
         }
     }*/
-
-    public void createMap () throws FileNotFoundException {
+    public void createMap() throws FileNotFoundException {
         gameMap = new Map(MenuGUI.getMapFilePath());
         char[][] charMap = gameMap.getCharMap();
         buildHorizWalls(charMap);
@@ -371,7 +369,7 @@ public class Game {
             for (; x < endX; x++) {
                 // Counting char walls
                 if (charMap[y][x] == '#') {
-                    if(horizCount == 0){
+                    if (horizCount == 0) {
                         startX = x;
                     }
                     horizCount++;
@@ -382,14 +380,13 @@ public class Game {
                     Wall temp = new Wall((double) horizCount / charMap[y].length * MainGUI.WIDTH, 10);
 
                     // % of char wall dimension * GUI Dimension
-                    double guiX = (double)startX / charMap[y].length * MainGUI.WIDTH;
-                    double guiY = (double)y / charMap.length * (MainGUI.HEIGHT-100);
+                    double guiX = (double) startX / charMap[y].length * MainGUI.WIDTH;
+                    double guiY = (double) y / charMap.length * (MainGUI.HEIGHT - 100);
 
-                    if (y == charMap.length -1 ) { //Displacement for the bottom horizontal wall
-                        double displacement = 1.0 / charMap.length * (MainGUI.HEIGHT-100);
+                    if (y == charMap.length - 1) { //Displacement for the bottom horizontal wall
+                        double displacement = 1.0 / charMap.length * (MainGUI.HEIGHT - 100);
                         addWall(temp, guiX, guiY + displacement);
-                    }
-                    else {
+                    } else {
                         addWall(temp, guiX, guiY);
                     }
 
@@ -420,30 +417,28 @@ public class Game {
                     }
                     vertCount++;
                 }
-               // System.out.println(charMap[y][x] + " vertcount: " + vertCount + " starty " + startY);
+                // System.out.println(charMap[y][x] + " vertcount: " + vertCount + " starty " + startY);
 
                 // Build and position a new wall when we reach the end of a char wall
                 if (vertCount > 0 && (charMap[y][x] == ' ' || y == endY - 1)) {
                     //Wall temp = new Wall (10, ((double) vertCount / charMap.length * MainGUI.HEIGHT));
                     Wall temp;
                     if (x == charMap[0].length - 1 || x == 0) {
-                        temp = new Wall (10, (double) vertCount / charMap.length * MainGUI.HEIGHT);
-                    }
-                    else {
-                        temp = new Wall (10, ((double) vertCount / charMap.length * MainGUI.HEIGHT)*1.5);
+                        temp = new Wall(10, (double) vertCount / charMap.length * MainGUI.HEIGHT);
+                    } else {
+                        temp = new Wall(10, ((double) vertCount / charMap.length * MainGUI.HEIGHT) * 1.5);
                     }
 
                     // % of char wall dimension * GUI Dimension
-                    double guiX = (double)x / charMap[0].length * MainGUI.WIDTH;
-                    double guiY = (double)startY / charMap.length * (MainGUI.HEIGHT - 100) - 1.0 / charMap.length * (MainGUI.HEIGHT-100);
+                    double guiX = (double) x / charMap[0].length * MainGUI.WIDTH;
+                    double guiY = (double) startY / charMap.length * (MainGUI.HEIGHT - 100) - 1.0 / charMap.length * (MainGUI.HEIGHT - 100);
                     //double guiY = (double)startY / charMap.length * (MainGUI.HEIGHT - 100);
                     //System.out.println("guiX " + guiX + " guiy " + guiY);
 
                     if (x == charMap[0].length - 1) {
                         double displacement = 1.0 / charMap[0].length * MainGUI.WIDTH - 10; // -10
                         addWall(temp, guiX + displacement, guiY);
-                    }
-                    else {
+                    } else {
                         addWall(temp, guiX, guiY + 10);
                     }
 
@@ -544,20 +539,20 @@ public class Game {
             colourRichochet(wall, bullet);
         }
 
-        if (bullet.getView().getTranslateX() < wall.getX1() + 5.0) {
+        if (bullet.getView().getTranslateX() < wall.getX1() + 2.0) {
             bullet.setVelocity(new Point2D(-1 * bullet.getVelocity().getX(), bullet.getVelocity().getY()));
             //System.out.println("LEFT");
         }
-        if (bullet.getView().getTranslateX() > wall.getX2() - 5.0) {
+        if (bullet.getView().getTranslateX() > wall.getX2() - 2.0) {
             bullet.setVelocity(new Point2D(-1 * bullet.getVelocity().getX(), bullet.getVelocity().getY()));
             //System.out.println("RIGHT");
         }
 
-        if (bullet.getView().getTranslateY() < wall.getY1() + 5.0) {
+        if (bullet.getView().getTranslateY() < wall.getY1() + 2.0) {
             bullet.setVelocity(new Point2D(bullet.getVelocity().getX(), -1 * bullet.getVelocity().getY()));
             //System.out.println("UP");
         }
-        if (bullet.getView().getTranslateY() > wall.getY2() - 5.0) {
+        if (bullet.getView().getTranslateY() > wall.getY2() - 2.0) {
             bullet.setVelocity(new Point2D(bullet.getVelocity().getX(), -1 * bullet.getVelocity().getY()));
             //System.out.println("DOWN");
         }
@@ -576,6 +571,9 @@ public class Game {
         r.setFill(Color.rgb(rng(0, 255), rng(0, 255), rng(0, 255)));
     }
 
+    /**
+     * creates random walls
+     */
     public void createColourMap() {
         Wall b1 = new Wall(1080, 10);
         Wall b2 = new Wall(1080, 10);
@@ -597,8 +595,7 @@ public class Game {
             } else {
                 temp = new Wall(150, 10);
             }
-            walls.add(temp);
-            addGameEntity(temp, rng(20, 1000), rng(20, 450));
+            addWall(temp, rng(20, 1000), rng(20, 450));
         }
     }
 
