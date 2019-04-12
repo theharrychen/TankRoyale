@@ -49,7 +49,10 @@ public class Game {
      * @return ArrayList<Tank> temp
      */
     public ArrayList<Tank> getTanks() {
-        return tanks;
+        ArrayList<Tank> temp = new ArrayList<>();
+        for(Tank tank : tanks)
+            temp.add(tank);
+        return temp;
     }
 
     /**
@@ -78,7 +81,7 @@ public class Game {
             try {
                 createMap();
             } catch (Exception e) {
-                System.out.println("Was unable to load in the map");
+                new SafeCrash("Error unable to load map", "Map file not found" , "Game");
                 System.out.println(e.getMessage());
             }
         }

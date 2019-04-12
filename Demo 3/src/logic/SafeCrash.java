@@ -25,7 +25,7 @@ public class SafeCrash {
      * @param location:     location of the error in the format: Package, Class, Method.
      **/
 
-    public static void shutDown(String errorType, String errorMessage, String location) {
+    public SafeCrash(String errorType, String errorMessage, String location) {
         JPanel panel = new JPanel();
         //panel.setSize(new Dimension(0, 300));
         //panel.setBackground(new Color(102, 205, 170));

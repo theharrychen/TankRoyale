@@ -36,7 +36,7 @@ public class TextBased {
         try {
             createMap();
         } catch (Exception e) {
-            System.out.println("Was unable to load in the map");
+            new SafeCrash("Error unable to load map", "Map file not found" , "TextBased");
         }
 
         display.spawn(tank1, gameMap);
