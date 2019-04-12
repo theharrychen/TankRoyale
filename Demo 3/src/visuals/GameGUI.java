@@ -19,6 +19,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.shape.Circle;
 
+import static visuals.MenuGUI.createMapBtnBox;
+import static visuals.MenuGUI.createWinBtnBox;
+import static visuals.MenuGUI.createModeBox;
+
 public class GameGUI {
 
     private Pane root = new Pane();
@@ -128,7 +132,7 @@ public class GameGUI {
      */
     public void createRestartButton() {
         //Create restart button
-        restartBtn.setTranslateX(MainGUI.WIDTH / 2.0);
+        restartBtn.setTranslateX(MainGUI.WIDTH / 2.0 - 45);
         restartBtn.setTranslateY((MainGUI.HEIGHT - 100) / 2.0);
     }
 
@@ -139,6 +143,7 @@ public class GameGUI {
      */
     public void announceWinner(int winner) {
         Label winText = new Label("");
+        winText.setFont(new Font("Arial", 40));
         switch (winner) {
             case 0:
                 winText.setText("IT WAS A TIE");
@@ -149,10 +154,13 @@ public class GameGUI {
                 winText.setText("PLAYER " + winner + " WON!");
                 break;
         }
-        winText.setTranslateX(MainGUI.WIDTH / 2.0 - 10);
-        winText.setTranslateY((MainGUI.HEIGHT - 100) / 2.0 - 20);
+        winText.setTranslateX(MainGUI.WIDTH / 2.0 - 150);
+        winText.setTranslateY((MainGUI.HEIGHT - 100) / 2.0 - 50);
         root.getChildren().addAll(restartBtn, winText);
+        root.getChildren().add(createMapBtnBox());
+        root.getChildren().add(createWinBtnBox());
 
+        root.getChildren().add(createModeBox());
     }
 
     /**

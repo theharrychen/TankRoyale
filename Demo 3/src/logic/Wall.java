@@ -11,34 +11,55 @@ import drivers.*;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import visuals.MenuGUI;
+
+import static logic.Game.rng;
 
 public class Wall extends GameEntity {
-    private double wallwidth = 0;
-    private double wallheight = 0;
-    private int alignment = 0;
+    private double width = 0;
+    private double height = 0;
+    // These coordinates are used to locate the corners of the rectangle
+    private double x1 = 0;
+    private double x2 = 0;
+    private double y1 = 0;
+    private double y2 = 0;
 
     /**
      * Checks the parameters given to the super constructor to ensure valid walls are created
      *
-     * @Param double width, double height, int alignment
+     * @Param double width, double height
      */
-    public static Rectangle checkParameters(double width, double height, int alignment) {
-        if (width <= MainGUI.WIDTH && height <= MainGUI.HEIGHT - 100 && (alignment == 0 || alignment == 1))
-            return new Rectangle(width, height, Color.gray(0.5));
+    public static Rectangle checkParameters(double width, double height) {
+        if (width <= MainGUI.WIDTH && height <= MainGUI.HEIGHT - 100){
+            if (MenuGUI.isColoured()) {
+                return new Rectangle(width, height, Color.rgb(rng(0, 255), rng(0,255), rng(0, 255)));
+            }
+            else {
+                return new Rectangle(width, height, Color.gray(0.5));
+            }
+        }
         return new Rectangle(0, 0, Color.gray(0.5));
     }
 
     /**
-     * @Param double width, double height, int alignment
-     * vertical wall alignment is 0, horizontal wall alignment is 1
+     * @Param double width, double height
      */
-    public Wall(double width, double height, int alignment) {
-        super(checkParameters(width, height, alignment));
-        if (width <= MainGUI.WIDTH && height <= MainGUI.HEIGHT - 100 && (alignment == 0 || alignment == 1)) {
-            setWallWidth(width);
-            setWallHeight(height);
-            setWallAlignment(alignment);
+    public Wall(double width, double height) {
+        super(checkParameters(width, height));
+        if (width <= MainGUI.WIDTH && height <= MainGUI.HEIGHT - 100) {
+            setWidth(width);
+            setHeight(height);
         }
+    }
+
+    /**
+     * Used to update the corner coordinates when the wall is translated
+     */
+    public void updateCorners() {
+        setX1(getView().getTranslateX());
+        setX2(getView().getTranslateX() + width);
+        setY1(getView().getTranslateY());
+        setY2(getView().getTranslateY() + height);
     }
 
     /**
@@ -46,9 +67,9 @@ public class Wall extends GameEntity {
      *
      * @param double width which must be less than the width of the game screen
      */
-    public void setWallWidth(double width) {
+    public void setWidth(double width) {
         if (width <= MainGUI.WIDTH) {
-            this.wallwidth = width;
+            this.width = width;
         }
     }
 
@@ -57,43 +78,80 @@ public class Wall extends GameEntity {
      *
      * @param double height which must be 100 pixels less than the height of the game screen
      */
-    public void setWallHeight(double height) {
+    public void setHeight(double height) {
         if (height <= MainGUI.HEIGHT - 100) {
-            this.wallheight = height;
-        }
-    }
-
-    /**
-     * Sets the wall aligment
-     *
-     * @param double alignment which must be 0 or 1
-     *               0 represents vertical wall, 1 represents horizontal wall
-     */
-    public void setWallAlignment(int alignment) {
-        if (alignment == 0 || alignment == 1) {
-            this.alignment = alignment;
+            this.height = height;
         }
     }
 
     /**
      * @return width
      */
-    public double getWallWidth() {
-        return wallwidth;
+    public double getWidth() {
+        return width;
     }
 
     /**
      * @return height
      */
-    public double getWallHeight() {
-        return wallheight;
+    public double getHeight() {
+        return height;
     }
 
     /**
-     * @return alignment
+     * @return x1
      */
-    public int getWallAlignment() {
-        return alignment;
+    public double getX1() {
+        return x1;
+    }
+
+    /**
+     * @param x1
+     */
+    public void setX1(double x1) {
+        this.x1 = x1;
+    }
+
+    /**
+     * @return x2
+     */
+    public double getX2() {
+        return x2;
+    }
+
+    /**
+     * @param x2
+     */
+    public void setX2(double x2) {
+        this.x2 = x2;
+    }
+
+    /**
+     * @return y1
+     */
+    public double getY1() {
+        return y1;
+    }
+
+    /**
+     * @param y1
+     */
+    public void setY1(double y1) {
+        this.y1 = y1;
+    }
+
+    /**
+     * @return y2
+     */
+    public double getY2() {
+        return y2;
+    }
+
+    /**
+     * @param y2
+     */
+    public void setY2(double y2) {
+        this.y2 = y2;
     }
 
 }

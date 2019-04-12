@@ -21,11 +21,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ *
+ */
 public class MenuGUI {
 
     private Pane root = new Pane();
     private Game game;
-    private static int endRound = 0;
+    private static int endRound = 4;
+    private static String mapFilePath = "/resources/gui/maze.txt";
+    private static boolean sickoMode = false;
+
+    private static boolean coloured = false;
 
     /**
      * Starts up the Menu and initializes the Game
@@ -52,12 +59,12 @@ public class MenuGUI {
     private void createMenu(Stage stage, Scene gameScene) {
         root.getChildren().add(createTitle());
         root.getChildren().add(createStartBtn(stage, gameScene));
-        root.getChildren().add(createMapBtnBox(game));
+        root.getChildren().add(createMapBtnBox());
+        root.getChildren().add(createWinBtnBox());
         root.getChildren().add(createCredits());
-        root.getChildren().add(createRoundWinBtn("Up to 5", 392, 350, stage, gameScene));
-        root.getChildren().add(createRoundWinBtn("Up to 10", 492, 350, stage, gameScene));
-        root.getChildren().add(createRoundWinBtn("Up to 20", 592, 350, stage, gameScene));
-        root.setBackground(createBackground());
+        root.setBackground(createBackground("/resources/images/tanks.jpg"));
+
+        root.getChildren().add(createModeBox());
     }
 
     /**
@@ -110,12 +117,13 @@ public class MenuGUI {
      * @param game
      * @return ToggleButton
      */
-    public static ToggleButton createMapBtn(String name, String mapFilePath, Game game) {
+    public static ToggleButton createMapBtn(String name, String mapFilePath) {
         ToggleButton selectMapBtn = new ToggleButton(name);
         selectMapBtn.setPrefWidth(100);
 
         selectMapBtn.setOnAction(e -> {
-            game.setMapFilePath(mapFilePath);
+            setMapFilePath(mapFilePath);
+            setColoured(false);
         });
         return selectMapBtn;
     }
@@ -126,65 +134,94 @@ public class MenuGUI {
      * @param game
      * @return HBox
      */
-    public static HBox createMapBtnBox(Game game) {
-        int mapCount = 3;
-        ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/gui/maze.txt", game);
-        ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/gui/empty.txt", game);
-        ToggleButton mapBtn3 = createMapBtn("Test", "/resources/gui/heart.txt", game);
+    public static HBox createMapBtnBox() {
+        int mapCount = 4;
+        ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/gui/maze.txt");
+        ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/gui/empty.txt");
+        ToggleButton mapBtn3 = createMapBtn("Oddity", "/resources/gui/Oddity.txt");
+        ToggleButton mapBtn4 = createColourMapBtn();
 
         //Only one map can be selected, hence the use of a toggling system
         final ToggleGroup group = new ToggleGroup();
         mapBtn1.setToggleGroup(group);
         mapBtn2.setToggleGroup(group);
         mapBtn3.setToggleGroup(group);
-        mapBtn1.setSelected(true);
+        mapBtn4.setToggleGroup(group);
+        //Default
+        if (isColoured()){
+            setColoured(true);
+            mapBtn4.setSelected(true);
+        }
+        else {
+            setColoured(false);
+            mapBtn1.setSelected(true);
+        }
+        setMapFilePath("/resources/gui/maze.txt");
 
-        HBox hbox = new HBox(mapBtn1, mapBtn2, mapBtn3);
+        HBox hbox = new HBox(mapBtn1, mapBtn2, mapBtn3, mapBtn4);
         hbox.setLayoutX(MainGUI.WIDTH / 2.0 - mapBtn1.getPrefWidth() * mapCount / 2.0);
         hbox.setLayoutY(MainGUI.HEIGHT / 2.0 + 5);
         return hbox;
     }
 
-    
+    /**
+     * @param mapFilePath
+     */
+    public static void setMapFilePath(String mapFilePath) {
+        MenuGUI.mapFilePath = mapFilePath;
+    }
+
+    /**
+     * @return mapFilePath
+     */
+    public static String getMapFilePath() {
+        return mapFilePath;
+    }
+
     /**
      * Creates a button for the user to decide what the score should go up to
      *
-     * @param title
-     * @param x
-     * @param y
-     * @param stage
-     * @param scene
+     * @param rounds
      * @return Button
      */
-    public static Button createRoundWinBtn(String title, int x, int y, Stage stage, Scene scene)
-    {
-        Button selectRoundBtn = new Button(title);
-        selectRoundBtn.setLayoutX(x);
-        selectRoundBtn.setLayoutY(y);
-        selectRoundBtn.setPrefWidth(100);
-        
-        selectRoundBtn.setOnAction(e -> {
-            switch(title)
-            {
-                case "Up to 5":
-                    endRound = 4;
-                    break;
-                case "Up to 10":
-                    endRound = 9;
-                    break;
-                case "Up to 20":
-                    endRound = 19;
-                    break;
-                default:
-                    endRound = 9;
-                    break;
+    public static ToggleButton createRoundWinBtn(int rounds) {
+        ToggleButton roundWinBtn = new ToggleButton("" + rounds);
+        roundWinBtn.setPrefWidth(100);
 
-            }
+        roundWinBtn.setOnAction(e -> {
+            endRound = rounds - 1;
         });
-        
-        return selectRoundBtn;
+        return roundWinBtn;
     }
 
+    /**
+     * Creates a Horizontal container of round win buttons
+     *
+     * @return HBox
+     */
+    public static HBox createWinBtnBox() {
+        int numWinBtns = 3;
+        ToggleButton winBtn1 = createRoundWinBtn(5);
+        ToggleButton winBtn2 = createRoundWinBtn(10);
+        ToggleButton winBtn3 = createRoundWinBtn( 20);
+
+        //Only one map can be selected, hence the use of a toggling system
+        final ToggleGroup group = new ToggleGroup();
+        winBtn1.setToggleGroup(group);
+        winBtn2.setToggleGroup(group);
+        winBtn3.setToggleGroup(group);
+        winBtn1.setSelected(true);
+        endRound = 4; // default
+
+        HBox hbox = new HBox(winBtn1, winBtn2, winBtn3);
+        hbox.setLayoutX(MainGUI.WIDTH / 2.0 - winBtn1.getPrefWidth() * numWinBtns / 2.0);
+        hbox.setLayoutY(MainGUI.HEIGHT / 2.0 + 40);
+        return hbox;
+    }
+
+    /**
+     * @return endRound
+     */
     public static int getEndRound()
     {
         return endRound;
@@ -210,13 +247,83 @@ public class MenuGUI {
      *
      * @return Background
      */
-    private Background createBackground() {
+    public static Background createBackground(String filePath) {
         BackgroundImage backdrop = new BackgroundImage(new Image(
-                MenuGUI.class.getResourceAsStream("/resources/images/tanks.jpg"),
+                MenuGUI.class.getResourceAsStream(filePath),
                 1080, 680, false, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         return new Background(backdrop);
     }
 
+    /**
+     * @return sickoMode
+     */
+    public static boolean isSickoMode() {
+        return sickoMode;
+    }
+
+    /**
+     * @param sickoMode
+     */
+    public static void setSickoMode(boolean sickoMode) {
+        MenuGUI.sickoMode = sickoMode;
+    }
+
+    /**
+     * @return HBox for normal and sicko mode buttons
+     */
+    public static HBox createModeBox() {
+        ToggleButton normalButton = new ToggleButton("Normal Mode");
+        normalButton.setPrefWidth(150);
+        normalButton.setOnAction(e -> {
+            setSickoMode(false);
+        });
+
+        ToggleButton sickoButton = new ToggleButton("Sicko Mode");
+        sickoButton.setPrefWidth(150);
+        sickoButton.setOnAction(e -> {
+            setSickoMode(true);
+        });
+
+        if (isSickoMode()) {
+            sickoButton.setSelected(true);
+        }
+        else {
+            normalButton.setSelected(true);
+        }
+
+        ToggleGroup group = new ToggleGroup();
+        normalButton.setToggleGroup(group);
+        sickoButton.setToggleGroup(group);
+
+        HBox modeBox = new HBox(normalButton, sickoButton);
+        modeBox.setLayoutX(800);
+        modeBox.setLayoutY(100);
+        return modeBox;
+    }
+
+    public static ToggleButton createColourMapBtn() {
+        ToggleButton colourMapBtn = new ToggleButton("Colour");
+        colourMapBtn.setPrefWidth(100);
+
+        colourMapBtn.setOnAction(e -> {
+            setColoured(true);
+        });
+        return colourMapBtn;
+    }
+
+    /**
+     * @return isColored
+     */
+    public static boolean isColoured() {
+        return coloured;
+    }
+
+    /**
+     * @param coloured
+     */
+    public static void setColoured(boolean coloured) {
+        MenuGUI.coloured = coloured;
+    }
 }
