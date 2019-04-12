@@ -4,7 +4,7 @@ Before running any JUnit tests please go through these simple in-game tests to e
 (Instructions to compile and run the game as well as game controls can be found in the README document)
 
 # In-Game Testing
-Simple tests to check to see if all the game mechanics are working as intended.
+Simple tests to check to see if all the game mechanics are working as intended. If any errors occur please check your installation or download.
 
   ## Text Based
   1. When the game is run ensure that a menu screen is the first to appear.
