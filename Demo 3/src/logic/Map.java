@@ -53,7 +53,7 @@ public class Map {
             for (int x = 0; x < width; x++) {
                 if (stringMap.get(y).charAt(x) == '0') {
                     charMap[y][x] = ' ';
-                } else if(stringMap.get(y).charAt(x) == '#' || stringMap.get(y).charAt(x) == '|'){
+                } else if(stringMap.get(y).charAt(x) == '#' || stringMap.get(y).charAt(x) == '|' || stringMap.get(y).charAt(x) == '^'){
                     charMap[y][x] = stringMap.get(y).charAt(x);
                 } else{
                     new SafeCrash("Error unable to load map", "Corrupted map file", "Map");
