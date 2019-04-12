@@ -10,8 +10,11 @@ package visuals;
 
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import logic.*;
 import drivers.*;
 import handlers.*;
@@ -65,6 +68,8 @@ public class MenuGUI {
         root.setBackground(createBackground("/resources/images/tanks.jpg"));
 
         root.getChildren().add(createModeBox());
+
+        root.getChildren().add(createControlsBtn(stage));
     }
 
     /**
@@ -325,5 +330,29 @@ public class MenuGUI {
      */
     public static void setColoured(boolean coloured) {
         MenuGUI.coloured = coloured;
+    }
+
+    /**
+     * Creates a button that displays the player controls
+     *
+     * @param stage
+     * @return
+     */
+    public static Button createControlsBtn(Stage stage) {
+        Button btn = new Button();
+        btn.setText("CONTROLS");
+        btn.setOnAction(event -> {
+                    final Stage popUp = new Stage();
+                    popUp.initModality(Modality.APPLICATION_MODAL);
+                    popUp.initOwner(stage);
+                    VBox popUpBox = new VBox();
+                    ImageView controlImg = new ImageView(new Image("/resources/images/keyboard-layout.png"));
+                    popUpBox.getChildren().add(controlImg);
+                    Scene dialogScene = new Scene(popUpBox, 1080, 608);
+                    popUp.setScene(dialogScene);
+                    popUp.show();
+                }
+        );
+        return btn;
     }
 }
