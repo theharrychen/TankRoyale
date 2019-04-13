@@ -1,4 +1,3 @@
-[Test Document](https://github.com/AnjolaAA/TankRoyale/blob/master/Test%20Document.md).
 # TankRoyale
 •    Tank Royale is a 2D topdown deathmatch multiplayer game designed to be played on a single keyboard and computer.
 
@@ -59,6 +58,7 @@ https://www.vogella.com/tutorials/JUnit/article.html
 
    
    ## Testing
+    [Full Testing Documentation](https://github.com/AnjolaAA/TankRoyale/blob/master/Test%20Document.md).
     1.To test the code, Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale
         master\Demo 3\src" in the command prompt to change directory as shown above in the Compile section.
 
