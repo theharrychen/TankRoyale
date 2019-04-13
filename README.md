@@ -7,7 +7,7 @@
 
 •    Implemented using Java and the JavaFX library. 
 
-  ![](https://user-images.githubusercontent.com/46468236/56075657-474f7780-5d83-11e9-9b81-6f83c018cedd.gif)
+  ![](https://user-images.githubusercontent.com/46468236/56075761-ee80de80-5d84-11e9-9623-aae886045d6f.gif)
 
 # Run the Game
     You can test the game out right away by having a Java Runtime Environment installed and then running Release.jar
