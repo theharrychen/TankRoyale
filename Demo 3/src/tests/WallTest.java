@@ -86,7 +86,7 @@ public class WallTest {
      */
     @Test
     public void test_invalidheight() {
-        Wall w = new Wall(MainGUI.HEIGHT, 5);
+        Wall w = new Wall(5, MainGUI.HEIGHT);
         assertEquals("Invalid height of the wall. Height must be 100 pixels less than the game window's height", 0, w.getHeight(), 0.001);
     }
 
