@@ -39,6 +39,6 @@ Automated tests are run using JUnit. To run these automated tests,
   1. Open the correct directory in command prompt by typing cd [filepath to unzipped location]\TankRoyale-master\TankRoyale
         master\Demo 3\src.
   2. Check to ensure the hamcrest core and junit jar files are within the src folder.
-  3. Compile the test java files by typing "javac -cp .;junit-4.12.jar;hamcrest-core-1.3.jar drivers/*.java handlers/*.java logic/*.java visuals/*.java tests/*.java" into the console.
-  4. To run the tests type "java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore tests.TestSuite" into the console.
+  3. Compile the test java files by typing javac -cp .;junit-4.12.jar;hamcrest-core-1.3.jar drivers/*.java handlers/*.java logic/*.java visuals/*.java tests/*.java into the console.
+  4. To run the tests type java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore tests.TestSuite into the console.
   5. After the tests are run a message should be printed onto the console confirming all the tests have passed.
