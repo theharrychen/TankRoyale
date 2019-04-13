@@ -1,13 +1,17 @@
 # TankRoyale
-    Tank Royale is a multiplayer game in which players control tanks by moving and shooting.The objective of the 
-    game is to eliminate all the other tanks and be the last tank standing. The current version is a GUI and
-    Text based beta on the JavaFX platform and console respectively. Future versions will fix current known bugs
-    with ricochet  in the GUI version and possibly implement an AI.
+•    Tank Royale is a 2D topdown deathmatch multiplayer game designed to be played on a single keyboard and computer.
+•    The objective of the game is to eliminate all the other tanks and to be the last tank standing. 
+•    The latest version has accurate collision detection, bullet richochet, various maps, round configuration, and a "sicko" mode.
+•    Implemented using Java and the JavaFX library. 
  
   ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
   ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
-# Prerequisites
-To play Tank Royale you must have a recent version of:
+
+# Run the Game
+    Test the Game out by having a Java Runtime Environment installed, and downloading and running Release.jar
+    
+# Prerequisites for Compilation
+To compile Tank Royale you must have a recent version of:
 
 •	java development kit(JDK) installed on your computer. If not, follow this link: 
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
@@ -40,7 +44,7 @@ https://www.vogella.com/tutorials/JUnit/article.html
     3. To compile, type in the command prompt: javac drivers/*.java
    ![image](https://user-images.githubusercontent.com/45050947/55134686-1e768380-50ef-11e9-89c3-67448bc68577.png)
    
-   ## Running the game
+   ## Running the game through the commandline
     1. To run the GUI version of the game, type in the command prompt: Java drivers.MainGUI
        Make sure to have compiled the game first.
    ![image](https://user-images.githubusercontent.com/45050947/55134699-28988200-50ef-11e9-940e-3151798ecb00.png)
@@ -89,8 +93,9 @@ https://www.vogella.com/tutorials/JUnit/article.html
   
 
  # Versions
-    -Current Version 2.0: GUI Beta
+    - Current Version 3.0: GUI Release
     
+    - Previous Version 2.0: GUI Beta
     
    ![image](https://user-images.githubusercontent.com/45050947/55134763-541b6c80-50ef-11e9-9b9d-a9a0338e3c0f.png)
    
