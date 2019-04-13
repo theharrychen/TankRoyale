@@ -97,11 +97,13 @@ https://www.tutorialspoint.com/junit/
 
  # Versions
     - Current Version 3.0: GUI Release
+   
+   ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
+      
+   ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
     
     - Previous Version 2.0: GUI Beta
-          ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
-      
-          ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
+    
     
    ![image](https://user-images.githubusercontent.com/45050947/55134763-541b6c80-50ef-11e9-9b9d-a9a0338e3c0f.png)
    
