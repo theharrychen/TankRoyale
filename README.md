@@ -1,4 +1,4 @@
-# TankRoyale
+# TankRoyale GUI Release
 •    Tank Royale is a 2D topdown deathmatch multiplayer game designed to be played on a single keyboard and computer.
 
 •    The objective of the game is to eliminate all of the other tanks in order to be the last tank standing. 
@@ -96,8 +96,7 @@ https://www.tutorialspoint.com/junit/
   
 
  # Versions
-   ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
-      
+   ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)   
    ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
    
     - Previous Version 2.0: GUI Beta
