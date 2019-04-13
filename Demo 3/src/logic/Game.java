@@ -4,7 +4,7 @@ package logic;
  * This game class handles map generation, shoot,and detect collisions.
  *
  * @author Group 7
- * @version 1.0
+ * @version 3.0
  * @since 2019-03-06
  */
 

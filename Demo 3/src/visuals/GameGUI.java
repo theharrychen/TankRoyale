@@ -4,7 +4,7 @@ package visuals;
  * This class is used to display the GUI visual component
  *
  * @author Group 7
- * @version 1.0
+ * @version 3.0
  * @since 2019-02-19
  */
 

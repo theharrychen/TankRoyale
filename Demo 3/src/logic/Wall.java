@@ -3,7 +3,7 @@ package logic;
  * This class is used to create the wall objects in TankRoyale's map
  *
  * @author Group 7
- * @version 1.0
+ * @version 3.0
  * @since 2019-03-06
  */
 

@@ -4,7 +4,7 @@ package logic;
  * This tank class is responsible for implementing the behaviour of a tank object
  *
  * @author Group 7
- * @version 1.0
+ * @version 2.0
  * @since 2019-03-06
  */
 

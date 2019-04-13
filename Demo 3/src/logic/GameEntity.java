@@ -6,7 +6,7 @@ package logic;
  * the generated grid/array.
  *
  * @author Team 7
- * @version 1.0
+ * @version 2.0
  * @since 2019-02-19
  */
 

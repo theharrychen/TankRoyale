@@ -4,7 +4,7 @@ package logic;
  * The map class creates a 2D visual representation of the game space
  *
  * @author Group 7
- * @version 1.0
+ * @version 3.0
  * @since Feb. 19th, 2019
  */
 

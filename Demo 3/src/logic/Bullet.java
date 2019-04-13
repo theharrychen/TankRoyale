@@ -4,7 +4,7 @@ package logic;
  * This class is used to generate a bullet or projectile to be shot by the tank.
  *
  * @author Group 7
- * @version 1.0
+ * @version 2.0
  * @since 2019-03-06
  */
 

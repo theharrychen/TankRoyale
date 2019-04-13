@@ -15,6 +15,8 @@ import javax.swing.UIManager;
 /**
  * Class that interacts with the console to ADD SOMETHING THAT TAKES IN THE CLASS NAME
  * facilitate safe crashing mechanisms.
+ *
+ * @Version 3.0
  */
 
 public class SafeCrash {
