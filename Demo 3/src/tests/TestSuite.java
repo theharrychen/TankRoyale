@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         MapTest.class, //TestCase #1
-        //WallTest.class,  //TestCase #2
+        WallTest.class,  //TestCase #2
         KinematicEntityTest.class, //TestCase #3
         TankTest.class, //TestCase #4
         GameEntityTest.class, //TestCase #5
