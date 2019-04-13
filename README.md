@@ -6,9 +6,8 @@
 •    The latest version has accurate collision detection, bullet richochet, various maps, round configuration, and a "sicko" mode.
 
 •    Implemented using Java and the JavaFX library. 
- 
-  ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
-  ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
+
+  ![](https://user-images.githubusercontent.com/46468236/56075657-474f7780-5d83-11e9-9b81-6f83c018cedd.gif)
 
 # Run the Game
     You can test the game out right away by having a Java Runtime Environment installed and then running Release.jar
@@ -100,6 +99,9 @@ https://www.tutorialspoint.com/junit/
     - Current Version 3.0: GUI Release
     
     - Previous Version 2.0: GUI Beta
+          ![image](https://user-images.githubusercontent.com/45050947/55135240-bb85ec00-50f0-11e9-845f-a72cedeb0f32.png)
+      
+          ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
     
    ![image](https://user-images.githubusercontent.com/45050947/55134763-541b6c80-50ef-11e9-9b9d-a9a0338e3c0f.png)
    
