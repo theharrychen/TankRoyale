@@ -11,7 +11,7 @@
   ![image](https://user-images.githubusercontent.com/45050947/55135320-f38d2f00-50f0-11e9-8332-f0cfdc7086d1.png)
 
 # Run the Game
-    Test the Game out by having a Java Runtime Environment installed, and downloading and running Release.jar
+    You can test the game out straight away by having a Java Runtime Environment installed and then running Release.jar
     
 # Prerequisites for Compilation
 To compile Tank Royale you must have a recent version of:
