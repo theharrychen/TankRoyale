@@ -59,10 +59,63 @@ public class TankTest extends FormatTester {
 
         String[] vars7 = {"int tankRadius"};
         assertTrue("Instance variables should be private with correct name [tankRadius] and type [int].", instanceVariablesArePrivate(vars7));
+		
+		String[] vars8 = {"int tankCount"};
+        assertTrue("Instance variables should be private with correct name [tankRadius] and type [int].", instanceVariablesArePrivate(vars8));
 
     }
-
-
+	
+	//Testing getters and setters for movement
+    @Test
+    public void test_Movement() {
+        Tank t = new Tank();
+		t.setUp(true);
+		assertEquals("Tank should be moving up", true, t.getUp());
+		t.setDown(true);
+		assertEquals("Tank should be moving down", true, t.getDown());
+		t.setRight(true);
+		assertEquals("Tank should be moving up", true, t.getRight());
+		t.setLeft(true);
+		assertEquals("Tank should be moving down", true, t.getLeft());
+    }
+	
+	//Testing getters and setters for radius
+    @Test
+    public void test_Radius() {
+        Tank t = new Tank();
+		assertEquals("Initial tank radius should be 20", 20, t.getRadius());
+		t.setRadius(80);
+		assertEquals("Set tank radius to 80", 80, t.getRadius());
+    }
+	
+	//Testing getters and setters for shooting
+    @Test
+    public void test_Shooting() {
+        Tank t = new Tank();
+		t.setShooting(true);
+		assertEquals("Tank should be shooting", true, t.getShooting());
+		t.setShooting(false);
+		assertEquals("Tank should not be shooting", false, t.getShooting());
+    }
+	
+	//Testing getters and setters for ID
+    @Test
+    public void test_ID() {
+        Tank t = new Tank();
+		t.setID('A');
+		assertEquals("Character of tank in text based was set to 'A'", 'A', t.getID());
+		t.setID('1');
+		assertEquals("Character of tank in text based was set to '1'", '1', t.getID());
+    }
+	
+	//Testing getters and setters for tankcount
+    @Test
+    public void test_tankCount() {
+        Tank t = new Tank();
+		t.setTankCount(2);
+		assertEquals("number of tanks should be 2", 2, t.getTankCount());
+    }
+	
     //Method testing
     @Test
     public void initializationTest() {
@@ -73,9 +126,42 @@ public class TankTest extends FormatTester {
         t.getMoveDir();
         t.getShooting();
 
-        assertEquals("Facing should be initialized to (1,0)", new Point2D(1, 0), t.getFacing());
         assertEquals("movDir should be initialized to 1", 1, t.getMoveDir());
         assertEquals("shooting should be initialized to false", false, t.getShooting());
+    }
+	
+	//test text-based constructor
+    @Test
+    public void test_TextConstructor() {
+        Tank t = new Tank(5,7);
+		t.setTankCount(1);
+        assertEquals("Unexpected x coordinate value",5, t.getX());
+		assertEquals("Unexpected y coordinate value",7, t.getY());
+		assertEquals("Unexpected tank count",1, t.getTankCount());
+		assertEquals("Unexpected ID",3, '1' ,t.getID());
+    }
+	
+	//test text-based version die
+    @Test
+    public void test_dies() {
+        Tank t = new Tank(5,7);
+		t.setTankCount(1);
+		t.dies();
+        assertEquals("Tank should be dead", false, t.getAlive());
+		assertEquals("Unexpected tank count. Should have reduced by one", 0, t.getTankCount());
+		
+    }
+
+	//test text-based version revive
+    @Test
+    public void test_revive() {
+        Tank t = new Tank(5,7);
+		t.setTankCount(1);
+		t.dies();
+		t.revive();
+        assertEquals("Tank should be alive", true, t.getAlive());
+		assertEquals("Unexpected tank count", 1, t.getTankCount());
+		
     }
 
     @Test
