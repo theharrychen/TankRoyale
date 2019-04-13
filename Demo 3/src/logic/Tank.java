@@ -54,6 +54,14 @@ public class Tank extends KinematicEntity {
         return this.tankradius;
     }
 
+	/**
+     * set the radius of the tank
+	 *@param int radius
+     */
+    public void setRadius(int radius) {
+        this.tankradius = radius;
+    }
+
     /**
      * @return boolean shooting
      */
@@ -70,13 +78,35 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     * Retrives the ID of the tank.
+     * Retrieves the ID of the tank.
      * @return ID as a char
      */
     public char getID() {
         return ID;
     }
+	
+	/**
+     * Sets the ID of the tank
+     * @param char
+     */
+    public char setID(char ID) {
+        return this.ID = ID;
+    }
+	
+	   /**
+     * @return int tankCount
+     */
+    public int getTankCount() {
+        return this.tankCount;
+    }
 
+    /**
+     * Sets the tankCount
+     * @param shoot
+     */
+    public void setTankCount(int count) {
+        this.tankCount = count;
+    }
 
     /**
      *Constructs a Tank object for the GameGUI version

@@ -58,4 +58,19 @@ public class Bullet extends KinematicEntity {
     public void reduceLifeTime() {
         lifeTime--;
     }
+	
+	/**
+	 *set the radius of the bullet
+	 *@param int radius
+	 */
+	public void setRadius(int radius){
+		this.radius = radius;
+	}
+
+	/**
+	 * reduces the Lifetime of the bullet
+	 */
+	public int getRadius(){
+		return radius;
+	}
 }
