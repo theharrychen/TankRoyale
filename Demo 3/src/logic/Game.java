@@ -488,7 +488,7 @@ public class Game {
             tanks.remove(tanks.size() - 1);
             spawn(tank);
         }
-        // Randomize direction facing
+		// Randomize direction facing
         int degrees = Game.rng(0,360);
         tank.rotate(degrees);
         tank.setFacing(new Point2D(tank.getRotateToX(), tank.getRotateToY()));
@@ -649,5 +649,6 @@ public class Game {
         int number = (int) (Math.random() * (max - min + 1) + min);
         return number;
     }
+
 
 }
