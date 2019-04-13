@@ -83,11 +83,6 @@ public class Tank extends KinematicEntity {
      */
     public Tank() {
         super(new Circle(tankradius));
-
-        // Randomize direction facing
-        int degrees = Game.rng(0,360);
-        rotate(degrees);
-        facing = new Point2D(getRotateToX(), getRotateToY());
     }
 
     /**
@@ -202,7 +197,7 @@ public class Tank extends KinematicEntity {
      *Angle of rotation is measured in degrees
      *@return horizontal vector for angle of rotation
      */
-    private double getRotateToX() {
+    public double getRotateToX() {
         return Math.cos(Math.toRadians(getView().getRotate()));
     }
 
@@ -210,14 +205,14 @@ public class Tank extends KinematicEntity {
      *Angle of rotation is measured in degrees
      *@return vertical vector for angle of rotation
      */
-    private double getRotateToY() {
+    public double getRotateToY() {
         return Math.sin(Math.toRadians(getView().getRotate()));
     }
 
     /**
      *Rotates the tank in specified degrees
      */
-    private void rotate(double degrees) {
+    public void rotate(double degrees) {
         getView().setRotate(getView().getRotate() + degrees);
         setFacing(new Point2D(getRotateToX(), getRotateToY()));
         setVelocity(new Point2D(Math.cos(Math.toRadians(getView().getRotate())), Math.sin(Math.toRadians(getView().getRotate()))));

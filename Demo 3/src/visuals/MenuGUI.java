@@ -13,7 +13,6 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import logic.*;
 import drivers.*;
@@ -34,7 +33,6 @@ public class MenuGUI {
     private static int endRound = 4;
     private static String mapFilePath = "/resources/gui/maze.txt";
     private static boolean sickoMode = false;
-
     private static boolean coloured = false;
 
     /**
@@ -143,7 +141,7 @@ public class MenuGUI {
         int mapCount = 4;
         ToggleButton mapBtn1 = createMapBtn("Maze", "/resources/gui/maze.txt");
         ToggleButton mapBtn2 = createMapBtn("Empty", "/resources/gui/empty.txt");
-        ToggleButton mapBtn3 = createMapBtn("Oddity", "/resources/gui/Oddity.txt");
+        ToggleButton mapBtn3 = createMapBtn("Oddity", "/resources/gui/oddity.txt");
         ToggleButton mapBtn4 = createColourMapBtn();
 
         //Only one map can be selected, hence the use of a toggling system
@@ -190,7 +188,7 @@ public class MenuGUI {
      * @return Button
      */
     public static ToggleButton createRoundWinBtn(int rounds) {
-        ToggleButton roundWinBtn = new ToggleButton("" + rounds);
+        ToggleButton roundWinBtn = new ToggleButton("Rounds: " + rounds);
         roundWinBtn.setPrefWidth(100);
 
         roundWinBtn.setOnAction(e -> {

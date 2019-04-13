@@ -14,7 +14,7 @@ import org.junit.Test;
 
 
 public class MapTest {
-    Map testMap = new Map("/resources/gui/Test.txt");
+    Map testMap = new Map("/resources/gui/test.txt");
 
     /**
      * Testing the setter method for the Char array
