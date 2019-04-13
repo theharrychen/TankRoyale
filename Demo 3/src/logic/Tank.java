@@ -54,6 +54,14 @@ public class Tank extends KinematicEntity {
         return this.tankradius;
     }
 
+	/**
+     * set the radius of the tank
+	 *@param int radius
+     */
+    public void setRadius(int radius) {
+        this.tankradius = radius;
+    }
+
     /**
      * @return boolean shooting
      */
@@ -70,19 +78,46 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     * Retrives the ID of the tank.
+     * Retrieves the ID of the tank.
      * @return ID as a char
      */
     public char getID() {
         return ID;
     }
+	
+	/**
+     * Sets the ID of the tank
+     * @param char
+     */
+    public char setID(char ID) {
+        return this.ID = ID;
+    }
+	
+	   /**
+     * @return int tankCount
+     */
+    public int getTankCount() {
+        return this.tankCount;
+    }
 
+    /**
+     * Sets the tankCount
+     * @param shoot
+     */
+    public void setTankCount(int count) {
+        this.tankCount = count;
+    }
 
     /**
      *Constructs a Tank object for the GameGUI version
      */
     public Tank() {
         super(new Circle(tankradius));
+
+        // Randomize direction facing
+        int degrees = game.rng(0,360);
+        rotate(degrees);
+        facing = new Point2D(getRotateToX(), getRotateToY());
     }
 
     /**
@@ -197,7 +232,7 @@ public class Tank extends KinematicEntity {
      *Angle of rotation is measured in degrees
      *@return horizontal vector for angle of rotation
      */
-    public double getRotateToX() {
+    private double getRotateToX() {
         return Math.cos(Math.toRadians(getView().getRotate()));
     }
 
@@ -205,14 +240,14 @@ public class Tank extends KinematicEntity {
      *Angle of rotation is measured in degrees
      *@return vertical vector for angle of rotation
      */
-    public double getRotateToY() {
+    private double getRotateToY() {
         return Math.sin(Math.toRadians(getView().getRotate()));
     }
 
     /**
      *Rotates the tank in specified degrees
      */
-    public void rotate(double degrees) {
+    private void rotate(double degrees) {
         getView().setRotate(getView().getRotate() + degrees);
         setFacing(new Point2D(getRotateToX(), getRotateToY()));
         setVelocity(new Point2D(Math.cos(Math.toRadians(getView().getRotate())), Math.sin(Math.toRadians(getView().getRotate()))));

@@ -100,6 +100,13 @@ public class GameEntity { // By default a physically "static" object
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
+	
+	/**
+     *returns the state of the tank
+     */
+    public boolean getAlive() {
+        return this.alive;
+    }
 
     //Setting the state to alive
     public boolean isAlive() {

@@ -488,10 +488,6 @@ public class Game {
             tanks.remove(tanks.size() - 1);
             spawn(tank);
         }
-        // Randomize direction facing
-        int degrees = Game.rng(0,360);
-        tank.rotate(degrees);
-        tank.setFacing(new Point2D(tank.getRotateToX(), tank.getRotateToY()));
     }
 
 
@@ -649,5 +645,93 @@ public class Game {
         int number = (int) (Math.random() * (max - min + 1) + min);
         return number;
     }
+
+//    public class Block extends GameEntity {
+//        public double width;
+//        public double height;
+//
+//
+//        public Block(double width, double height) {
+//            super(new Rectangle(width, height, Color.rgb(rng(0, 255), rng(0,255), rng(0, 255))));
+//            this.width = width;
+//            this.height = height;
+//        }
+//
+//    }
+
+//    public ArrayList<Block> blocks = new ArrayList<>();
+//
+//    public void placeBlocks() {
+//        Block b1 = new Block(1080, 10);
+//        Block b2 = new Block(1080, 10);
+//        Block b3 = new Block(10, 608);
+//        Block b4 = new Block(10, 608);
+//
+//        blocks.add(b1);
+//        blocks.add(b2);
+//        blocks.add(b3);
+//        blocks.add(b4);
+//
+//        addGameEntity(b1, 0, 0);
+//        addGameEntity(b2, 0, 608 - 10);
+//        addGameEntity(b3, 0, 0);
+//        addGameEntity(b4, 1080 - 10, 0);
+//
+//        int numWalls = rng(15, 20);
+//        for (int x = 0; x < numWalls; x++) {
+//            Block temp;
+//            if (rng(1, 100) <= 30) {
+//                temp = new Block(rng(100, 200), rng(100, 200));
+//            } else if (rng(1, 100) <= 70) {
+//                temp = new Block(10, 150);
+//            } else {
+//                temp = new Block(150, 10);
+//            }
+//            blocks.add(temp);
+//            addGameEntity(temp, rng(20, 1000), rng(20, 590));
+//        }
+//    }
+//
+//    private void ricochet(Block block, Bullet bullet) {
+//        Circle c = (Circle) bullet.getView();
+//        c.setFill(Color.rgb(rng(0, 255), rng(0, 255), rng(0, 255)));
+//        Rectangle r = (Rectangle) block.getView();
+//        r.setFill(Color.rgb(rng(0, 255), rng(0, 255), rng(0, 255)));
+////        System.out.println("x1: " + block.getView().getTranslateX() + " y1: " + block.getView().getTranslateY());
+////        System.out.println("x2: " + (block.getView().getTranslateX() + block.width) + " y1: " + block.getView().getTranslateY());
+////        System.out.println("x1: " + block.getView().getTranslateX() + " y2: " + (block.getView().getTranslateY() + block.height));
+////        System.out.println("x2: " + (block.getView().getTranslateX() + block.width) + " y2: " + (block.getView().getTranslateY() + block.height));
+//
+////        System.out.println("x1: " + block.getView().getTranslateX());
+////        System.out.println("x2: " + (block.getView().getTranslateX() + block.width));
+////        System.out.println("y1: " + block.getView().getTranslateY());
+////        System.out.println("y2: " + (block.getView().getTranslateY() + block.height));
+//        double x1 = block.getView().getTranslateX();
+//        double x2 = block.getView().getTranslateX() + block.width;
+//        double y1 = block.getView().getTranslateY();
+//        double y2 = block.getView().getTranslateY() + block.height;
+//
+//        if (bullet.getView().getTranslateX() < x1 + 5.0) {
+//            bullet.setVelocity(new Point2D(-1 * bullet.getVelocity().getX(), bullet.getVelocity().getY()));
+//            //System.out.println("LEFT");
+//        }
+//
+//        if (bullet.getView().getTranslateX() > x2 - 5.0) {
+//            bullet.setVelocity(new Point2D(-1 * bullet.getVelocity().getX(), bullet.getVelocity().getY()));
+//            //System.out.println("RIGHT");
+//        }
+//
+//        if (bullet.getView().getTranslateY() < y1 + 5.0) {
+//            bullet.setVelocity(new Point2D(bullet.getVelocity().getX(), -1 * bullet.getVelocity().getY()));
+//            //System.out.println("UP");
+//        }
+//
+//        if (bullet.getView().getTranslateY() > y2 - 5.0) {
+//            bullet.setVelocity(new Point2D(bullet.getVelocity().getX(), -1 * bullet.getVelocity().getY()));
+//            //System.out.println("DOWN");
+//        }
+//        //bullet.setVelocity(new Point2D(0,0));
+//        //bullet.setVelocity(new Point2D(-1 * bullet.getVelocity().getX(), bullet.getVelocity().getY()));
+//    }
 
 }
