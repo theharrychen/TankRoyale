@@ -58,12 +58,14 @@ https://www.vogella.com/tutorials/JUnit/article.html
 
    
    ## Testing
+       [Full Testing Documentation](https://github.com/AnjolaAA/TankRoyale/blob/master/Test%20Document.md)
+    
     1.To test the code, Type: "cd [filepath to unzipped location]\TankRoyale-master\TankRoyale
         master\Demo 3\src" in the command prompt to change directory as shown above in the Compile section.
 
     2.To compile the code for testing using the following command: javac -cp .;junit
         4.12.jar;hamcrest-core-1.3.jar drivers/*.java handlers/*.java logic/*.java visuals/*.java 
-   [Full Testing Documentation](https://github.com/AnjolaAA/TankRoyale/blob/master/Test%20Document.md)
+
    ![image](https://user-images.githubusercontent.com/45050947/55151447-e7669900-5113-11e9-8f4a-3d2ebc818c79.png)
  
     3.To run the Junit tests, type: “java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore logic.[Test document        name]” To run all tests at once input TestSuite as the Test document name. Example is shown below.
