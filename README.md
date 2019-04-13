@@ -23,7 +23,7 @@ https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.
 https://docs.oracle.com/javafx/2/installation/jfxpub-installation.htm
 
 •	JUnit installed on your computer. If not, follow this link:  
-https://www.vogella.com/tutorials/JUnit/article.html
+https://www.tutorialspoint.com/junit/
 
 
 # Getting Started 
@@ -64,10 +64,10 @@ https://www.vogella.com/tutorials/JUnit/article.html
     2.To compile the code for testing using the following command: javac -cp .;junit
         4.12.jar;hamcrest-core-1.3.jar drivers/*.java handlers/*.java logic/*.java visuals/*.java 
  
-   ![image](https://user-images.githubusercontent.com/45050947/55151447-e7669900-5113-11e9-8f4a-3d2ebc818c79.png)
+   ![image](https://user-images.githubusercontent.com/45050947/56074644-7cec6480-5d73-11e9-8c8b-6cf538cdeb4d.png)
  
-    3.To run the Junit tests, type: “java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore logic.[Test document        name]” To run all tests at once input TestSuite as the Test document name. Example is shown below.
-   ![image](https://user-images.githubusercontent.com/45050947/55151471-f51c1e80-5113-11e9-84b0-fb2fb3f912ee.png)
+    3.To run the Junit tests, type: “java -cp .;junit-4.12.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore logic.[Test document        name]” To run all tests at once input TestSuite as the Test document name. Example is shown below.   
+ ![image](https://user-images.githubusercontent.com/45050947/56074646-8a095380-5d73-11e9-972d-2d4a9bbdae5d.png)
  
 ## [Full Testing Documentation](https://github.com/AnjolaAA/TankRoyale/blob/master/Test%20Document.md)
 
