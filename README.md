@@ -1,7 +1,7 @@
 # TankRoyale
 •    Tank Royale is a 2D topdown deathmatch multiplayer game designed to be played on a single keyboard and computer.
 
-•    The objective of the game is to eliminate all the other tanks and to be the last tank standing. 
+•    The objective of the game is to eliminate all of the other tanks in order to be the last tank standing. 
 
 •    The latest version has accurate collision detection, bullet richochet, various maps, round configuration, and a "sicko" mode.
 
