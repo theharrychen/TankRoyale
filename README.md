@@ -5,7 +5,7 @@
 
 •    The latest version has accurate collision detection, bullet richochet, various maps, round configuration, and a "sicko" mode.
 
-•    Implemented using Java and the JavaFX library. 
+•    Implemented using **Java** and the **JavaFX** library. 
 
   ![](https://user-images.githubusercontent.com/46468236/56075761-ee80de80-5d84-11e9-9623-aae886045d6f.gif)
 
@@ -15,7 +15,7 @@
 # Prerequisites for Compilation
 To compile Tank Royale you must have a recent version of:
 
-•	java development kit(JDK) installed on your computer. If not, follow this link: 
+•	Java development kit(JDK) installed on your computer. If not, follow this link: 
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 •	JavaFX installed on your computer. If not, follow this link:  
@@ -120,22 +120,7 @@ https://www.tutorialspoint.com/junit/
 
     
 # Authors
-**Code Repository Manager: Harry Chen**- Sets up code repository, versions code for the various deliverables, helps other team members use repository, ensures code in repository compiles and runs.
-
-**Code Reviewer: Andre Staffa** - Provides feedback on the quality of all code submitted to the code repository. 
-
-**Team Lead: Anjola Adeboye** - Facilitates division of labour.
-
-**Meeting Facilitator: Anjola Adeboye** - Organizes time/ location of meetings, ensures meetings stay on track, and all team members can and do contribute during meetings.
-
-**Coordinator: Mei Hou** - Follows up with individual team members to ensure deadlines will be met or if meetings or deadlines are missed.
-
-**Technical Writer: Josh Kim** - Creates documentation required for project such as README file and test document. 
-
-**Architect: Andre Staffa** - Manages overall design of implementation and classes and maintains class diagram and other UML documentation. 
-
-**Communications & Snack Managers: Anjola Adeboye, Mei Hou** - Provide snacks during especially long meetings, encourages team members. Will be rotated through all the members of the group. 
-
+**Harry Chen, Anjola Adeboye, Mei Hou, Joshua Kim, Andre Staffa**
 
 # Acknowledgements
 The game was Inspired by the browser game "Tank Trouble", which can be found at: https://tanktrouble.com/
