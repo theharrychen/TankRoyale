@@ -21,7 +21,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,7 +33,7 @@ public class MenuGUI {
 
     private Pane root = new Pane();
     private Game game;
-    private static int endRound = 4;
+    private static int endScore = 5;
     private static String mapFilePath = "/resources/gui/maze.txt";
     private static boolean sickoMode = false;
     private static boolean coloured = false;
@@ -66,7 +65,6 @@ public class MenuGUI {
         root.getChildren().add(createStartBtn(stage, gameScene));
         root.getChildren().add(createMapBtnBox());
         root.getChildren().add(createWinBtnBox());
-        root.getChildren().add(createCredits());
         root.setBackground(createBackground("/resources/images/tanks.jpg"));
 
         root.getChildren().add(createModeBox());
@@ -121,7 +119,6 @@ public class MenuGUI {
      *
      * @param name
      * @param mapFilePath
-     * @param game
      * @return ToggleButton
      */
     public static ToggleButton createMapBtn(String name, String mapFilePath) {
@@ -138,7 +135,6 @@ public class MenuGUI {
     /**
      * Creates a Horizontal container of map buttons
      *
-     * @param game
      * @return HBox
      */
     public static HBox createMapBtnBox() {
@@ -188,15 +184,15 @@ public class MenuGUI {
     /**
      * Creates a button for the user to decide what the score should go up to
      *
-     * @param rounds
+     * @param scoreToWin
      * @return Button
      */
-    public static ToggleButton createRoundWinBtn(int rounds) {
-        ToggleButton roundWinBtn = new ToggleButton("Rounds: " + rounds);
+    public static ToggleButton createRoundWinBtn(int scoreToWin) {
+        ToggleButton roundWinBtn = new ToggleButton("First to " + scoreToWin);
         roundWinBtn.setPrefWidth(100);
 
         roundWinBtn.setOnAction(e -> {
-            endRound = rounds - 1;
+            endScore = scoreToWin;
         });
         return roundWinBtn;
     }
@@ -218,7 +214,7 @@ public class MenuGUI {
         winBtn2.setToggleGroup(group);
         winBtn3.setToggleGroup(group);
         winBtn1.setSelected(true);
-        endRound = 4; // default
+        endScore = 5; // default
 
         HBox hbox = new HBox(winBtn1, winBtn2, winBtn3);
         hbox.setLayoutX(MainGUI.WIDTH / 2.0 - winBtn1.getPrefWidth() * numWinBtns / 2.0);
@@ -227,26 +223,11 @@ public class MenuGUI {
     }
 
     /**
-     * @return endRound
+     * @return endScore
      */
-    public static int getEndRound()
+    public static int getEndScore()
     {
-        return endRound;
-    }
-
-
-    /**
-     * Creates the credits label
-     *
-     * @return Label
-     */
-    private Label createCredits() {
-        Label credits = new Label("Created By: Anjola Adeboye, Harry Chen, Mei Hou, Josh Kim and Andre Staffa");
-        credits.setFont(Font.loadFont(MenuGUI.class.getResourceAsStream("/resources/fonts/RiseofKingdom.ttf"), 15));
-        credits.setTextFill(Color.WHITE);
-        credits.setLayoutX(12);
-        credits.setLayoutY(575);
-        return credits;
+        return endScore;
     }
 
     /**

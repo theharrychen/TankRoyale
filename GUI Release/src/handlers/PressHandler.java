@@ -22,19 +22,19 @@ public class PressHandler extends Game implements EventHandler<KeyEvent> {
      */
     public void onePlayer(KeyEvent key) {
         switch (key.getCode()) {
-            case UP:
+            case W:
                 getTanks().get(0).setUp(true);
                 break;
-            case DOWN:
+            case S:
                 getTanks().get(0).setDown(true);
                 break;
-            case LEFT:
+            case A:
                 getTanks().get(0).setLeft(true);
                 break;
-            case RIGHT:
+            case D:
                 getTanks().get(0).setRight(true);
                 break;
-            case ENTER:
+            case Q:
                 if (getTanks().get(0).getShooting() == false) {
                     shoot(getTanks().get(0));
                     getTanks().get(0).setShooting(true);
@@ -52,19 +52,19 @@ public class PressHandler extends Game implements EventHandler<KeyEvent> {
         onePlayer(key); //For player 1's controls
 
         switch (key.getCode()) {
-            case W:
+            case UP:
                 getTanks().get(1).setUp(true);
                 break;
-            case S:
+            case DOWN:
                 getTanks().get(1).setDown(true);
                 break;
-            case A:
+            case LEFT:
                 getTanks().get(1).setLeft(true);
                 break;
-            case D:
+            case RIGHT:
                 getTanks().get(1).setRight(true);
                 break;
-            case Q:
+            case ENTER:
                 if (getTanks().get(1).getShooting() == false) {
                     shoot(getTanks().get(1));
                     getTanks().get(1).setShooting(true);

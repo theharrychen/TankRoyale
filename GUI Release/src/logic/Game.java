@@ -28,8 +28,8 @@ public class Game {
     private boolean roundOver = false;
     private AnimationTimer timer;
     private Map gameMap;
-    private int p1score = 0;
-    private int p2score = 0;
+    private int p1Score = 0;
+    private int p2Score = 0;
 
     //Arraylist of all Game Entities
     private static ArrayList<Tank> tanks = new ArrayList<>();
@@ -88,12 +88,12 @@ public class Game {
         //Super important for detection collisions
         walls.forEach(wall -> wall.updateCorners());
 
-        visual.displayTally(p1score, p2score);
+        visual.displayTally(p1Score, p2Score);
         //Adds two player tanks to the map
         Tank player1 = new Tank();
-        visual.addPlayerimage(player1);
+        visual.addPlayerImage(player1);
         Tank player2 = new Tank();
-        visual.addPlayerimage(player2);
+        visual.addPlayerImage(player2);
         randomSpawn(player1);
         randomSpawn(player2);
 
@@ -149,16 +149,16 @@ public class Game {
      * Restarts the game after each round ends
      */
     public void restart() {
+        int winner = roundWinner();
+        updateScore(winner);
+        checkGameOver();
         if (!gameOver) {
             timer.stop();
             roundOver = false;
-            int winner = determineWinner();
-            updateScore(winner);
             visual.clear();
             tanks.clear();
             bullets.clear();
             walls.clear();
-            checkGameOver();
             start();
         } else {
             endScreen();
@@ -172,11 +172,11 @@ public class Game {
         timer.stop();
         gameOver = false;
         visual.clear();
-        int winner = determineWinner();
+        int winner = gameWinner();
         visual.createRestartButton();
         visual.announceWinner(winner);
-        p1score = 0;
-        p2score = 0;
+        p1Score = 0;
+        p2Score = 0;
         visual.getRestartBtn().setOnAction(e -> {
             tanks.clear();
             bullets.clear();
@@ -186,11 +186,11 @@ public class Game {
     }
 
     /**
-     * Determines the winner of the round
+     * Determines the winner of a round
      *
      * @return int index number of the winner in the arraylist
      */
-    public int determineWinner() {
+    public int roundWinner() {
         int winner = 0;
         for (int x = 0; x < tanks.size(); x++) {
             if (tanks.get(x).isAlive()) {
@@ -198,6 +198,21 @@ public class Game {
             }
         }
         return winner;
+    }
+
+    /**
+     * Determines the winner of a game
+     *
+     * @return int winner of the game
+     */
+    public int gameWinner() {
+        if (p1Score > p2Score) {
+            return 1;
+        } else if (p1Score < p2Score) {
+            return 2;
+        } else {
+            return -1;
+        }
     }
 
     /**
@@ -212,10 +227,10 @@ public class Game {
                     case 0:
                         break;
                     case 1:
-                        p1score++;
+                        p1Score++;
                         break;
                     case 2:
-                        p2score++;
+                        p2Score++;
                         break;
                 }
             }
@@ -241,7 +256,7 @@ public class Game {
      * Checks if any player reached the score limit. If score limit is reached game will end.
      */
     public void checkGameOver() {
-        if (p1score == MenuGUI.getEndRound() || p2score == MenuGUI.getEndRound()) //First player to reach the specified points wins
+        if (p1Score == MenuGUI.getEndScore() || p2Score == MenuGUI.getEndScore()) //First player to reach the specified points wins
             gameOver = true;
     }
 

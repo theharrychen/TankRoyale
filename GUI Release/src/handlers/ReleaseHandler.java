@@ -22,19 +22,19 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent> {
      */
     public void onePlayer(KeyCode key) {
         switch (key) {
-            case UP:
+            case W:
                 getTanks().get(0).setUp(false);
                 break;
-            case DOWN:
+            case S:
                 getTanks().get(0).setDown(false);
                 break;
-            case LEFT:
+            case A:
                 getTanks().get(0).setLeft(false);
                 break;
-            case RIGHT:
+            case D:
                 getTanks().get(0).setRight(false);
                 break;
-            case ENTER:
+            case Q:
                 getTanks().get(0).setShooting(false);
                 break;
         }
@@ -48,19 +48,19 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent> {
         onePlayer(key);
         if (getTanks().size() >= 2)
             switch (key) {
-                case W:
+                case UP:
                     getTanks().get(1).setUp(false);
                     break;
-                case S:
+                case DOWN:
                     getTanks().get(1).setDown(false);
                     break;
-                case A:
+                case LEFT:
                     getTanks().get(1).setLeft(false);
                     break;
-                case D:
+                case RIGHT:
                     getTanks().get(1).setRight(false);
                     break;
-                case Q:
+                case ENTER:
                     getTanks().get(1).setShooting(false);
                     break;
             }

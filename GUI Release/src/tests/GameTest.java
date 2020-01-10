@@ -37,6 +37,6 @@ public class GameTest {
         Game g = new Game();
         g.start();
         g.getTanks().get(1).setAlive(false);
-        assertEquals("Expected player 1", 1, g.determineWinner());
+        assertEquals("Expected player 1", 1, g.roundWinner());
     }
 }

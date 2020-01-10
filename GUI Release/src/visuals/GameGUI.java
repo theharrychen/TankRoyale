@@ -106,7 +106,7 @@ public class GameGUI {
      *
      * @param Tank tank
      */
-    public void addPlayerimage(Tank tank) {
+    public void addPlayerImage(Tank tank) {
         try {
             Image img = null;
             switch (players) {
