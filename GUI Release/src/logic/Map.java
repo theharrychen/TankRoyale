@@ -32,7 +32,7 @@ public class Map {
         try {
             input = new Scanner(stream);
         } catch (Exception e) {
-            new SafeCrash("Error unable to load map", "Map file not found" , "Map");
+            new SafeCrash("Error unable to load map", "Map file not found", "Map");
         }
 
         ArrayList<String> stringMap = new ArrayList<String>();
@@ -50,9 +50,9 @@ public class Map {
             for (int x = 0; x < width; x++) {
                 if (stringMap.get(y).charAt(x) == '0') {
                     charMap[y][x] = ' ';
-                } else if(stringMap.get(y).charAt(x) == '#' || stringMap.get(y).charAt(x) == '|' || stringMap.get(y).charAt(x) == '^'){
+                } else if (stringMap.get(y).charAt(x) == '#' || stringMap.get(y).charAt(x) == '|' || stringMap.get(y).charAt(x) == '^') {
                     charMap[y][x] = stringMap.get(y).charAt(x);
-                } else{
+                } else {
                     new SafeCrash("Error unable to load map", "Corrupted map file", "Map");
                 }
             }

@@ -2,10 +2,10 @@ package logic;
 
 /**
  * This class is used to define the velocities of Tank and Bullet objects in TankRoyale and by extension,
- any non-Static object.
+ * any non-Static object.
  *
  * @author Group 7, adapted from Almas Baimagambetov: https://www.youtube.com/
-	 watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
+ * watch?v=l2XhUHW8Oa4&list=PLurZmf6mNWh4oNzAph6vk14xj9NdS-RCP&index=2&t=0s
  * @version 2.0
  * @since 2019-02-19
  */
@@ -15,16 +15,16 @@ import javafx.scene.Node;
 
 public class KinematicEntity extends GameEntity {
 
-    private Point2D velocity = new Point2D(0,0);
+    private Point2D velocity = new Point2D(0, 0);
 
     public KinematicEntity(Node view) {
         super(view);
     }
 
-	/**
+    /**
      * Constructor for text based version of the game
      */
-    public KinematicEntity(int x, int y){
+    public KinematicEntity(int x, int y) {
         super(x, y);
     }
 
@@ -43,7 +43,7 @@ public class KinematicEntity extends GameEntity {
         this.velocity = velocity;
     }
 
-   //Returns the velocity of the dynamic object.
+    //Returns the velocity of the dynamic object.
     public Point2D getVelocity() {
         Point2D tempVelocity = this.velocity; //Peventing leaks, present on GUI as well.
         return tempVelocity; //Peventing leaks, present on GUI as well.

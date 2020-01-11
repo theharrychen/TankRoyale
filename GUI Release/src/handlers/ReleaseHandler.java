@@ -18,6 +18,7 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent> {
 
     /**
      * Player controls for one player
+     *
      * @param key KeyEvent key
      */
     public void onePlayer(KeyCode key) {
@@ -42,6 +43,7 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent> {
 
     /**
      * Player controls for two players
+     *
      * @param key KeyEvent key
      */
     public void twoPlayer(KeyCode key) {
@@ -68,6 +70,7 @@ public class ReleaseHandler extends Game implements EventHandler<KeyEvent> {
 
     /**
      * Player controls for three players
+     *
      * @param key KeyEvent key
      */
     public void threePlayer(KeyCode key) {

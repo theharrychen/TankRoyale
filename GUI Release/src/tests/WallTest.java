@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class WallTest {
 
     /**
-     *Testing the constructor of Wall
+     * Testing the constructor of Wall
      */
     @Test
     public void test_wallconstructor() {
@@ -28,7 +28,7 @@ public class WallTest {
     }
 
     /**
-     *Testing the setter method for wall width
+     * Testing the setter method for wall width
      */
     @Test
     public void test_setWallWidth() {
@@ -41,7 +41,7 @@ public class WallTest {
     }
 
     /**
-     *Testing the setter method for wall height
+     * Testing the setter method for wall height
      */
     @Test
     public void test_setWallHeight() {
@@ -53,7 +53,7 @@ public class WallTest {
     }
 
     /**
-     *Testing the getter method for wall width
+     * Testing the getter method for wall width
      */
     @Test
     public void test_getWidth() {
@@ -62,7 +62,7 @@ public class WallTest {
     }
 
     /**
-     *Testing the getter method for wall height
+     * Testing the getter method for wall height
      */
     @Test
     public void test_getWallHeight() {
@@ -71,7 +71,7 @@ public class WallTest {
     }
 
     /**
-     *Testing for invalid wall width
+     * Testing for invalid wall width
      */
     @Test
     public void test_invalidwidth() {
@@ -80,7 +80,7 @@ public class WallTest {
     }
 
     /**
-     *Testing for invalid wall height
+     * Testing for invalid wall height
      */
     @Test
     public void test_invalidheight() {

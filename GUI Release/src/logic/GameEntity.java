@@ -14,12 +14,11 @@ import javafx.scene.Node;
 import javafx.scene.shape.Shape;
 
 
-
 public class GameEntity { // By default a physically "static" object
 
     private Node view; //An item in the scene graph
     private boolean alive = true;
-	  private int x, y; //Variables for text based version
+    private int x, y; //Variables for text based version
 
 
     //Contructor: Creates a GameEntity for GameGUI version of the game
@@ -27,52 +26,53 @@ public class GameEntity { // By default a physically "static" object
         setView(view);
     }
 
-	 //Constructor for text based version of the game
-    public GameEntity(int x, int y){
+    //Constructor for text based version of the game
+    public GameEntity(int x, int y) {
         setX(x);
         setY(y);
     }
 
-	/**
-	 * @return int x
-	 */
-	public int getX() {
-    Integer tempX = new Integer(x); //Peventing leaks, present on GUI as well.
-		return tempX.intValue(); //Peventing leaks, present on GUI as well.
-	}
-
-	/**
-	 * sets the x coordinate
-	 */
-	public void setX(int x) {
-    if(x < 0){
-      //S AFE CRASH
+    /**
+     * @return int x
+     */
+    public int getX() {
+        Integer tempX = new Integer(x); //Peventing leaks, present on GUI as well.
+        return tempX.intValue(); //Peventing leaks, present on GUI as well.
     }
-		this.x = x;
-	}
-
-	/**
-	 * @return int y
-	 */
-	public int getY() {
-    Integer tempY = new Integer(y); //Peventing leaks, present on GUI as well.
-		return tempY.intValue(); //Preventing leaks, present on GUI as well.
-	}
-
-	/**
-	 * sets the y coordinate
-	 */
-	public void setY(int y) {
-    if(y < 0){
-      //S AFE CRASH
-    }
-		this.y = y;
-	}
 
     /**
-     *Updates the game Node to the new position
-     *@param view: intended new view
-    */
+     * sets the x coordinate
+     */
+    public void setX(int x) {
+        if (x < 0) {
+            //S AFE CRASH
+        }
+        this.x = x;
+    }
+
+    /**
+     * @return int y
+     */
+    public int getY() {
+        Integer tempY = new Integer(y); //Peventing leaks, present on GUI as well.
+        return tempY.intValue(); //Preventing leaks, present on GUI as well.
+    }
+
+    /**
+     * sets the y coordinate
+     */
+    public void setY(int y) {
+        if (y < 0) {
+            //S AFE CRASH
+        }
+        this.y = y;
+    }
+
+    /**
+     * Updates the game Node to the new position
+     *
+     * @param view: intended new view
+     */
     public void setView(Node view) {
         this.view = view;
     }
@@ -82,20 +82,21 @@ public class GameEntity { // By default a physically "static" object
         return view; //Required access as there is no Node copy constructor. Attempt to create was buggy and memory heavy.
     }
 
-	public double getRotation() {
+    public double getRotation() {
         return this.getView().getRotate();
     }
 
     /**
-     *Updates current state to alive.
-     *@param alive: new intended state
+     * Updates current state to alive.
+     *
+     * @param alive: new intended state
      */
     public void setAlive(boolean alive) {
         this.alive = alive;
     }
-	
-	/**
-     *returns the state of the tank
+
+    /**
+     * returns the state of the tank
      */
     public boolean getAlive() {
         return this.alive;
@@ -112,18 +113,17 @@ public class GameEntity { // By default a physically "static" object
     }
 
     //Checks if any two objects are at the same position -> therefore colliding.
-	// This is adapted from https://stackoverflow.com/questions/15013913/checking-collision-of-shapes-with-javafx
-	public boolean isColliding(GameEntity other) {
-		boolean collisionDetected = false;
-		Shape object1 = (Shape) this.getView();
-		Shape object2 = (Shape) other.getView();
-		Shape intersect = Shape.intersect(object1, object2);
+    // This is adapted from https://stackoverflow.com/questions/15013913/checking-collision-of-shapes-with-javafx
+    public boolean isColliding(GameEntity other) {
+        boolean collisionDetected = false;
+        Shape object1 = (Shape) this.getView();
+        Shape object2 = (Shape) other.getView();
+        Shape intersect = Shape.intersect(object1, object2);
         if (intersect.getBoundsInLocal().getWidth() != -1) {
-          collisionDetected = true;
+            collisionDetected = true;
         }
-		return collisionDetected;
-	}
-
+        return collisionDetected;
+    }
 
 
 }

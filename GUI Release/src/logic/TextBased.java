@@ -36,7 +36,7 @@ public class TextBased {
         try {
             createMap();
         } catch (Exception e) {
-            new SafeCrash("Error unable to load map", "Map file not found" , "TextBased");
+            new SafeCrash("Error unable to load map", "Map file not found", "TextBased");
         }
 
         display.spawn(tank1, gameMap);
@@ -47,7 +47,8 @@ public class TextBased {
 
     /**
      * Sets the gameStart variable
-     *@param boolean start
+     *
+     * @param boolean start
      */
     public void setGameStart(boolean start) {
         gameStart = start;
@@ -62,7 +63,8 @@ public class TextBased {
 
     /**
      * Sets the MapChoice of the player
-     *@param int choice
+     *
+     * @param int choice
      */
     public void setMapChoice(int choice) {
         mapChoice = choice;
@@ -78,7 +80,8 @@ public class TextBased {
 
     /**
      * Sets the endGame variable
-     *@param boolean end
+     *
+     * @param boolean end
      */
     public void setEndGame(boolean end) {
         endGame = end;

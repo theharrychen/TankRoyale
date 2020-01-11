@@ -29,11 +29,10 @@ public class Wall extends GameEntity {
      * @Param double width, double height
      */
     public static Rectangle checkParameters(double width, double height) {
-        if (width <= MainGUI.WIDTH && height <= MainGUI.HEIGHT - 100){
+        if (width <= MainGUI.WIDTH && height <= MainGUI.HEIGHT - 100) {
             if (MenuGUI.isColoured()) {
-                return new Rectangle(width, height, Color.rgb(rng(0, 255), rng(0,255), rng(0, 255)));
-            }
-            else {
+                return new Rectangle(width, height, Color.rgb(rng(0, 255), rng(0, 255), rng(0, 255)));
+            } else {
                 return new Rectangle(width, height, Color.gray(0.5));
             }
         }

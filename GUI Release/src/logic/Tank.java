@@ -50,9 +50,10 @@ public class Tank extends KinematicEntity {
         return tankradius;
     }
 
-	/**
+    /**
      * set the radius of the tank
-	 *@param int radius
+     *
+     * @param int radius
      */
     public void setRadius(int radius) {
         tankradius = radius;
@@ -67,6 +68,7 @@ public class Tank extends KinematicEntity {
 
     /**
      * Sets whether the tank is shooting
+     *
      * @param shoot
      */
     public void setShooting(boolean shoot) {
@@ -75,21 +77,23 @@ public class Tank extends KinematicEntity {
 
     /**
      * Retrieves the ID of the tank.
+     *
      * @return ID as a char
      */
     public char getID() {
         return ID;
     }
-	
-	/**
+
+    /**
      * Sets the ID of the tank
+     *
      * @param char
      */
     public char setID(char ID) {
         return this.ID = ID;
     }
-	
-	   /**
+
+    /**
      * @return int tankCount
      */
     public int getTankCount() {
@@ -98,6 +102,7 @@ public class Tank extends KinematicEntity {
 
     /**
      * Sets the tankCount
+     *
      * @param shoot
      */
     public void setTankCount(int count) {
@@ -105,7 +110,7 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Constructs a Tank object for the GameGUI version
+     * Constructs a Tank object for the GameGUI version
      */
     public Tank() {
         super(new Circle(tankradius));
@@ -155,14 +160,15 @@ public class Tank extends KinematicEntity {
 
     /**
      * Sets the direction the front of the tank is facing
-     *@param Point2D facing
+     *
+     * @param Point2D facing
      */
     public void setFacing(Point2D facing) {
         this.facing = facing;
     }
 
     /**
-     *@return the direction the front of the tank is facing
+     * @return the direction the front of the tank is facing
      */
     public Point2D getFacing() {
         return facing;
@@ -170,7 +176,8 @@ public class Tank extends KinematicEntity {
 
     /**
      * Moves the tank
-     *@param double direction, double magnitude
+     *
+     * @param double direction, double magnitude
      */
     private void move(double direction, double magnitude) {
         setVelocity(getFacing().normalize().multiply(direction * magnitude));
@@ -179,6 +186,7 @@ public class Tank extends KinematicEntity {
 
     /**
      * Moves the tank for text based verion of the game
+     *
      * @param int xDir the x direction
      * @param int yDir the y direction
      * @param map the current map
@@ -195,7 +203,7 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Moves the tank forward
+     * Moves the tank forward
      */
     public void moveForward() {
         moveDir = 1;
@@ -203,7 +211,7 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Moves the tank backwards
+     * Moves the tank backwards
      */
     public void moveBackward() {
         moveDir = -1;
@@ -211,8 +219,9 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Angle of rotation is measured in degrees
-     *@return rotation angle
+     * Angle of rotation is measured in degrees
+     *
+     * @return rotation angle
      */
     // not encapsulated
     public double getRotate() {
@@ -220,23 +229,25 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Angle of rotation is measured in degrees
-     *@return horizontal vector for angle of rotation
+     * Angle of rotation is measured in degrees
+     *
+     * @return horizontal vector for angle of rotation
      */
     public double getRotateToX() {
         return Math.cos(Math.toRadians(getView().getRotate()));
     }
 
     /**
-     *Angle of rotation is measured in degrees
-     *@return vertical vector for angle of rotation
+     * Angle of rotation is measured in degrees
+     *
+     * @return vertical vector for angle of rotation
      */
     public double getRotateToY() {
         return Math.sin(Math.toRadians(getView().getRotate()));
     }
 
     /**
-     *Rotates the tank in specified degrees
+     * Rotates the tank in specified degrees
      */
     public void rotate(double degrees) {
         getView().setRotate(getView().getRotate() + degrees);
@@ -245,28 +256,28 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Rotates the tank clockwise
+     * Rotates the tank clockwise
      */
     public void rotateRight() {
         isRotateRight = true; // Makes rotation dependent on timer
     }
 
     /**
-     *Rotates the tank counter clockwise
+     * Rotates the tank counter clockwise
      */
     public void rotateLeft() {
         isRotateLeft = true; // Makes rotation dependent on timer
     }
 
     /**
-     *@return direction of tank movement
+     * @return direction of tank movement
      */
     public int getMoveDir() {
         return moveDir;
     }
 
     /**
-     *setUp, setDown, setRight,and setLeft account for multiple keyboard inputs
+     * setUp, setDown, setRight,and setLeft account for multiple keyboard inputs
      */
     public void setUp(boolean up) {
         this.up = up;
@@ -285,7 +296,7 @@ public class Tank extends KinematicEntity {
     }
 
     /**
-     *Moves the tank based on player input
+     * Moves the tank based on player input
      */
     public void movement() {
         if (up) {
@@ -311,7 +322,8 @@ public class Tank extends KinematicEntity {
     /**
      * Tank creates and shoots a bullet
      * Bullet is currently generated in front of the tank, so it doesn't self-destruct
-     *@param Tank tank
+     *
+     * @param Tank tank
      */
     public Bullet shoot() {
         Bullet bullet = new Bullet();
@@ -321,9 +333,10 @@ public class Tank extends KinematicEntity {
 
     /**
      * Creates a bullet and shoots it in the indicated direction.
-     * @param xDir: the xdirection the bullet is intended to move.
-     * @param yDir: the ydirection the bullet is intended to move.
-     * @param map: the map the bullet and tanks are operating in.
+     *
+     * @param xDir:      the xdirection the bullet is intended to move.
+     * @param yDir:      the ydirection the bullet is intended to move.
+     * @param map:       the map the bullet and tanks are operating in.
      * @param otherTank: the location of the other tank, in the event of it's death.
      */
 
@@ -364,10 +377,11 @@ public class Tank extends KinematicEntity {
     /**
      * The actual gameplay. Based on the inputted command, the tank moves the
      * designated spaces and shoots in the intended direction.
-     * @param command: the user input, as a string in all caps
-     * @param map: the map the tank is operating on
+     *
+     * @param command:   the user input, as a string in all caps
+     * @param map:       the map the tank is operating on
      * @param otherTank: the location of the other tank, in the event that a user
-     *        shoots
+     *                   shoots
      */
     public void performCommand(String command, Map map, Tank otherTank) {
         switch (command) {

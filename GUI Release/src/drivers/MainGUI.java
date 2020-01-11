@@ -18,7 +18,7 @@ public class MainGUI extends Application {
     public static final double WIDTH = 1080.0, HEIGHT = 608.0; //16:9 Window Aspect Ratio
 
     /**
-     *Main entry point of JavaFX application
+     * Main entry point of JavaFX application
      */
     public void start(Stage stage) throws Exception {
         stage.setTitle("Tank Royale");
@@ -33,7 +33,7 @@ public class MainGUI extends Application {
 
 
     /**
-     *Launches the game
+     * Launches the game
      */
     public static void main(String[] args) {
         launch(args);

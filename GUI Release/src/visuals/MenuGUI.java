@@ -53,7 +53,7 @@ public class MenuGUI {
         createMenu(stage, gameScene);
         Scene menuScene = new Scene(root, MainGUI.WIDTH, MainGUI.HEIGHT);
         stage.setScene(menuScene);
-        
+
     }
 
     /**
@@ -151,11 +151,10 @@ public class MenuGUI {
         mapBtn3.setToggleGroup(group);
         mapBtn4.setToggleGroup(group);
         //Default
-        if (isColoured()){
+        if (isColoured()) {
             setColoured(true);
             mapBtn4.setSelected(true);
-        }
-        else {
+        } else {
             setColoured(false);
             mapBtn1.setSelected(true);
         }
@@ -206,7 +205,7 @@ public class MenuGUI {
         int numWinBtns = 3;
         ToggleButton winBtn1 = createRoundWinBtn(5);
         ToggleButton winBtn2 = createRoundWinBtn(10);
-        ToggleButton winBtn3 = createRoundWinBtn( 20);
+        ToggleButton winBtn3 = createRoundWinBtn(20);
 
         //Only one map can be selected, hence the use of a toggling system
         final ToggleGroup group = new ToggleGroup();
@@ -225,8 +224,7 @@ public class MenuGUI {
     /**
      * @return endScore
      */
-    public static int getEndScore()
-    {
+    public static int getEndScore() {
         return endScore;
     }
 
@@ -276,8 +274,7 @@ public class MenuGUI {
 
         if (isSickoMode()) {
             sickoButton.setSelected(true);
-        }
-        else {
+        } else {
             normalButton.setSelected(true);
         }
 

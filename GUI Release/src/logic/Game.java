@@ -49,7 +49,7 @@ public class Game {
      */
     public ArrayList<Tank> getTanks() {
         ArrayList<Tank> temp = new ArrayList<>();
-        for(Tank tank : tanks)
+        for (Tank tank : tanks)
             temp.add(tank);
         return temp;
     }
@@ -80,7 +80,7 @@ public class Game {
             try {
                 createMap();
             } catch (Exception e) {
-                new SafeCrash("Error unable to load map", "Map file not found" , "Game");
+                new SafeCrash("Error unable to load map", "Map file not found", "Game");
                 System.out.println(e.getMessage());
             }
         }
@@ -502,8 +502,8 @@ public class Game {
             tanks.remove(tanks.size() - 1);
             spawn(tank);
         }
-		// Randomize direction facing
-        int degrees = Game.rng(0,360);
+        // Randomize direction facing
+        int degrees = Game.rng(0, 360);
         tank.rotate(degrees);
         tank.setFacing(new Point2D(tank.getRotateToX(), tank.getRotateToY()));
     }
