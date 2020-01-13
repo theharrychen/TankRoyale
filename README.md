@@ -8,7 +8,8 @@
 •    Implemented using **Java** and the **JavaFX** library. 
 
   <p align="center">
-    <img src="https://user-images.githubusercontent.com/46468236/56075761-ee80de80-5d84-11e9-9623-aae886045d6f.gif">
+    <img src="https://user-images.githubusercontent.com/46468236/72235149-c2052780-358d-11ea-9be2-349b6e4e534c.gif">
+<!--     <img src="https://user-images.githubusercontent.com/46468236/56075761-ee80de80-5d84-11e9-9623-aae886045d6f.gif"> -->
   </p>
 
 # Run the Game
