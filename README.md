@@ -1,5 +1,5 @@
 # TankRoyale GUI Release
-•    Tank Royale is a 2D topdown deathmatch multiplayer game designed to be played on a single keyboard and computer.
+•    Tank Royale is a 2D topdown tank battle multiplayer game designed to be played on a single keyboard and computer.
 
 •    The objective of the game is to eliminate all of the other tanks in order to be the last tank standing. 
 
